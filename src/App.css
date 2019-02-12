@@ -1,0 +1,66 @@
+
+
+.App {
+  height: 75vh;
+  width: 95vw;
+  margin-left: auto;
+  margin-right: auto; 
+  background-color: #7ebbe4;
+  text-align: center;
+}
+
+
+
+
+/* Header Styles */
+.Header-Parent {
+  display: flex; 
+  justify-content: space-evenly;
+}
+
+.app-title {
+  font-size: 76px; 
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* Logo Styles */
+.logo-img {
+  position: fixed;
+  top: 0;
+  left: 2.5vw;
+  background-color: #7ebbe4;
+  height: 125px; 
+  width: 125px; 
+  opacity: .75; 
+}
+
+
+/* Choice Styles */
+.Choice-parent{
+  padding-top: 3em;  
+  display: flex;
+  justify-content: space-evenly;
+}
+
+select {
+margin-top: 1.5em; 
+}
+
+.label-text {
+  font-size: 26px; 
+  font-family: sans-serif;
+}
+
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
