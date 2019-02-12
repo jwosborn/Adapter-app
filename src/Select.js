@@ -3,7 +3,7 @@ import './App.css';
 
 
 
-const Select = ({opts}) => {
+const Select = ({opts, dopts}) => {
     return (
       <div className="Choice-parent">
       <div>
@@ -23,9 +23,13 @@ const Select = ({opts}) => {
         <label htmlFor="Device-List" className="label-text">Choose Your Device:</label><br />
         <select className="Device-list">
          <option defaultValue="" selected>Choose Your Device</option> 
-          <option>Macbook Air</option>
-          <option>iPad</option>
-          <option>iPhone</option>
+         {
+            dopts.map(op => (
+              <option>
+                {op.name}
+              </option>
+            ))
+          }
         </select>
     </div>
     </div>

@@ -1,6 +1,11 @@
 export const Devicelist = [
     {
         name: "Macbook Air 2011-2014",
+        hasHDMI: false,
+        hasVGA: false
+    },    
+    {
+        name: "Macbook/Macbook Pro 2011-2014",
         hasHDMI: true,
         hasVGA: false
     },
@@ -16,6 +21,16 @@ export const Devicelist = [
     },
     {
         name: "Apple iPhone",
+        hasHDMI: false,
+        hasVGA: false
+    },
+    {
+        name: "Macbook 2016-present",
+        hasHDMI: false,
+        hasVGA: false
+    },
+    {
+        name: "Surface/Surface Pro",
         hasHDMI: false,
         hasVGA: false
     }
