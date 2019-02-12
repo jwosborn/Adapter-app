@@ -9,7 +9,7 @@ const Select = ({opts}) => {
       <div>
         <label htmlFor="Room-List" className="label-text">Choose Your Classroom:</label><br />
         <select className="Room-list"> 
-          <option defaultValue="" selected disabled>Choose Your Classroom</option>
+          <option defaultValue="" selected>Choose Your Classroom</option>
           {
             opts.map(op => (
               <option>
@@ -22,7 +22,7 @@ const Select = ({opts}) => {
       <div>
         <label htmlFor="Device-List" className="label-text">Choose Your Device:</label><br />
         <select className="Device-list">
-         <option defaultValue="" selected disabled >Choose Your Device</option> 
+         <option defaultValue="" selected>Choose Your Device</option> 
           <option>Macbook Air</option>
           <option>iPad</option>
           <option>iPhone</option>
