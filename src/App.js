@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Select from './Select';
 import Header from './Header';
 import {Nortonlist} from './Classroomlist';
+import {Devicelist} from './Devicelist';
 import './App.css';
 
 class App extends Component {
@@ -13,6 +14,7 @@ class App extends Component {
         <Header />
         <Select 
         opts={Nortonlist}
+        dopts={Devicelist}
         />
       </div>
     );
