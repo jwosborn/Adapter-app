@@ -1,18 +1,31 @@
 import React from 'react';
+// import Solution from './Solution';
 import './App.css'; 
 
 
 
 const Select = ({opts, dopts}) => {
+
+  // const roomSelect = document.getElementById("Room-list");
+  // const roomSelection = roomSelect.options.selectedIndex.text;
+//  const e = document.getElementById("Room-list");
+// var strUser = e.options[e.selectedIndex].value;
+  const roomValue = (i) => {
+    console.log(i.currentTarget.value);
+    return(
+      i.currentTarget.value
+    );}
+
+
     return (
       <div className="Choice-parent">
       <div>
         <label htmlFor="Room-List" className="label-text">Choose Your Classroom:</label><br />
-        <select className="Room-list"> 
+        <select className="Room-list" id="Room-list" onChange={roomValue}> 
           <option defaultValue="" selected>Choose Your Classroom</option>
           {
             opts.map(op => (
-              <option>
+              <option value={op.roomNumber}>
                 {op.roomNumber}
               </option>
             ))
@@ -25,7 +38,7 @@ const Select = ({opts, dopts}) => {
          <option defaultValue="" selected>Choose Your Device</option> 
          {
             dopts.map(op => (
-              <option>
+              <option value={op.name}>
                 {op.name}
               </option>
             ))
