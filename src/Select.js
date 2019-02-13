@@ -5,11 +5,6 @@ import './App.css';
 
 
 const Select = ({opts, dopts}) => {
-
-  // const roomSelect = document.getElementById("Room-list");
-  // const roomSelection = roomSelect.options.selectedIndex.text;
-//  const e = document.getElementById("Room-list");
-// var strUser = e.options[e.selectedIndex].value;
   const roomValue = (i) => {
     console.log(i.currentTarget.value);
     return(
