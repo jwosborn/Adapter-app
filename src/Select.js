@@ -10,13 +10,6 @@ const Select = ({opts, dopts}) => {
       i.currentTarget.text
     )}
 
-    // function that links opts to currentTarget.value and saves into new variable (?)
-
-  // const Solutionchoice =() => {
-  //   if (opts.includes(roomValue)){
-  //     return <Solution />
-  //     } 
-  //   }
 
     return (
       <div className="Choice-parent">

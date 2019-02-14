@@ -13,7 +13,7 @@ class App extends Component {
   render() {
 
 const Applogic = () => {
-  const hasHDMI = true; 
+  const hasHDMI = false; 
   if (hasHDMI) {
       return (<Positive />)
     } return (<Negative />)
