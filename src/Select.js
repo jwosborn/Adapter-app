@@ -6,10 +6,9 @@ import './App.css';
 const Select = ({opts, dopts}) => {
 
   const targetValue = (i) => {
-    console.log(i.currentTarget.value);
     return(
-      i.currentTarget.value
-    );}
+      i.currentTarget.text
+    )}
 
     // function that links opts to currentTarget.value and saves into new variable (?)
 
@@ -27,7 +26,7 @@ const Select = ({opts, dopts}) => {
             <option  selected>Choose Your Classroom</option>
             {
               opts.map(op => (
-                <option value={op.roomNumber}>
+                <option>
                   {op.roomNumber}
                 </option>
               ))
@@ -40,7 +39,7 @@ const Select = ({opts, dopts}) => {
           <option defaultValue="" selected>Choose Your Device</option> 
           {
               dopts.map(op => (
-                <option value={op.name}>
+                <option>
                   {op.name}
                 </option>
               ))
