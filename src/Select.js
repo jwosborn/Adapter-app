@@ -5,7 +5,7 @@ import './App.css';
 
 const Select = ({opts, dopts}) => {
 
-  const roomValue = (i) => {
+  const targetValue = (i) => {
     console.log(i.currentTarget.value);
     return(
       i.currentTarget.value
@@ -23,7 +23,7 @@ const Select = ({opts, dopts}) => {
       <div className="Choice-parent">
         <div>
           <label htmlFor="Room-List" className="label-text">Choose Your Classroom:</label><br />
-          <select className="Room-list" id="Room-list" onChange={roomValue}> 
+          <select className="Room-list" id="Room-list" onChange={targetValue}> 
             <option  selected>Choose Your Classroom</option>
             {
               opts.map(op => (
@@ -36,7 +36,7 @@ const Select = ({opts, dopts}) => {
         </div>
         <div>
           <label htmlFor="Device-List" className="label-text">Choose Your Device:</label><br />
-          <select className="Device-list">
+          <select className="Device-list" onChange={targetValue}>
           <option defaultValue="" selected>Choose Your Device</option> 
           {
               dopts.map(op => (
