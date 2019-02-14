@@ -12,6 +12,13 @@ class App extends Component {
 
   render() {
 
+const Applogic = () => {
+  const hasHDMI = true; 
+  if (hasHDMI) {
+      return (<Positive />)
+    } return (<Negative />)
+
+}
     return (
       <div className="App">
         <Header />
@@ -19,9 +26,7 @@ class App extends Component {
         opts={Nortonlist}
         dopts={Devicelist}
         />
-
-        <Positive />
-        <Negative />
+        <Applogic />
       </div>
     );
   }
