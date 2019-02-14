@@ -3,12 +3,8 @@ import './App.css';
 
 
 
-const Select = ({opts, dopts}) => {
+const Select = ({opts, dopts, targetValue}) => {
 
-  const targetValue = (i) => {
-    return(
-      i.currentTarget.text
-    )}
 
 
     return (
@@ -40,7 +36,7 @@ const Select = ({opts, dopts}) => {
           </select>
       </div>
     </div>
-
     );
+
 }
 export default Select;

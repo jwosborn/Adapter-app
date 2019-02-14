@@ -12,9 +12,13 @@ class App extends Component {
 
   render() {
 
-const Applogic = () => {
-  const hasHDMI = false; 
-  if (hasHDMI) {
+  const targetValue = (i) => {
+  return(
+    i.currentTarget.text
+  )}
+  
+const Applogic = () => { 
+  if (Nortonlist.includes(targetValue)) {
       return (<Positive />)
     } return (<Negative />)
 
@@ -25,6 +29,7 @@ const Applogic = () => {
         <Select 
         opts={Nortonlist}
         dopts={Devicelist}
+        targetValue={this.targetValue}
         />
         <Applogic />
       </div>
