@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // Component Imports
 import Select from './Select';
 import Header from './Header';
+import Solution from './Solution';
 import {Nortonlist} from './Classroomlist';
 import {Devicelist} from './Devicelist';
 import './App.css';
@@ -17,6 +18,7 @@ class App extends Component {
         opts={Nortonlist}
         dopts={Devicelist}
         />
+        <Solution />
       </div>
     );
   }

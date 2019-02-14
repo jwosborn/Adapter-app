@@ -52,6 +52,33 @@ margin-top: 1.5em;
 }
 
 
+/*Solution Styles */
+#no-adapter {
+  background-color: #023f0a;
+  width: 75vw; 
+  margin: auto; 
+  margin-top: 15px; 
+  padding: 25px 0 25px;
+}
+
+#no-adapter h1 {
+  color: white; 
+}
+
+#adapter {
+  background-color: #5a0707;
+  width: 75vw; 
+  margin: auto; 
+}
+
+#adapter h1, h2 {
+  color: white;
+}
+
+#adapter a {
+  color: #058516
+}
+
 .App-link {
   color: #61dafb;
 }
