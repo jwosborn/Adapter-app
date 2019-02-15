@@ -1,25 +1,27 @@
 import React, {Component} from 'react';
-import './App.css'; 
+import './App.css';
 
 
 
 class Select extends Component {
-  
-  
-  state = {
-
-    roomTarget : this.targetValue,
-    deviceTarget: this.targetValue
-
-  }
-
-
 
   render () {
+
+    //returns user selection value
     const targetValue = (i) => {
+      console.log(i.currentTarget.value)
         return(
           i.currentTarget.value
         )}
+
+    //function to link Nortonlist/Devicelist to targetValue
+    const handleRoomCheck = () => {
+      const classrooms = this.props.opts.map(room => room.roomNumber)
+        if (classrooms.includes('"' + targetValue + '"')){
+          console.log(classrooms)
+        }
+      }
+
       
   
   
@@ -50,8 +52,10 @@ class Select extends Component {
                 ))
               }
             </select>
+            <button classname="test-button"onClick={handleRoomCheck}>Test</button>
+          </div>
+
         </div>
-      </div>
       );
   }
 
