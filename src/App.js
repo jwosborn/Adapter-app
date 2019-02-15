@@ -10,6 +10,9 @@ import Negative from './Negative';
 
 class App extends Component {
 
+    state = {
+      needsAdapter: true
+    }
   render() {
 
   const targetValue = (i) => {
@@ -17,12 +20,6 @@ class App extends Component {
     i.currentTarget.text
   )}
   
-const Applogic = () => { 
-  if (Nortonlist.includes(targetValue)) {
-      return (<Positive />)
-    } return (<Negative />)
-
-}
     return (
       <div className="App">
         <Header />
@@ -31,7 +28,9 @@ const Applogic = () => {
         dopts={Devicelist}
         targetValue={this.targetValue}
         />
-        <Applogic />
+        {
+          this.state.needsAdapter ? <Negative /> : <Positive /> 
+        }
       </div>
     );
   }
