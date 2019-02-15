@@ -31,5 +31,6 @@ const Applogic = () => {
     );
   }
 }
+// I'm now a contributor
 
 export default App;
