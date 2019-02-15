@@ -16,9 +16,10 @@ class App extends Component {
   render() {
 
   const targetValue = (i) => {
-  return(
-    i.currentTarget.text
-  )}
+  console.log(i.currentTarget.value)
+    return(
+      i.currentTarget.value
+    )}
   
     return (
       <div className="App">
@@ -26,7 +27,7 @@ class App extends Component {
         <Select 
         opts={Nortonlist}
         dopts={Devicelist}
-        targetValue={this.targetValue}
+        targetValue={targetValue}
         />
         {
           this.state.needsAdapter ? <Negative /> : <Positive /> 

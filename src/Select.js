@@ -15,7 +15,7 @@ const Select = ({opts, dopts, targetValue}) => {
             <option  selected>Choose Your Classroom</option>
             {
               opts.map(op => (
-                <option>
+                <option value={op.roomNumber}>
                   {op.roomNumber}
                 </option>
               ))
@@ -28,7 +28,7 @@ const Select = ({opts, dopts, targetValue}) => {
           <option defaultValue="" selected>Choose Your Device</option> 
           {
               dopts.map(op => (
-                <option>
+                <option value={op.name}>
                   {op.name}
                 </option>
               ))
