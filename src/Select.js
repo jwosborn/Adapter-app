@@ -4,18 +4,18 @@ import './App.css';
 
 
 class Select extends Component {
-
+  state = {
+    targetValue: ''
+  }
   //returns user selection value
   targetValue = (i) => {
-    console.log(i.currentTarget.value)
-      return(
-        i.currentTarget.value
-      )}
+    this.setState({targetValue: i.currentTarget.value})
+  }
 
   //function to link Nortonlist/Devicelist to targetValue
   handleRoomCheck = () => {
     const classrooms = this.props.opts.map(room => room.roomNumber)
-      if (classrooms.includes(this.targetValue)){
+      if (classrooms.includes(this.state.targetValue)){
         console.log('it works')
       }
     }
