@@ -10,24 +10,17 @@ import Negative from './Negative';
 
 class App extends Component {
 
-    state = {
-      needsAdapter: true
-    }
-  render() {
-
-  const targetValue = (i) => {
-  console.log(i.currentTarget.value)
-    return(
-      i.currentTarget.value
-    )}
+  state = {
+    needsAdapter: true
+  }
   
+  render() {
     return (
       <div className="App">
         <Header />
         <Select 
         opts={Nortonlist}
         dopts={Devicelist}
-        targetValue={targetValue}
         />
         {
           this.state.needsAdapter ? <Negative /> : <Positive /> 
