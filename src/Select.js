@@ -24,7 +24,7 @@ class Select extends Component {
     const roomVGA = this.props.opts.find(x => x.roomNumber === this.state.roomTarget).hasVGA;
     const deviceHDMI = this.props.dopts.find(x => x.name === this.state.deviceTarget).hasHDMI;
     const deviceVGA = this.props.dopts.find(x => x.name === this.state.deviceTarget).hasVGA
-    console.log([roomHDMI, roomVGA, deviceHDMI, deviceVGA])
+    this.props.adapterCheck(roomHDMI, roomVGA, deviceHDMI, deviceVGA);
   }
 
   render () {
@@ -56,7 +56,7 @@ class Select extends Component {
                 ))
               }
             </select>
-            <button className="test-button"onClick={this.connections}>Test</button>
+            <button className="submit" onClick={this.connections}>Submit</button>
           </div>
         </div>
       );

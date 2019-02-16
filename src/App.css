@@ -83,6 +83,12 @@ margin-top: 1.5em;
   color: #61dafb;
 }
 
+/* button style */
+
+.submit {
+  margin-left: 15px; 
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

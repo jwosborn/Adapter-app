@@ -14,6 +14,12 @@ class App extends Component {
     needsAdapter: true
   }
   
+  adapterCheck = (a, b, c, d) => {
+    if((a === true && c === true) || (b === true && d === true)) {
+      this.setState({needsAdapter: false})
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -21,6 +27,7 @@ class App extends Component {
         <Select 
         opts={Nortonlist}
         dopts={Devicelist}
+        adapterCheck={this.adapterCheck}
         />
         {
           this.state.needsAdapter ? <Negative /> : <Positive /> 
