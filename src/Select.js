@@ -16,7 +16,7 @@ class Select extends Component {
   handleRoomCheck = () => {
     const classrooms = this.props.opts.map(room => room.roomNumber)
       if (classrooms.includes(this.state.targetValue)){
-        console.log('it works')
+        console.log(this.props.opts.find(x => x.roomNumber === this.state.targetValue).hasHDMI);
       }
     }
   render () {
@@ -48,7 +48,7 @@ class Select extends Component {
                 ))
               }
             </select>
-            <button classname="test-button"onClick={this.handleRoomCheck}>Test</button>
+            <button className="test-button"onClick={this.handleRoomCheck}>Test</button>
           </div>
         </div>
       );
