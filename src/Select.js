@@ -5,27 +5,35 @@ import './App.css';
 
 class Select extends Component {
   state = {
-    targetValue: ''
-  }
-  //returns user selection value
-  targetValue = (i) => {
-    this.setState({targetValue: i.currentTarget.value})
+    roomTarget: '',
+    deviceTarget:''
   }
 
-  //function to link Nortonlist/Devicelist to targetValue
-  handleRoomCheck = () => {
-    const classrooms = this.props.opts.map(room => room.roomNumber)
-      if (classrooms.includes(this.state.targetValue)){
-        console.log(this.props.opts.find(x => x.roomNumber === this.state.targetValue).hasHDMI);
-      }
-    }
+  //returns user room selection value
+  roomTarget = (i) => {
+    this.setState({roomTarget: i.currentTarget.value})
+  }
+  //returns user device selection value
+  deviceTarget = (i) => {
+    this.setState({deviceTarget: i.currentTarget.value})
+  }
+
+  //function returns boolean values of hasHDMI and hasVGA based on device selection
+  connections = () => {
+    const roomHDMI = this.props.opts.find(x => x.roomNumber === this.state.roomTarget).hasHDMI;
+    const roomVGA = this.props.opts.find(x => x.roomNumber === this.state.roomTarget).hasVGA;
+    const deviceHDMI = this.props.dopts.find(x => x.name === this.state.deviceTarget).hasHDMI;
+    const deviceVGA = this.props.dopts.find(x => x.name === this.state.deviceTarget).hasVGA
+    console.log([roomHDMI, roomVGA, deviceHDMI, deviceVGA])
+  }
+
   render () {
 
       return (
         <div className="Choice-parent">
           <div>
             <label htmlFor="Room-List" className="label-text">Choose Your Classroom:</label><br />
-            <select className="Room-list" id="Room-list" onChange={(e) => this.targetValue(e)}> 
+            <select className="Room-list" id="Room-list" onChange={(e) => this.roomTarget(e)}> 
               <option  selected>Choose Your Classroom</option>
               {
                 this.props.opts.map(op => (
@@ -38,7 +46,7 @@ class Select extends Component {
           </div>
           <div>
             <label htmlFor="Device-List" className="label-text">Choose Your Device:</label><br />
-            <select className="Device-list" onChange={(e) => this.targetValue(e)}>
+            <select className="Device-list" onChange={(e) => this.deviceTarget(e)}>
               <option defaultValue="" selected>Choose Your Device</option> 
               {
                 this.props.dopts.map(op => (
@@ -48,7 +56,7 @@ class Select extends Component {
                 ))
               }
             </select>
-            <button className="test-button"onClick={this.handleRoomCheck}>Test</button>
+            <button className="test-button"onClick={this.connections}>Test</button>
           </div>
         </div>
       );
