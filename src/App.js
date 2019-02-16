@@ -17,6 +17,8 @@ class App extends Component {
   adapterCheck = (a, b, c, d) => {
     if((a === true && c === true) || (b === true && d === true)) {
       this.setState({needsAdapter: false})
+    } else {
+      this.setState({needsAdapter: true})
     }
   }
 
