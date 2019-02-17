@@ -1,53 +1,67 @@
-import React from 'react';
-import './App.css'; 
+import React, {Component} from 'react';
+import './App.css';
 
 
 
-const Select = ({opts, dopts}) => {
+class Select extends Component {
+  state = {
+    roomTarget: '',
+    deviceTarget:''
+  }
 
-  const targetValue = (i) => {
-    return(
-      i.currentTarget.text
-    )}
+  //returns user room selection value
+  roomTarget = (i) => {
+    this.setState({roomTarget: i.currentTarget.value})
+  }
+  //returns user device selection value
+  deviceTarget = (i) => {
+    this.setState({deviceTarget: i.currentTarget.value})
+  }
 
-    // function that links opts to currentTarget.value and saves into new variable (?)
+  //function returns boolean values of hasHDMI and hasVGA based on device selection
+  connections = () => {
+    const roomHDMI = this.props.opts.find(x => x.roomNumber === this.state.roomTarget).hasHDMI;
+    const roomVGA = this.props.opts.find(x => x.roomNumber === this.state.roomTarget).hasVGA;
+    const deviceHDMI = this.props.dopts.find(x => x.name === this.state.deviceTarget).hasHDMI;
+    const deviceVGA = this.props.dopts.find(x => x.name === this.state.deviceTarget).hasVGA
+    this.props.adapterCheck(roomHDMI, roomVGA, deviceHDMI, deviceVGA);
+  }
 
-  // const Solutionchoice =() => {
-  //   if (opts.includes(roomValue)){
-  //     return <Solution />
-  //     } 
-  //   }
+  render () {
 
-    return (
-      <div className="Choice-parent">
-        <div>
-          <label htmlFor="Room-List" className="label-text">Choose Your Classroom:</label><br />
-          <select className="Room-list" id="Room-list" onChange={targetValue}> 
-            <option  selected>Choose Your Classroom</option>
-            {
-              opts.map(op => (
-                <option>
-                  {op.roomNumber}
-                </option>
-              ))
-            }
-          </select>
+      return (
+        <div className="Choice-parent">
+          <div>
+            <label htmlFor="Room-List" className="label-text">Choose Your Classroom:</label><br />
+            <select className="Room-list" id="Room-list" onChange={(e) => this.roomTarget(e)}> 
+              <option  selected>Choose Your Classroom</option>
+              {
+                this.props.opts.map(op => (
+                  <option value={op.roomNumber}>
+                    {op.roomNumber}
+                  </option>
+                ))
+              }
+            </select>
+          </div>
+          <div>
+            <label htmlFor="Device-List" className="label-text">Choose Your Device:</label><br />
+            <select className="Device-list" onChange={(e) => this.deviceTarget(e)}>
+              <option defaultValue="" selected>Choose Your Device</option> 
+              {
+                this.props.dopts.map(op => (
+                  <option value={op.name}>
+                    {op.name}
+                  </option>
+                ))
+              }
+            </select>
+            <button className="submit" onClick={this.connections}>Submit</button>
+          </div>
         </div>
-        <div>
-          <label htmlFor="Device-List" className="label-text">Choose Your Device:</label><br />
-          <select className="Device-list" onChange={targetValue}>
-          <option defaultValue="" selected>Choose Your Device</option> 
-          {
-              dopts.map(op => (
-                <option>
-                  {op.name}
-                </option>
-              ))
-            }
-          </select>
-      </div>
-    </div>
+      );
+  }
 
-    );
+
 }
 export default Select;

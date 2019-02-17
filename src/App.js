@@ -10,23 +10,30 @@ import Negative from './Negative';
 
 class App extends Component {
 
+  state = {
+    needsAdapter: true
+  }
+  
+  adapterCheck = (a, b, c, d) => {
+    if((a === true && c === true) || (b === true && d === true)) {
+      this.setState({needsAdapter: false})
+    } else {
+      this.setState({needsAdapter: true})
+    }
+  }
+
   render() {
-
-const Applogic = () => {
-  const hasHDMI = true; 
-  if (hasHDMI) {
-      return (<Positive />)
-    } return (<Negative />)
-
-}
     return (
       <div className="App">
         <Header />
         <Select 
         opts={Nortonlist}
         dopts={Devicelist}
+        adapterCheck={this.adapterCheck}
         />
-        <Applogic />
+        {
+          this.state.needsAdapter ? <Negative /> : <Positive /> 
+        }
       </div>
     );
   }
