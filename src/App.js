@@ -38,7 +38,11 @@ class App extends Component {
         adapterCheck={this.adapterCheck}
         />
         {
-          this.state.needsAdapter ? <Negative ishidden={this.state.ishidden}/> : <Positive ishidden={this.state.ishidden}/>
+          this.state.needsAdapter ? <Negative 
+                                    ishidden={this.state.ishidden}
+                                    Devicelist={Devicelist}
+                                    /> 
+                                    : <Positive ishidden={this.state.ishidden}/>
         }
       </div>
     );

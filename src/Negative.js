@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css'; 
 
-const Negative = ({ishidden}) => {
+const Negative = ({ishidden, Devicelist}) => {
   if(ishidden === false){ 
   return (  
        <div id="adapter">
