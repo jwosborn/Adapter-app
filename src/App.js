@@ -11,14 +11,20 @@ import Negative from './Negative';
 class App extends Component {
 
   state = {
-    needsAdapter: true
+    needsAdapter: '',
+    ishidden: true
   }
   
   adapterCheck = (a, b, c, d) => {
     if((a === true && c === true) || (b === true && d === true)) {
-      this.setState({needsAdapter: false})
+      this.setState({
+        needsAdapter: false,
+        ishidden: false})
     } else {
-      this.setState({needsAdapter: true})
+      this.setState({
+        needsAdapter: true,
+        ishidden: false
+      })
     }
   }
 
@@ -32,7 +38,7 @@ class App extends Component {
         adapterCheck={this.adapterCheck}
         />
         {
-          this.state.needsAdapter ? <Negative /> : <Positive /> 
+          this.state.needsAdapter ? <Negative ishidden={this.state.ishidden}/> : <Positive ishidden={this.state.ishidden}/>
         }
       </div>
     );

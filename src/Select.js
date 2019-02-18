@@ -20,11 +20,16 @@ class Select extends Component {
 
   //function returns boolean values of hasHDMI and hasVGA based on device selection
   connections = () => {
-    const roomHDMI = this.props.opts.find(x => x.roomNumber === this.state.roomTarget).hasHDMI;
-    const roomVGA = this.props.opts.find(x => x.roomNumber === this.state.roomTarget).hasVGA;
-    const deviceHDMI = this.props.dopts.find(x => x.name === this.state.deviceTarget).hasHDMI;
-    const deviceVGA = this.props.dopts.find(x => x.name === this.state.deviceTarget).hasVGA
-    this.props.adapterCheck(roomHDMI, roomVGA, deviceHDMI, deviceVGA);
+    if(this.state.roomTarget === '' || this.state.deviceTarget === '') {
+      alert('Please select Classroom and Device.')
+    } else {
+      const roomHDMI = this.props.opts.find(x => x.roomNumber === this.state.roomTarget).hasHDMI;
+      const roomVGA = this.props.opts.find(x => x.roomNumber === this.state.roomTarget).hasVGA;
+      const deviceHDMI = this.props.dopts.find(x => x.name === this.state.deviceTarget).hasHDMI;
+      const deviceVGA = this.props.dopts.find(x => x.name === this.state.deviceTarget).hasVGA
+      this.props.adapterCheck(roomHDMI, roomVGA, deviceHDMI, deviceVGA);
+    }
+
   }
 
   render () {
@@ -34,7 +39,7 @@ class Select extends Component {
           <div>
             <label htmlFor="Room-List" className="label-text">Choose Your Classroom:</label><br />
             <select className="Room-list" id="Room-list" onChange={(e) => this.roomTarget(e)}> 
-              <option  selected>Choose Your Classroom</option>
+              <option disabled selected>Choose Your Classroom</option>
               {
                 this.props.opts.map(op => (
                   <option value={op.roomNumber}>
@@ -47,7 +52,7 @@ class Select extends Component {
           <div>
             <label htmlFor="Device-List" className="label-text">Choose Your Device:</label><br />
             <select className="Device-list" onChange={(e) => this.deviceTarget(e)}>
-              <option defaultValue="" selected>Choose Your Device</option> 
+              <option disabled selected>Choose Your Device</option> 
               {
                 this.props.dopts.map(op => (
                   <option value={op.name}>
