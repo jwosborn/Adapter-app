@@ -86,6 +86,7 @@ class App extends Component {
                 ishidden={this.state.ishidden}
                 Devicelist={Devicelist}
                 deviceTarget={this.state.deviceTarget}
+                getDeviceAdapter={this.getDeviceAdapter}
                 /> 
               : <Positive ishidden={this.state.ishidden}/>
         }
