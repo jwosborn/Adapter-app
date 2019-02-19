@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 // Component Imports
-import Select from './Select';
-import Header from './Header';
-import Positive from './Positive';
+import Select from './Components/Select';
+import Header from './Components/Header';
+import Positive from './Components/Positive';
+import Negative from './Components/Negative';
 import {Nortonlist} from './Classroomlist';
 import {Devicelist} from './Devicelist';
 import './App.css';
-import Negative from './Negative';
 
 class App extends Component {
 
