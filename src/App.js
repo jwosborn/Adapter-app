@@ -12,6 +12,8 @@ class App extends Component {
 
   state = {
     needsAdapter: '',
+    needsHDMIAdapter: '',
+    needsVGAAdapter: '',
     ishidden: true,
     roomTarget: '',
     deviceTarget: ''
@@ -28,27 +30,38 @@ class App extends Component {
 
 //Function that displays appropriate adapter(s) dynamically currently returns undefined
   getDeviceAdapter = () => {
-    const deviceAdapterHDMI = Devicelist.find(x => x.name === this.state.deviceTarget).adapterHDMI;
-    const deviceAdapterVGA = Devicelist.find(x => x.name === this.state.deviceTarget).adapterVGA;
-      if (deviceAdapterHDMI === true && deviceAdapterVGA === true){
-        return (
-          deviceAdapterHDMI + ' or a ' + deviceAdapterVGA
-          )
-      } else if (deviceAdapterHDMI === null) {
-        return (deviceAdapterVGA)
-      } else if (deviceAdapterVGA === null) {
-        return (deviceAdapterHDMI)
+    let deviceAdapterHDMI = Devicelist.find(x => x.name === this.state.deviceTarget).adapterHDMI;
+    let deviceAdapterVGA = Devicelist.find(x => x.name === this.state.deviceTarget).adapterVGA;
+      if (this.state.needsHDMIAdapter === true && this.state.needsVGAAdapter === true){
+        return (deviceAdapterHDMI + ' or a ' + deviceAdapterVGA)
+      } else if (this.state.needsHDMIAdapter === true) {
+        return deviceAdapterHDMI
+      } else if (this.state.needsVGAAdapter === true) {
+        return deviceAdapterVGA
       }
     }
 
+
+//Checks to see if adapters are needed and what type
   adapterCheck = (a, b, c, d) => {
     if((a === true && c === true) || (b === true && d === true)) {
       this.setState({
         needsAdapter: false,
+        needsHDMIAdapter: false,
+        needsVGAAdapter: false,
         ishidden: false})
-    } else {
+    } else if ((a === true && c === false) || (a === false && c === true)) {
       this.setState({
         needsAdapter: true,
+        needsHDMIAdapter: true,
+        needsVGAAdapter: false, 
+        ishidden: false
+      })
+    } else if ((b === true && d === false) || (b === false && d === true)) {
+      this.setState({
+        needsAdapter: true, 
+        needsHDMIAdapter: false, 
+        needsVGAAdapter: true,
         ishidden: false
       })
     }
