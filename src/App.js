@@ -49,6 +49,5 @@ class App extends Component {
     );
   }
 }
-// I'm now a contributor
 
 export default App;
