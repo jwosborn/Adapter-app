@@ -24,6 +24,23 @@ class App extends Component {
   getDeviceTarget = (i) => {
     this.setState({deviceTarget: i.currentTarget.value})
   }
+
+
+//Function that displays appropriate adapter(s) dynamically currently returns undefined
+  getDeviceAdapter = () => {
+    const deviceAdapterHDMI = Devicelist.find(x => x.name === this.state.deviceTarget).adapterHDMI;
+    const deviceAdapterVGA = Devicelist.find(x => x.name === this.state.deviceTarget).adapterVGA;
+      if (deviceAdapterHDMI === true && deviceAdapterVGA === true){
+        return (
+          deviceAdapterHDMI + ' or a ' + deviceAdapterVGA
+          )
+      } else if (deviceAdapterHDMI === null) {
+        return (deviceAdapterVGA)
+      } else if (deviceAdapterVGA === null) {
+        return (deviceAdapterHDMI)
+      }
+    }
+
   adapterCheck = (a, b, c, d) => {
     if((a === true && c === true) || (b === true && d === true)) {
       this.setState({
