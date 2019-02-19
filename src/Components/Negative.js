@@ -1,5 +1,4 @@
 import React from 'react';
-import '../App.css'; 
 
 const Negative = ({ishidden, Devicelist}) => {
   if(ishidden === false){ 
