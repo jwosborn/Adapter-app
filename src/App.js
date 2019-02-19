@@ -12,9 +12,18 @@ class App extends Component {
 
   state = {
     needsAdapter: '',
-    ishidden: true
+    ishidden: true,
+    roomTarget: '',
+    deviceTarget: ''
   }
   
+  getRoomTarget = (i) => {
+    this.setState({roomTarget: i.currentTarget.value})
+  }
+
+  getDeviceTarget = (i) => {
+    this.setState({deviceTarget: i.currentTarget.value})
+  }
   adapterCheck = (a, b, c, d) => {
     if((a === true && c === true) || (b === true && d === true)) {
       this.setState({
@@ -36,12 +45,17 @@ class App extends Component {
         opts={Nortonlist}
         dopts={Devicelist}
         adapterCheck={this.adapterCheck}
+        roomTarget={this.state.roomTarget}
+        deviceTarget={this.state.deviceTarget}
+        getRoomTarget={this.getRoomTarget}
+        getDeviceTarget={this.getDeviceTarget}
         />
         {
           this.state.needsAdapter 
               ? <Negative 
                 ishidden={this.state.ishidden}
                 Devicelist={Devicelist}
+                deviceTarget={this.state.deviceTarget}
                 /> 
               : <Positive ishidden={this.state.ishidden}/>
         }
