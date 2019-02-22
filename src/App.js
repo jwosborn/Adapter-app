@@ -4,8 +4,8 @@ import Select from './Components/Select';
 import Header from './Components/Header';
 import Positive from './Components/Positive';
 import Negative from './Components/Negative';
-import {Nortonlist} from './Classroomlist';
-import {Devicelist} from './Devicelist';
+import {Nortonlist} from './Data/Classroomlist';
+import {Devicelist} from './Data/Devicelist';
 import './App.css';
 
 class App extends Component {
