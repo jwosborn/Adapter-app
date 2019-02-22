@@ -1,4 +1,4 @@
-# Adapter App
+# Do I Need An Adapter? App
 Application created by _Jeremy Osborn_ in collaboration with _Jonathan Whittle_ for use at The Southern Baptist Theological Seminary. 
 
 
