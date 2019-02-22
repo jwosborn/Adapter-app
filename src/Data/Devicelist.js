@@ -38,6 +38,7 @@ export const Devicelist = [
         hasHDMI: false,
         hasVGA: false,
         adapterHDMI: 'Lightning to HDMI',
+        adapterVGA: 'Lightning to VGA',
         linkHDMI: 'https://www.amazon.com/s?k=lightning+to+HDMI+adapter&ref=nb_sb_noss_2',
         linkVGA: 'https://www.amazon.com/s?k=lightning+to+VGA+adapter&ref=nb_sb_noss_2'
     },
