@@ -32,8 +32,11 @@ class App extends Component {
   getDeviceAdapter = () => {
     let deviceAdapterHDMI = Devicelist.find(x => x.name === this.state.deviceTarget).adapterHDMI;
     let deviceAdapterVGA = Devicelist.find(x => x.name === this.state.deviceTarget).adapterVGA;
+
       if (this.state.needsHDMIAdapter === true && this.state.needsVGAAdapter === true){
-        return (deviceAdapterHDMI + ' or a ' + deviceAdapterVGA)
+        return (
+          deviceAdapterHDMI + ' or a ' + deviceAdapterVGA 
+        )
       } else if (this.state.needsHDMIAdapter === true) {
         return deviceAdapterHDMI
       } else if (this.state.needsVGAAdapter === true) {
