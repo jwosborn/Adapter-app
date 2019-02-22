@@ -97,6 +97,8 @@ class App extends Component {
                 Devicelist={Devicelist}
                 deviceTarget={this.state.deviceTarget}
                 getDeviceAdapter={this.getDeviceAdapter}
+                needsHDMIAdapter={this.state.needsHDMIAdapter}
+                needsVGAAdapter={this.setState.needsVGAAdapter}
                 /> 
               : <Positive ishidden={this.state.ishidden}/>
         }
