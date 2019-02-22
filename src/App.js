@@ -32,6 +32,7 @@ class App extends Component {
   getDeviceAdapter = () => {
     let deviceAdapterHDMI = Devicelist.find(x => x.name === this.state.deviceTarget).adapterHDMI;
     let deviceAdapterVGA = Devicelist.find(x => x.name === this.state.deviceTarget).adapterVGA;
+    console.log(this.state.needsVGAAdapter + this.state.needsHDMIAdapter)
       if (this.state.needsHDMIAdapter === true && this.state.needsVGAAdapter === true){
         return (deviceAdapterHDMI + ' or a ' + deviceAdapterVGA)
       } else if (this.state.needsHDMIAdapter === true) {
@@ -43,21 +44,21 @@ class App extends Component {
 
 
 //Checks to see if adapters are needed and what type
-  adapterCheck = (a, b, c, d) => {
-    if((a === true && c === true) || (b === true && d === true)) {
+  adapterCheck = (roomHDMI, roomVGA, deviceHDMI, deviceVGA) => {
+    if((roomHDMI === true && deviceHDMI === true) || (roomVGA === true && deviceVGA === true)) {
       this.setState({
         needsAdapter: false,
         needsHDMIAdapter: false,
         needsVGAAdapter: false,
         ishidden: false})
-    } else if ((a === true && c === false) || (a === false && c === true)) {
+    } else if ((roomHDMI === true && deviceHDMI === false) || (roomHDMI === false && deviceHDMI === true)) {
       this.setState({
         needsAdapter: true,
         needsHDMIAdapter: true,
         needsVGAAdapter: false, 
         ishidden: false
       })
-    } else if ((b === true && d === false) || (b === false && d === true)) {
+    } else if ((roomVGA === true && deviceVGA === false) || (roomVGA === false && deviceVGA === true)) {
       this.setState({
         needsAdapter: true, 
         needsHDMIAdapter: false, 
