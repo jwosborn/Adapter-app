@@ -6,7 +6,7 @@ const Negative = ({ishidden, Devicelist, deviceTarget, getDeviceAdapter}) => {
 
 
     const adapterLinkHDMI = Devicelist.find(x => x.name === deviceTarget).linkHDMI;
-    const adapterLinkVGA = Devicelist.find(x => x.name === deviceTarget).linkVGA;
+   // const adapterLinkVGA = Devicelist.find(x => x.name === deviceTarget).linkVGA;
 
   if(ishidden === false){ 
   return (  
