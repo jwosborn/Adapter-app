@@ -5,6 +5,4 @@ const api = require('./router.js')
 
 app.use("/api", api)
 
-
-
 app.listen(port, () => console.log(`Listening on port ${port}`))
