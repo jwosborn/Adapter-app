@@ -8,14 +8,14 @@ const CookeRooms = [8, 221, 224, 'CCRH', 'Heeren']
 const CarverRooms = [108, 135, 'Ingram']
 const LibraryRooms = ['Mullins', 'Crismon', 'Curriculum']
 
+app.use("/api", api)
 
-
-app.get("api/buildings/:building", (req, res) => {
+app.get("/buildings/:building", (req, res) => {
 	const building = req.params.building
 	res.send(`Hello from the a-p-i (in Adele\'s voice), you requested ${building}`)
 })
 
-app.get("api/rooms/")
+app.get("/rooms", () => {})
 
 
 
