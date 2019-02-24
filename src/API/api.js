@@ -1,14 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const displayLogTime = require('./Utils/timeHelpers.js')
+const removeDuplicates = require('./Utils/removeDuplicates.js')
 const DeviceList = require('./Data/Devicelist.js')
-const RoomList = require('./Data/Classroomlist.js')
+const RoomList = require('./Data/ClassroomList.js')
 
-const buildings = ["Norton", "Carver", "Cooke", "Library", "Rankin"]
-const NortonRooms = [011, 012, 013, 015, 016, 017, 020, 101, 102, 103, 104, 105, 201, 202, 203, 204, 205, 206, 207, 208, 209, 232]
-const CookeRooms = [8, 221, 224, 'CCRH', 'Heeren']
-const CarverRooms = [108, 135, 'Ingram']
-const LibraryRooms = ['Mullins', 'Crismon', 'Curriculum']
 const info = `
 	<h1>Adapter App API<h1>
 	<h2>Available Routes<h2>
@@ -30,12 +26,15 @@ router.get("/", (req, res) => {
 })
 // Fetches an array of building names
 router.get("/buildings", (req, res) => {
+	let buildings = RoomList.map( x => x.building)
+	buildings = removeDuplicates(buildings)
 	res.send(buildings)
 })
-// Fetches an array of rooms based on the value passed in for :building
+// Fetches an array of room objects based on the value passed in for :building
 router.get("/buildings/:building", (req, res) => {
 	const building = req.params.building
-	res.send(`You requested building:${building}`)
+	// res.send(`You requested building:${building}`)
+	res.send(RoomList.filter( x => x.building === building))
 })
 // Fetches data by :building and :room
 router.get("/:building/:room", (req, res) => {
@@ -45,7 +44,7 @@ router.get("/:building/:room", (req, res) => {
 })
 // Fetches array of devices
 router.get("/devices", (req, res) => {
-
+	res.send(DeviceList)
 })
 
 module.exports = router
