@@ -7,9 +7,8 @@
   margin-right: auto; 
   background-color: #7ebbe4;
   text-align: center;
+  font-family: 'Nunito', sans-serif;
 }
-
-
 
 
 /* Header Styles */
@@ -20,7 +19,6 @@
 
 .app-title {
   font-size: 76px; 
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 /* Logo Styles */
@@ -48,7 +46,6 @@ margin-top: 1.5em;
 
 .label-text {
   font-size: 26px; 
-  font-family: sans-serif;
 }
 
 

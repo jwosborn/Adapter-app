@@ -44,7 +44,7 @@ class App extends Component {
       }
     }
 
-//  Dynamic Link Population currently returns Undefined
+//  Dynamic Link Population 
   getAdapterLink = () => {
     const adapterLinkHDMI = Devicelist.find(x => x.name === this.state.deviceTarget).linkHDMI;
     const adapterLinkVGA = Devicelist.find(x => x.name === this.state.deviceTarget).linkVGA;
@@ -112,13 +112,13 @@ class App extends Component {
         {
           this.state.needsAdapter 
               ? <Negative 
-                ishidden={this.state.ishidden}
-                Devicelist={Devicelist}
-                deviceTarget={this.state.deviceTarget}
-                getDeviceAdapter={this.getDeviceAdapter}
-                needsHDMIAdapter={this.state.needsHDMIAdapter}
-                needsVGAAdapter={this.state.needsVGAAdapter}
-                getAdapterLink={this.getAdapterLink}
+                  ishidden={this.state.ishidden}
+                  Devicelist={Devicelist}
+                  deviceTarget={this.state.deviceTarget}
+                  getDeviceAdapter={this.getDeviceAdapter}
+                  needsHDMIAdapter={this.state.needsHDMIAdapter}
+                  needsVGAAdapter={this.state.needsVGAAdapter}
+                  getAdapterLink={this.getAdapterLink}
                 /> 
               : <Positive ishidden={this.state.ishidden}/>
         }

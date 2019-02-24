@@ -50,7 +50,5 @@ class Select extends Component {
         </div>
       );
   }
-
-
 }
 export default Select;
