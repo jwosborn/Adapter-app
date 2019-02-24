@@ -1,4 +1,4 @@
-export const Devicelist = [
+const DeviceList = [
     {
         name: "Macbook Air 2011-2014",
         hasHDMI: false,
@@ -61,3 +61,6 @@ export const Devicelist = [
         linkVGA: 'https://www.amazon.com/s?k=thunderbolt+to+vga+adapter&ref=nb_sb_noss_2'
     }
 ]
+
+
+module.exports = DeviceList

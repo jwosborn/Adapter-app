@@ -1,7 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const displayLogTime = require('./Utils/timeHelpers.js')
-// DATA
+const DeviceList = require('./Data/Devicelist.js')
+const RoomList = require('./Data/Classroomlist.js')
+
 const buildings = ["Norton", "Carver", "Cooke", "Library", "Rankin"]
 const NortonRooms = [011, 012, 013, 015, 016, 017, 020, 101, 102, 103, 104, 105, 201, 202, 203, 204, 205, 206, 207, 208, 209, 232]
 const CookeRooms = [8, 221, 224, 'CCRH', 'Heeren']
@@ -9,7 +11,8 @@ const CarverRooms = [108, 135, 'Ingram']
 const LibraryRooms = ['Mullins', 'Crismon', 'Curriculum']
 const info = `
 	<h1>Adapter App API<h1>
-	<h2>Available Routes:<h2>
+	<h2>Available Routes<h2>
+	<hr>
 	<p>/<p>
 	<p>/buildings<p>
 	<p>/buildings/:building<p>
@@ -42,7 +45,7 @@ router.get("/:building/:room", (req, res) => {
 })
 // Fetches array of devices
 router.get("/devices", (req, res) => {
-	
+
 })
 
 module.exports = router
