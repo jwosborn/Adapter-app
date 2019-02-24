@@ -1,5 +1,5 @@
 
-const Nortonlist = [
+export const Nortonlist = [
   {
     roomNumber: "Norton 011",
     hasHDMI: false,
@@ -168,4 +168,3 @@ const Nortonlist = [
 ]
 
 
-module.exports = Nortonlist
