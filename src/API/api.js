@@ -29,8 +29,7 @@ router.get("/", (req, res) => {
 })
 // Fetches an array of building names
 router.get("/buildings", (req, res) => {
-	let buildings = RoomList.map( x => x.building)
-	buildings = removeDuplicates(buildings)
+	let buildings = removeDuplicates(RoomList.map( x => x.building))
 	res.send(buildings)
 })
 // Fetches an array of room objects based on the value passed in for :building
