@@ -6,13 +6,17 @@ const DeviceList = require('./Data/Devicelist.js')
 const RoomList = require('./Data/ClassroomList.js')
 
 const info = `
-	<h1>Adapter App API<h1>
-	<h2>Available Routes<h2>
-	<hr>
-	<p>/<p>
-	<p>/buildings<p>
-	<p>/buildings/:building<p>
-	<p>/:building/:room<p>
+	<div style="margin-left: 3vw; margin-top: 5vh; max-width: 20vw">
+		<h1>Adapter App API<h1>
+		<h2>Available Routes<h2>
+		<hr>
+		<p>/<p>
+		<p>/buildings<p>
+		<p>/buildings/:building<p>
+		<p>/:building/:room<p>
+		<p>/devices<p>
+		<p>/devices/:device<p>
+	</div>
 `
 
 router.use((req, res, next) => {
@@ -21,32 +25,27 @@ router.use((req, res, next) => {
 	next()
 })
 router.get("/", (req, res) => {
-	console.log(req)
 	res.send(info)
 })
 // Fetches an array of building names
 router.get("/buildings", (req, res) => {
-	console.info(req.headers)
 	let buildings = RoomList.map( x => x.building)
 	buildings = removeDuplicates(buildings)
 	res.send(buildings)
 })
 // Fetches an array of room objects based on the value passed in for :building
 router.get("/buildings/:building", (req, res) => {
-	console.log(req)
 	const building = req.params.building
 	res.send(RoomList.filter( x => x.building === building))
 })
 // Fetches data by :building and :room
 router.get("/buildings/:building/:room", (req, res) => {
-	console.log(req)
 	const building = req.params.building
 	const room = req.params.room
 	res.send(`You requested ${building} ${room}`) 
 })
 // Fetches array of devices
 router.get("/devices", (req, res) => {
-	console.log(req)
 	res.send(DeviceList)
 })
 // Fetches specific device and specs
