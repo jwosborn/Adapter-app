@@ -10,4 +10,4 @@ app.get("/healthcheck", (req, res) => {
 // Scoping to localhost:4000/api/...
 app.use("/api", api)
 
-app.listen(port, () => console.log(`App running at http://localhost:${port}/healthcheck`))
+app.listen(port, () => console.log(`App running at http://localhost:${port}`))
