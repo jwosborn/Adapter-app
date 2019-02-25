@@ -20,8 +20,7 @@ const info = `
 `
 
 router.use((req, res, next) => {
-	let logTime = new Date()
-	console.log(displayLogTime())
+	console.log(displayLogTime(req))
 	next()
 })
 router.get("/", (req, res) => {

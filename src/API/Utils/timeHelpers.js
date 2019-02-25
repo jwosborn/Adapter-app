@@ -1,8 +1,8 @@
-const displayLogTime = () => {
+const displayLogTime = req => {
 	let logTime = new Date()
 	let hours = logTime.getHours()
 	let minutes = logTime.getMinutes()
-	return `Accessed at ${formatHours(hours)}:${formatMinutes(minutes)} ${morningOrEvening(hours)}`
+	return `API route ${req.path} accessed at ${formatHours(hours)}:${formatMinutes(minutes)} ${morningOrEvening(hours)}`
 }
 const formatHours = hours => {
 	return hours > 12 ? `${hours -12}` : hours
