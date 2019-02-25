@@ -48,7 +48,7 @@ router.get("/buildings/:building/:room", (req, res) => {
 router.get("/devices", (req, res) => {
 	res.send(DeviceList)
 })
-// Fetches specific device and specs
+// Fetches specific device object
 router.get("/devices/:device", (req, res) => {
 	let device = req.params.device
 	res.send(DeviceList.filter(x => x._id === device))
