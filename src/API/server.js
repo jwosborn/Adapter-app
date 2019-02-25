@@ -17,11 +17,11 @@ app.use("/api", api)
 // Serve static files from src/API/Static @ localhost:4000/static/...
 app.use("/static", express.static('Static'))
 // Invalid route
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   return res.status(404).send({ code: 404, message: `Route ${req.url} not available.` });
 })
 // All server errors
-app.use(function(err, req, res, next) {
+app.use((err, req, res, next) => {
   return res.status(500).send({ error: err });
 });
 

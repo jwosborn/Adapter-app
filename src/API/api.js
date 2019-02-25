@@ -41,7 +41,8 @@ router.get("/buildings/:building", (req, res) => {
 router.get("/buildings/:building/:room", (req, res) => {
 	const building = req.params.building
 	const room = req.params.room
-	res.send(`You requested ${building} ${room}`) 
+	let data = RoomList.filter(x => x.building === building).filter(x => x.roomNumber == room)
+	res.send(data) 
 })
 // Fetches array of devices
 router.get("/devices", (req, res) => {
