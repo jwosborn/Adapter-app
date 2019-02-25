@@ -37,6 +37,11 @@ router.get("/buildings/:building", (req, res) => {
 	const building = req.params.building
 	res.send(RoomList.filter( x => x.building === building))
 })
+// Fetchs array of rooms according to :building
+router.get("/buildings/:building/rooms", (req, res) => {
+	const building = req.params.building
+	res.send(RoomList.filter( x => x.building === building).map(x => x.roomNumber))
+})
 // Fetches data by :building and :room
 router.get("/buildings/:building/:room", (req, res) => {
 	const building = req.params.building
