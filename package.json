@@ -18,7 +18,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "lint": "",
+    "lint": "node node_modules/eslint/bin/eslint.js src/**/*.js",
+    "lint-fix": "eslint --fix .",
+    "pretty": "prettier --list-different ./src/**/*.js",
+    "pretty-fix": "prettier --write ./src/**/*.js",
     "eject": "react-scripts eject",
     "api": "node src/API/server.js"
   },
