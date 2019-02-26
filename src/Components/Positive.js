@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const Positive = ({ishidden}) => {
   if(ishidden === false){
@@ -6,7 +6,7 @@ const Positive = ({ishidden}) => {
         <div id="no-adapter">
           <h1>You're All Set!</h1>
         </div> 
-  )} return null; 
+  )} return null 
 } 
 
 export default Positive 

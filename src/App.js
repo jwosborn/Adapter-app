@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 // Component Imports
-import Select from './Components/Select';
-import Header from './Components/Header';
-import Positive from './Components/Positive';
-import Negative from './Components/Negative';
-import {Nortonlist} from './Data/Classroomlist';
-import {Devicelist} from './Data/Devicelist';
-import './App.css';
+import Select from './Components/Select'
+import Header from './Components/Header'
+import Positive from './Components/Positive'
+import Negative from './Components/Negative'
+import {Nortonlist} from './Data/Classroomlist'
+import {Devicelist} from './Data/Devicelist'
+import './App.css'
 
 class App extends Component {
 
@@ -30,8 +30,8 @@ class App extends Component {
 
 //Function that displays appropriate adapter(s) dynamically currently returns undefined
   getDeviceAdapter = () => {
-    let deviceAdapterHDMI = Devicelist.find(x => x.name === this.state.deviceTarget).adapterHDMI;
-    let deviceAdapterVGA = Devicelist.find(x => x.name === this.state.deviceTarget).adapterVGA;
+    let deviceAdapterHDMI = Devicelist.find(x => x.name === this.state.deviceTarget).adapterHDMI
+    let deviceAdapterVGA = Devicelist.find(x => x.name === this.state.deviceTarget).adapterVGA
 
       if (this.state.needsHDMIAdapter === true && this.state.needsVGAAdapter === true){
         return (
@@ -46,11 +46,11 @@ class App extends Component {
 
 //  Dynamic Link Population currently returns Undefined
   getAdapterLink = () => {
-    const adapterLinkHDMI = Devicelist.find(x => x.name === this.state.deviceTarget).linkHDMI;
-    const adapterLinkVGA = Devicelist.find(x => x.name === this.state.deviceTarget).linkVGA;
-    const displayLinkHDMI =  <h2>You can buy an HDMI adapter by clicking <a rel="noopener noreferrer" target="_blank" href={adapterLinkHDMI} >here</a></h2>;
-    const displayLinkVGA =  <h2>You can buy a VGA adapter by clicking <a rel="noopener noreferrer" target="_blank" href={adapterLinkVGA} >here</a></h2>;
-    const displayLinkBoth = <h2>You can buy an HDMI adapter by clicking <a rel="noopener noreferrer" target="_blank" href={adapterLinkHDMI} >here</a><br/> OR You can buy a VGA adapter by clicking <a rel="noopener noreferrer" target="_blank" href={adapterLinkVGA} >here</a></h2>;
+    const adapterLinkHDMI = Devicelist.find(x => x.name === this.state.deviceTarget).linkHDMI
+    const adapterLinkVGA = Devicelist.find(x => x.name === this.state.deviceTarget).linkVGA
+    const displayLinkHDMI =  <h2>You can buy an HDMI adapter by clicking <a rel="noopener noreferrer" target="_blank" href={adapterLinkHDMI} >here</a></h2>
+    const displayLinkVGA =  <h2>You can buy a VGA adapter by clicking <a rel="noopener noreferrer" target="_blank" href={adapterLinkVGA} >here</a></h2>
+    const displayLinkBoth = <h2>You can buy an HDMI adapter by clicking <a rel="noopener noreferrer" target="_blank" href={adapterLinkHDMI} >here</a><br/> OR You can buy a VGA adapter by clicking <a rel="noopener noreferrer" target="_blank" href={adapterLinkVGA} >here</a></h2>
 
         if (this.state.needsHDMIAdapter === true && this.state.needsVGAAdapter === false) {
           return displayLinkHDMI
@@ -123,8 +123,8 @@ class App extends Component {
               : <Positive ishidden={this.state.ishidden}/>
         }
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

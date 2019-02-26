@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import logo from '../Assets/SBTSlogo.jpg'
 
 class Header extends Component {
@@ -13,4 +13,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default Header
