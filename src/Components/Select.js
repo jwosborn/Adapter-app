@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 
 class Select extends Component {
 
@@ -7,11 +7,11 @@ class Select extends Component {
     if(this.props.roomTarget === '' || this.props.deviceTarget === '') {
       alert('Please select Classroom and Device.')
     } else {
-      const roomHDMI = this.props.opts.find(x => x.roomNumber === this.props.roomTarget).hasHDMI;
-      const roomVGA = this.props.opts.find(x => x.roomNumber === this.props.roomTarget).hasVGA;
-      const deviceHDMI = this.props.dopts.find(x => x.name === this.props.deviceTarget).hasHDMI;
+      const roomHDMI = this.props.opts.find(x => x.roomNumber === this.props.roomTarget).hasHDMI
+      const roomVGA = this.props.opts.find(x => x.roomNumber === this.props.roomTarget).hasVGA
+      const deviceHDMI = this.props.dopts.find(x => x.name === this.props.deviceTarget).hasHDMI
       const deviceVGA = this.props.dopts.find(x => x.name === this.props.deviceTarget).hasVGA
-      this.props.adapterCheck(roomHDMI, roomVGA, deviceHDMI, deviceVGA);
+      this.props.adapterCheck(roomHDMI, roomVGA, deviceHDMI, deviceVGA)
     }
 
   }
@@ -48,7 +48,7 @@ class Select extends Component {
             <button className="submit" onClick={this.connections}>Submit</button>
           </div>
         </div>
-      );
+      )
   }
 }
-export default Select;
+export default Select
