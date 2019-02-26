@@ -13,7 +13,8 @@ const info = `
 		<p>/<p>
 		<p>/buildings<p>
 		<p>/buildings/:building<p>
-		<p>/:building/:room<p>
+		<p>/buildings/:building/rooms</p>
+		<p>/buildings/:building/:room<p>
 		<p>/devices<p>
 		<p>/devices/:device<p>
 	</div>
@@ -41,11 +42,12 @@ router.get("/buildings/:building/rooms", (req, res) => {
 	const building = req.params.building
 	res.send(RoomList.filter( x => x.building === building).map(x => x.roomNumber))
 })
-// Fetches data by :building and :room
+// Fetches info for specific room by :building and :room
 router.get("/buildings/:building/:room", (req, res) => {
 	const building = req.params.building
 	const room = req.params.room
-	let data = RoomList.filter(x => x.building === building).filter(x => x.roomNumber == room)
+	let data = RoomList.filter(x => x.building === building)
+						.filter(x => x.roomNumber == room)
 	res.send(data) 
 })
 // Fetches array of devices
