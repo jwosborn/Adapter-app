@@ -1,12 +1,6 @@
 import React from 'react'
 
-const Negative = ({
-  ishidden,
-  Devicelist,
-  deviceTarget,
-  getDeviceAdapter,
-  getAdapterLink,
-}) => {
+const Negative = ({ ishidden, getDeviceAdapter, getAdapterLink }) => {
   if (ishidden === false) {
     return (
       <div id="adapter">

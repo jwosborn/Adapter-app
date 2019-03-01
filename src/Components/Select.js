@@ -2,24 +2,22 @@ import React, { Component } from 'react'
 
 class Select extends Component {
   //function returns boolean values of hasHDMI and hasVGA based on device selection
-  connections = () => {
-    if (this.props.roomTarget === '' || this.props.deviceTarget === '') {
-      alert('Please select Classroom and Device.')
-    } else {
-      const roomHDMI = this.props.opts.find(
-        x => x.roomNumber === this.props.roomTarget,
-      ).hasHDMI
-      const roomVGA = this.props.opts.find(
-        x => x.roomNumber === this.props.roomTarget,
-      ).hasVGA
-      const deviceHDMI = this.props.dopts.find(
-        x => x.name === this.props.deviceTarget,
-      ).hasHDMI
-      const deviceVGA = this.props.dopts.find(
-        x => x.name === this.props.deviceTarget,
-      ).hasVGA
-      this.props.adapterCheck(roomHDMI, roomVGA, deviceHDMI, deviceVGA)
-    }
+  connections = i => {
+    this.props.getRoomTarget(i)
+    //  console.log(this.props.roomTarget)
+    //     const roomHDMI = this.props.opts.find(
+    //       x => x.roomNumber === this.props.roomTarget,
+    //     ).hasHDMI
+    //     const roomVGA = this.props.opts.find(
+    //       x => x.roomNumber === this.props.roomTarget,
+    //     ).hasVGA
+    //     const deviceHDMI = this.props.dopts.find(
+    //       x => x.name === this.props.deviceTarget,
+    //     ).hasHDMI
+    //     const deviceVGA = this.props.dopts.find(
+    //       x => x.name === this.props.deviceTarget,
+    //     ).hasVGA
+    //     this.props.adapterCheck(roomHDMI, roomVGA, deviceHDMI, deviceVGA)
   }
 
   render() {
@@ -33,7 +31,7 @@ class Select extends Component {
           <select
             className="Room-list"
             id="Room-list"
-            onChange={e => this.props.getRoomTarget(e)}
+            onChange={this.connections}
           >
             <option disabled selected>
               Choose Your Classroom
