@@ -7,6 +7,7 @@
     "eslint-plugin-react": "^7.12.4",
     "express": "^4.16.4",
     "jest-cucumber": "^2.0.6",
+    "lint-staged": "^8.1.4",
     "prettier": "^1.16.4",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
@@ -29,9 +30,14 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint",
-      "pre-push": "yarn pretty"
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "browserslist": [
     ">0.2%",
