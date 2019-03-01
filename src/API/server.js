@@ -3,6 +3,10 @@ const app = express()
 const port = 4000
 const api = require('./api.js')
 
+app.get('/', (req, res) => {
+	res.redirect('/api')
+})
+
 app.get('/healthcheck', (req, res) => {
 	res.send(`
 		<div style="margin-top: 5em">
@@ -29,4 +33,4 @@ app.use((err, req, res) => {
 	return res.status(500).send({ error: err })
 })
 
-app.listen(port, () => console.log(`App running at http://localhost:${port}`)) // eslint-disable-line no-console
+app.listen(port, () => console.log(`App running at http://localhost:${port}/api`)) // eslint-disable-line no-console
