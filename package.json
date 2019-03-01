@@ -19,8 +19,8 @@
     "test": "react-scripts test",
     "lint": "node node_modules/eslint/bin/eslint.js src/**/*.js",
     "lint-fix": "eslint --fix .",
-    "pretty": "prettier --list-different ./src/**/*.js",
-    "pretty-fix": "prettier --write ./src/**/*.js",
+    "pretty-fix": "prettier --list-different ./src/**/*.js",
+    "pretty": "prettier --write ./src/**/*.js",
     "eject": "react-scripts eject",
     "api": "node src/API/server.js"
   },
@@ -29,7 +29,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint"
+      "pre-commit": "yarn lint",
+      "pre-push": "yarn pretty"
     }
   },
   "browserslist": [
