@@ -35,6 +35,7 @@
   },
   "lint-staged": {
     "src/**/*.js": [
+      "node node_modules/eslint/bin/eslint.js src/**/*.js",
       "prettier --write",
       "git add"
     ]
