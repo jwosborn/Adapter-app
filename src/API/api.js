@@ -19,7 +19,6 @@ const info = `
 		<p>/devices/:device<p>
 	</div>
 `
-// router.all('/*', requireAuthentication);
 
 router.use((req, res, next) => {
 	console.log(displayLogTime(req)) // eslint-disable-line no-console
