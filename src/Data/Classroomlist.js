@@ -1,4 +1,4 @@
-export const Nortonlist = [
+export const Classroomlist = [
   {
     roomNumber: 'Norton 011',
     hasHDMI: false,

@@ -4,7 +4,7 @@ import Select from './Components/Select'
 import Header from './Components/Header'
 import Positive from './Components/Positive'
 import Negative from './Components/Negative'
-import { Nortonlist } from './Data/Classroomlist'
+import { Classroomlist } from './Data/Classroomlist'
 import { Devicelist } from './Data/Devicelist'
 import './App.css'
 
@@ -24,6 +24,21 @@ class App extends Component {
 
   getDeviceTarget = e => {
     this.setState({ deviceTarget: e.currentTarget.value })
+  }
+
+  //function returns boolean values of hasHDMI and hasVGA based on room selection
+  roomLogic = e => {
+    this.state.getRoomTarget(e)
+    const roomHDMI = Classroomlist.find(
+      x => x.roomNumber === this.state.roomTarget,
+    ).hasHDMI
+    const roomVGA = Devicelist.find(x => x.roomNumber === this.state.roomTarget)
+      .hasVGA
+    const deviceHDMI = Devicelist.find(x => x.name === this.state.deviceTarget)
+      .hasHDMI
+    const deviceVGA = Devicelist.find(x => x.name === this.state.deviceTarget)
+      .hasVGA
+    this.adapterCheck(roomHDMI, roomVGA, deviceHDMI, deviceVGA)
   }
 
   //Function that displays appropriate adapter(s) dynamically currently returns undefined
@@ -147,8 +162,9 @@ class App extends Component {
       <div className="App">
         <Header />
         <Select
-          opts={Nortonlist}
-          dopts={Devicelist}
+          Classroomlist={Classroomlist}
+          Devicelist={Devicelist}
+          roomLogic={this.roomLogic}
           adapterCheck={this.adapterCheck}
           roomTarget={this.state.roomTarget}
           deviceTarget={this.state.deviceTarget}
