@@ -5,21 +5,30 @@ import axios from 'axios'
 class Tiles extends Component {
   state = {
     buildings: [],
+    building: '',
+    rooms: [],
+  }
+
+  setBuilding = building => {
+    axios.get(`http://localhost:4000/api/buildings/${building}`).then(res => {
+      this.setState({ building: building, rooms: res.data })
+    })
   }
 
   componentDidMount() {
-    axios.get('http://localhost:4000/api/buildings').then(buildings => {
-      console.log(buildings)
+    axios.get('http://localhost:4000/api/buildings').then(res => {
+      this.setState({ buildings: res.data })
     })
   }
 
   render() {
-    const { buildings } = this.props
+    const { buildings, rooms } = this.state
     return (
       <div className="tile-wrapper">
-        {buildings.map((building, index) => (
-          <Tile key={index} building={building.roomNumber} />
-        ))}
+        {rooms.length === 0 &&
+          buildings.map((building, index) => (
+            <Tile key={index} building={building} func={this.setBuilding} />
+          ))}
       </div>
     )
   }
