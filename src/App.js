@@ -4,7 +4,8 @@ import Select from './Components/Select'
 import Header from './Components/Header'
 import Positive from './Components/Positive'
 import Negative from './Components/Negative'
-import { Classroomlist } from './Data/Classroomlist'
+import Tile from './Components/Tile'
+import { classroomList } from './Data/Classroomlist'
 import { Devicelist } from './Data/Devicelist'
 import './App.css'
 
@@ -26,19 +27,31 @@ class App extends Component {
     this.setState({ deviceTarget: e.currentTarget.value })
   }
 
-  //function returns boolean values of hasHDMI and hasVGA based on room selection
-  roomLogic = e => {
-    this.state.getRoomTarget(e)
-    const roomHDMI = Classroomlist.find(
+  //function dynamically checks values based on CurrentTarget updates everytime fired
+  connections = () => {
+    const roomHDMI = classroomList.find(
       x => x.roomNumber === this.state.roomTarget,
-    ).hasHDMI
-    const roomVGA = Devicelist.find(x => x.roomNumber === this.state.roomTarget)
-      .hasVGA
+    )
+    console.log(roomHDMI.hasHDMI)
+    const roomVGA = classroomList.find(
+      x => x.roomNumber === this.state.roomTarget,
+    ).hasVGA
     const deviceHDMI = Devicelist.find(x => x.name === this.state.deviceTarget)
       .hasHDMI
     const deviceVGA = Devicelist.find(x => x.name === this.state.deviceTarget)
       .hasVGA
     this.adapterCheck(roomHDMI, roomVGA, deviceHDMI, deviceVGA)
+  }
+  //function changes this.state.roomTarget and fires connections()
+  roomLogic = e => {
+    this.getRoomTarget(e)
+    this.connections()
+  }
+
+  //  function changes this.state.deviceTarget and fires connections()
+  deviceLogic = e => {
+    this.getDeviceTarget(e)
+    this.connections()
   }
 
   //Function that displays appropriate adapter(s) dynamically currently returns undefined
@@ -162,8 +175,8 @@ class App extends Component {
       <div className="App">
         <Header />
         <Select
-          Classroomlist={Classroomlist}
-          Devicelist={Devicelist}
+          classroomList={classroomList}
+          deviceList={Devicelist}
           roomLogic={this.roomLogic}
           adapterCheck={this.adapterCheck}
           roomTarget={this.state.roomTarget}
@@ -184,6 +197,7 @@ class App extends Component {
         ) : (
           <Positive ishidden={this.state.ishidden} />
         )}
+        {/* <Tile /> */}
       </div>
     )
   }

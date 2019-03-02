@@ -17,7 +17,7 @@ class Select extends Component {
             <option disabled selected>
               Choose Your Classroom
             </option>
-            {this.props.Clasroomlist.map(op => (
+            {this.props.classroomList.map(op => (
               <option key={op.roomNumber} value={op.roomNumber}>
                 {op.roomNumber}
               </option>
@@ -36,7 +36,7 @@ class Select extends Component {
             <option disabled selected>
               Choose Your Device
             </option>
-            {this.props.Devicelist.map(op => (
+            {this.props.deviceList.map(op => (
               <option key={op.name} value={op.name}>
                 {op.name}
               </option>

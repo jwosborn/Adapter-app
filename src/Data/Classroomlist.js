@@ -1,4 +1,4 @@
-export const Classroomlist = [
+export const classroomList = [
   {
     roomNumber: 'Norton 011',
     hasHDMI: false,
