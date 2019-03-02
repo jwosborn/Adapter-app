@@ -4,8 +4,8 @@ import Select from './Components/Select'
 import Header from './Components/Header'
 import Positive from './Components/Positive'
 import Negative from './Components/Negative'
-import Tile from './Components/Tile'
-import { classroomList } from './Data/Classroomlist'
+import Tiles from './Components/Tiles'
+import classroomList from './Data/Classroomlist'
 import { Devicelist } from './Data/Devicelist'
 import './App.css'
 
@@ -176,30 +176,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Select
-          classroomList={classroomList}
-          deviceList={Devicelist}
-          roomLogic={this.roomLogic}
-          adapterCheck={this.adapterCheck}
-          roomTarget={this.state.roomTarget}
-          deviceTarget={this.state.deviceTarget}
-          getRoomTarget={this.getRoomTarget}
-          getDeviceTarget={this.getDeviceTarget}
-        />
-        {this.state.needsAdapter ? (
-          <Negative
-            ishidden={this.state.ishidden}
-            Devicelist={Devicelist}
-            deviceTarget={this.state.deviceTarget}
-            getDeviceAdapter={this.getDeviceAdapter}
-            needsHDMIAdapter={this.state.needsHDMIAdapter}
-            needsVGAAdapter={this.state.needsVGAAdapter}
-            getAdapterLink={this.getAdapterLink}
-          />
-        ) : (
-          <Positive ishidden={this.state.ishidden} />
-        )}
-        {/* <Tile /> */}
+        <Tiles buildings={classroomList} />
       </div>
     )
   }

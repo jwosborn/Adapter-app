@@ -1,14 +1,9 @@
 import React, { Component } from 'react'
-import Tiles from './Tiles'
 
-class Tile extends Component {
-  render() {
-    return (
-      <div tile-parent>
-        <Tiles />
-      </div>
-    )
-  }
-}
+const Tile = ({ building }) => (
+  <div className="tile">
+    <h5 className="main-font font-md">{building}</h5>
+  </div>
+)
 
 export default Tile

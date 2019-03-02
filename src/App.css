@@ -1,4 +1,38 @@
-
+.tile {
+  position: relative;
+  flex-grow: 1;
+  margin: 2vw 2vh;
+  width: 300px;
+  max-width: 300px;
+  height: 350px;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: -4px 4px 20px 1px lightgrey;
+  text-decoration: none;
+  color: inherit;
+  animation: tilebounce .3s; 
+}
+.tile a {
+  color: inherit;
+  text-decoration: none;
+}
+.tile-splash {
+  position: absolute;
+  width: 100%;
+  height: 225px;
+  bottom: 40px;
+  left: 0;
+}
+.tile-bottom {
+  position: absolute;
+  display: flex;
+  padding-left: 1vw;
+  padding-top: 1vh; 
+  left: 0;
+  bottom: 0px;
+  width: 100%;
+  height: 40px;
+}
 
 .App {
   height: 100vh;
@@ -92,5 +126,17 @@ margin-top: 1.5em;
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes tilebounce {
+  0% {
+    transform: translateY(15%);
+  }
+  50%{
+    transform: translateY(-10%);
+  }
+  100%{
+    transform: translateY(0);
   }
 }
