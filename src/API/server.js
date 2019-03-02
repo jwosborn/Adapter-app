@@ -3,8 +3,10 @@ const express = require('express')
 const app = express()
 const port = 4000
 const api = require('./api.js')
+const cors = require('cors')
 
 // app.all('/api/*', requireAuthentication);
+app.use(cors())
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'http://localhost:3000')
