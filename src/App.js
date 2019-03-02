@@ -19,12 +19,52 @@ class App extends Component {
     deviceTarget: '',
   }
 
-  getRoomTarget = e => {
+  setRoomTarget = e => {
     this.setState({ roomTarget: e.currentTarget.value })
   }
 
-  getDeviceTarget = e => {
+  setDeviceTarget = e => {
     this.setState({ deviceTarget: e.currentTarget.value })
+  }
+
+  //Checks to see if adapters are needed and what type; Parameters defined in connections
+  adapterCheck = (roomHDMI, roomVGA, deviceHDMI, deviceVGA) => {
+    if (
+      (roomHDMI === true && deviceHDMI === true) ||
+      (roomVGA === true && deviceVGA === true)
+    ) {
+      this.setState({
+        needsAdapter: false,
+        needsHDMIAdapter: false,
+        needsVGAAdapter: false,
+        ishidden: false,
+      })
+    } else if (
+      roomHDMI === true &&
+      deviceHDMI === false &&
+      (roomVGA === true && deviceVGA === false)
+    ) {
+      this.setState({
+        needsAdapter: true,
+        needsHDMIAdapter: true,
+        needsVGAAdapter: true,
+        ishidden: false,
+      })
+    } else if (roomHDMI === true && deviceHDMI === false) {
+      this.setState({
+        needsAdapter: true,
+        needsHDMIAdapter: true,
+        needsVGAAdapter: false,
+        ishidden: false,
+      })
+    } else if (roomVGA === true && deviceVGA === false) {
+      this.setState({
+        needsAdapter: true,
+        needsHDMIAdapter: false,
+        needsVGAAdapter: true,
+        ishidden: false,
+      })
+    }
   }
 
   //function dynamically checks values based on CurrentTarget updates everytime fired
@@ -32,7 +72,7 @@ class App extends Component {
     const roomHDMI = classroomList.find(
       x => x.roomNumber === this.state.roomTarget,
     )
-    console.log(roomHDMI.hasHDMI)
+    console.log(roomHDMI)
     const roomVGA = classroomList.find(
       x => x.roomNumber === this.state.roomTarget,
     ).hasVGA
@@ -42,17 +82,19 @@ class App extends Component {
       .hasVGA
     this.adapterCheck(roomHDMI, roomVGA, deviceHDMI, deviceVGA)
   }
-  //function changes this.state.roomTarget and fires connections()
+  //function sets this.state.roomTarget and fires connections() called room-select onChange
   roomLogic = e => {
-    this.getRoomTarget(e)
+    this.setRoomTarget(e)
     this.connections()
   }
 
-  //  function changes this.state.deviceTarget and fires connections()
+  //  function sets this.state.deviceTarget and fires connections() called device-select onChange
   deviceLogic = e => {
-    this.getDeviceTarget(e)
+    this.setDeviceTarget(e)
     this.connections()
   }
+
+  //ADAPTER DISPLAY
 
   //Function that displays appropriate adapter(s) dynamically currently returns undefined
   getDeviceAdapter = () => {
@@ -127,46 +169,6 @@ class App extends Component {
       this.state.needsVGAAdapter === true
     ) {
       return displayLinkBoth
-    }
-  }
-
-  //Checks to see if adapters are needed and what type
-  adapterCheck = (roomHDMI, roomVGA, deviceHDMI, deviceVGA) => {
-    if (
-      (roomHDMI === true && deviceHDMI === true) ||
-      (roomVGA === true && deviceVGA === true)
-    ) {
-      this.setState({
-        needsAdapter: false,
-        needsHDMIAdapter: false,
-        needsVGAAdapter: false,
-        ishidden: false,
-      })
-    } else if (
-      roomHDMI === true &&
-      deviceHDMI === false &&
-      (roomVGA === true && deviceVGA === false)
-    ) {
-      this.setState({
-        needsAdapter: true,
-        needsHDMIAdapter: true,
-        needsVGAAdapter: true,
-        ishidden: false,
-      })
-    } else if (roomHDMI === true && deviceHDMI === false) {
-      this.setState({
-        needsAdapter: true,
-        needsHDMIAdapter: true,
-        needsVGAAdapter: false,
-        ishidden: false,
-      })
-    } else if (roomVGA === true && deviceVGA === false) {
-      this.setState({
-        needsAdapter: true,
-        needsHDMIAdapter: false,
-        needsVGAAdapter: true,
-        ishidden: false,
-      })
     }
   }
 
