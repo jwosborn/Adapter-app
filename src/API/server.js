@@ -4,9 +4,13 @@ const app = express()
 const port = 4000
 const api = require('./api.js')
 const cors = require('cors')
+const corsOpts = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200,
+}
 
 // app.all('/api/*', requireAuthentication);
-app.use(cors())
+app.use(cors(corsOpts))
 
 app.get('/', (req, res) => {
   res.redirect('/api')
