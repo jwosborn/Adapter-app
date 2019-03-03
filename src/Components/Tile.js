@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 
 const upperFirst = text => {
-  return text.charAt(0).toUpperCase() + text.slice(1)
+  return typeof text === 'string'
+    ? text.charAt(0).toUpperCase() + text.slice(1)
+    : text
 }
 
 const Tile = ({ building, func }) => (

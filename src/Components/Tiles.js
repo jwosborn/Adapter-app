@@ -29,6 +29,10 @@ class Tiles extends Component {
           buildings.map((building, index) => (
             <Tile key={index} building={building} func={this.setBuilding} />
           ))}
+        {rooms &&
+          rooms.map((room, index) => (
+            <Tile key={index} building={room.roomNumber} />
+          ))}
       </div>
     )
   }
