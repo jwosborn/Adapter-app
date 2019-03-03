@@ -10,9 +10,15 @@ class Tiles extends Component {
   }
 
   setBuilding = building => {
-    axios.get(`http://localhost:4000/api/buildings/${building}`).then(res => {
-      this.setState({ building: building, rooms: res.data })
-    })
+    axios
+      .get(`http://localhost:4000/api/buildings/${building}/rooms`)
+      .then(res => {
+        this.setState({ building: building, rooms: res.data })
+      })
+  }
+
+  setRoom = room => {
+    //
   }
 
   componentDidMount() {
@@ -30,9 +36,7 @@ class Tiles extends Component {
             <Tile key={index} building={building} func={this.setBuilding} />
           ))}
         {rooms &&
-          rooms.map((room, index) => (
-            <Tile key={index} building={room.roomNumber} />
-          ))}
+          rooms.map((room, index) => <Tile key={index} building={room} />)}
       </div>
     )
   }
