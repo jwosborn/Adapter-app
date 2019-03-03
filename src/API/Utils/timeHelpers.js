@@ -2,7 +2,7 @@ const displayLogTime = req => {
   let logTime = new Date()
   let hours = logTime.getHours()
   let minutes = logTime.getMinutes()
-  return `\n\nAPI route ${req.path} accessed (${req.method}) at ${formatHours(
+  return `\n\nAPI route "${req.path}" accessed (${req.method}) at ${formatHours(
     hours,
   )}:${formatMinutes(minutes)} ${morningOrEvening(hours)}\n from ${
     req.hostname
