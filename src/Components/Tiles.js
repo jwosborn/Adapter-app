@@ -46,20 +46,20 @@ class Tiles extends Component {
   }
 
   render() {
-    const { buildings, rooms, device, devices } = this.state
+    const { buildings, room, rooms, device, devices } = this.state
     return (
       <div className="tile-wrapper">
-        {device &&
-          devices.map((dev, index) => (
-            <Tile key={index} text={dev.name} func={this.setDevice} />
-          ))}
         {rooms.length === 0 &&
           buildings.map((building, index) => (
             <Tile key={index} text={building} func={this.setBuilding} />
           ))}
-        {rooms &&
+        {!room &&
           rooms.map((room, index) => (
             <Tile key={index} text={room} func={this.setRoom} />
+          ))}
+        {room &&
+          devices.map((dev, index) => (
+            <Tile key={index} text={dev.name} func={this.setDevice} />
           ))}
       </div>
     )
