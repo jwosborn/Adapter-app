@@ -3,17 +3,14 @@ const express = require('express')
 const app = express()
 const port = 4000
 const api = require('./api.js')
+const cors = require('cors')
+const corsOpts = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200,
+}
 
 // app.all('/api/*', requireAuthentication);
-
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000/*')
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept',
-  )
-  next()
-})
+app.use(cors(corsOpts))
 
 app.get('/', (req, res) => {
   res.redirect('/api')
