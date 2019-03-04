@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "cors": "^2.8.5",
     "eslint-plugin-react": "^7.12.4",
     "express": "^4.16.4",
     "jest-cucumber": "^2.0.6",
