@@ -11,6 +11,7 @@ import './App.css'
 
 class App extends Component {
   state = {
+    buildings: [],
     needsAdapter: '',
     needsHDMIAdapter: '',
     needsVGAAdapter: '',
@@ -19,12 +20,22 @@ class App extends Component {
     deviceTarget: '',
   }
 
+  upperFirst = text => {
+    return typeof text === 'string'
+      ? text.charAt(0).toUpperCase() + text.slice(1)
+      : text
+  }
+
   setRoomTarget = e => {
     this.setState({ roomTarget: e.currentTarget.value })
   }
 
   setDeviceTarget = e => {
     this.setState({ deviceTarget: e.currentTarget.value })
+  }
+
+  setBuildings = data => {
+    this.setState({ buildings: data })
   }
 
   //Checks to see if adapters are needed and what type; Parameters defined in connections
@@ -177,6 +188,8 @@ class App extends Component {
       <div className="App">
         <Header />
         <Select
+          setBuildings={this.setBuildings}
+          buildings={this.state.buildings}
           classroomList={classroomList}
           deviceList={Devicelist}
           roomLogic={this.roomLogic}

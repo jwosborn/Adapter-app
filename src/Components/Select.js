@@ -4,9 +4,9 @@ import axios from 'axios'
 class Select extends Component {
   componentDidMount() {
     axios
-      .get('http://localhost:4000/buildings')
+      .get('http://localhost:4000/api/buildings')
       .then(res => {
-        console.log(res.data)
+        this.props.setBuildings(res.data)
       })
       .catch(err => {
         console.log(err)
@@ -17,24 +17,22 @@ class Select extends Component {
       <div className="Choice-parent">
         <div>
           <label htmlFor="Room-List" className="label-text">
-            Choose Your Classroom:
+            Choose Your Building:
           </label>
           <br />
           <select
             className="Room-list"
             id="Room-list"
-            onChange={e => this.props.roomLogic(e)}
+            // onChange={e => this.props.roomLogic(e)}
           >
             <option disabled selected>
-              Choose Your Classroom
+              Choose Your Building
             </option>
-            {/* {
-              buildings.map(x => (
-                <option>
-                  {x}
-                </option>
-              ))
-            } */}
+            {this.props.buildings.map(op => (
+              <option key={op} value={op}>
+                {op}
+              </option>
+            ))}
           </select>
         </div>
         <div>
