@@ -1,6 +1,17 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 class Select extends Component {
+  componentDidMount() {
+    axios
+      .get('http://localhost:4000/buildings')
+      .then(res => {
+        console.log(res.data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
   render() {
     return (
       <div className="Choice-parent">
@@ -17,11 +28,13 @@ class Select extends Component {
             <option disabled selected>
               Choose Your Classroom
             </option>
-            {this.props.classroomList.map(op => (
-              <option key={op.roomNumber} value={op.roomNumber}>
-                {op.roomNumber}
-              </option>
-            ))}
+            {/* {
+              buildings.map(x => (
+                <option>
+                  {x}
+                </option>
+              ))
+            } */}
           </select>
         </div>
         <div>
