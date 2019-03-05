@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 app.get('/healthcheck', (req, res) => {
   res.send(`
 		<div style="margin-top: 5em">
-			<h1 style="text-align: center">Hello from the A-P-I <br> – Adele, "Hello")</h1>
+			<h1 style="text-align: center">Hello from the A-P-I <br> – Adele, "Hello"</h1>
 		</div>
 		`)
 })
