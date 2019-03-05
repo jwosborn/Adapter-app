@@ -11,11 +11,12 @@ class Tiles extends Component {
     roomData: {},
     devices: [],
     device: '',
+    deviceData: {},
   }
 
   setBuilding = building => {
     axios
-      .get(`http://localhost:4000/api/buildings/${building}/rooms`)
+      .get(`https://adapter-api.herokuapp.com/api/buildings/${building}/rooms`)
       .then(res => {
         this.setState({ building: building, rooms: res.data })
       })
@@ -25,7 +26,9 @@ class Tiles extends Component {
   setRoom = room => {
     const { building } = this.state
     axios
-      .get(`http://localhost:4000/api/buildings/${building}/${room}`)
+      .get(
+        `https://adapter-api.herokuapp.com/api/buildings/${building}/${room}`,
+      )
       .then(res => {
         this.setState({ room: room, roomData: res.data[0] })
       })
@@ -34,13 +37,20 @@ class Tiles extends Component {
 
   setDevice = device => {
     this.setState({ device: device })
+    axios
+      .get(`https://adapter-api.herokuapp.com/api/devices/${device}`)
+      .then(res => {
+        this.setState({ deviceData: res.data[0] })
+        console.log(this.state.deviceData)
+      })
+      .catch(err => console.log(err))
   }
 
   componentDidMount() {
-    axios.get('http://localhost:4000/api/buildings').then(res => {
+    axios.get('https://adapter-api.herokuapp.com/api/buildings').then(res => {
       this.setState({ buildings: res.data })
     })
-    axios.get('http://localhost:4000/api/devices').then(res => {
+    axios.get('https://adapter-api.herokuapp.com/api/devices').then(res => {
       this.setState({ devices: res.data })
     })
   }
@@ -61,6 +71,9 @@ class Tiles extends Component {
           devices.map((dev, index) => (
             <Tile key={index} text={dev.name} func={this.setDevice} />
           ))}
+        {/* {device && 
+            
+         }  */}
       </div>
     )
   }

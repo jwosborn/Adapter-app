@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 // Component Imports
-import Select from './Components/Select'
+// import Select from './Components/Select'
 import Header from './Components/Header'
-import Positive from './Components/Positive'
-import Negative from './Components/Negative'
+// import Positive from './Components/Positive'
+// import Negative from './Components/Negative'
 import Tiles from './Components/Tiles'
 import classroomList from './Data/Classroomlist'
 import { Devicelist } from './Data/Devicelist'
