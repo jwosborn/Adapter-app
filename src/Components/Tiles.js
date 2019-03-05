@@ -36,14 +36,9 @@ class Tiles extends Component {
   }
 
   setDevice = device => {
-    this.setState({ device: device.id })
+    device = device.id
+    this.setState({ device: device })
     console.log(this.state.device)
-    axios
-      .get(`https://adapter-api.herokuapp.com/api/devices/${this.state.device}`)
-      .then(res => {
-        this.setState({ deviceData: res.data })
-      })
-      .catch(err => console.log(err))
   }
 
   componentDidMount() {
