@@ -36,14 +36,15 @@ class Tiles extends Component {
   }
 
   setDevice = device => {
-    this.setState({ device: device })
+    console.log(device)
     axios
       .get(`https://adapter-api.herokuapp.com/api/devices/${device}`)
       .then(res => {
-        this.setState({ deviceData: res.data[0] })
-        console.log(this.state.deviceData)
+        this.setState({ deviceData: res.data })
+        console.log(this.state.device)
       })
       .catch(err => console.log(err))
+    this.setState({ device: device._id })
   }
 
   componentDidMount() {
@@ -56,7 +57,7 @@ class Tiles extends Component {
   }
 
   render() {
-    const { buildings, room, rooms, device, devices } = this.state
+    const { buildings, room, rooms, devices } = this.state
     return (
       <div className="tile-wrapper">
         {rooms.length === 0 &&
@@ -71,7 +72,9 @@ class Tiles extends Component {
           devices.map((dev, index) => (
             <Tile key={index} text={dev.name} func={this.setDevice} />
           ))}
-        {/* {device && 
+        {/* {device && room
+              this.adaptercheck()
+              
             
          }  */}
       </div>
