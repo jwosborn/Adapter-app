@@ -44,36 +44,6 @@ class Tiles extends Component {
       .catch(err => console.log(err))
   }
 
-  // Function tests data from roomData and deviceData
-  //changes App State so that App renders Positive/Negative banners
-  adapterCheck = () => {
-    if (
-      (this.state.roomData.hasHDMI === true &&
-        this.state.deviceData[0].hasHdmi === true) ||
-      (this.state.roomData.hasVGA === true &&
-        this.state.deviceData[0].hasVGA === true)
-    ) {
-      this.props.setNeedsNoAdapter()
-    } else if (
-      this.state.roomData.hasHDMI === true &&
-      this.state.deviceData[0].hasHDMI === false &&
-      (this.state.roomData.hasVGA === true &&
-        this.state.deviceData[0].hasVGA === false)
-    ) {
-      this.props.setNeedsBoth()
-    } else if (
-      this.state.roomData.hasHDMI === true &&
-      this.state.deviceData[0].hasHDMI === false
-    ) {
-      this.props.setNeedsHDMIAdapter()
-    } else if (
-      this.state.roomData.hasVGA === true &&
-      this.state.deviceData[0].hasVGA === false
-    ) {
-      this.props.setNeedsVGAAdapter()
-    }
-  }
-
   setDevice = device => {
     axios
       .get(`https://adapter-api.herokuapp.com/api/devices/${device}`)
@@ -109,7 +79,6 @@ class Tiles extends Component {
               func={this.setDevice}
             />
           ))}
-        }
       </div>
     ) //return
   } //rendermethod
