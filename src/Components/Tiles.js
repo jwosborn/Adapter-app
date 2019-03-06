@@ -10,7 +10,7 @@ class Tiles extends Component {
     room: '',
     roomData: {},
     devices: [],
-    device: '',
+    deviceID: '',
     deviceData: {},
   }
 
@@ -36,9 +36,16 @@ class Tiles extends Component {
   }
 
   setDevice = device => {
-    device = device.id
-    this.setState({ device: device })
-    console.log(this.state.device)
+    // axios
+    // .get(`https://adapter-api.herokuapp.com/api/devices/${device._id}`)
+    // .then(res => {
+    //   this.setState({deviceID: device._id, deviceData: res.data})
+    // })
+    // .catch(err => console.log(err))
+
+    this.setState({ deviceID: device._id }, () =>
+      console.log(this.state.deviceID),
+    )
   }
 
   componentDidMount() {
@@ -47,7 +54,6 @@ class Tiles extends Component {
     })
     axios.get('https://adapter-api.herokuapp.com/api/devices').then(res => {
       this.setState({ devices: res.data })
-      console.log(this.state.devices)
     })
   }
 
