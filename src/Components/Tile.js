@@ -6,8 +6,8 @@ const upperFirst = text => {
     : text
 }
 
-const Tile = ({ text, func }) => (
-  <div className="tile" onClick={() => func(text)}>
+const Tile = ({ text, func, id }) => (
+  <div className="tile" onClick={() => func(id)}>
     <h5 className="text">{upperFirst(text)}</h5>
   </div>
 )

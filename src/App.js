@@ -26,6 +26,41 @@ class App extends Component {
   setDeviceTarget = e => {
     this.setState({ deviceTarget: e.currentTarget.value })
   }
+  //Functions that change App state which Renders Positive/Negative(may rename) Banners. To be pased to Tiles
+  setNeedsNoAdapter = () => {
+    this.setState({
+      needsAdapter: false,
+      needsHDMIAdapter: false,
+      needsVGAAdapter: false,
+      ishidden: false,
+    })
+  }
+  setNeedsHDMIAdapter = () => {
+    this.setState({
+      needsAdapter: true,
+      needsHDMIAdapter: true,
+      needsVGAAdapter: false,
+      ishidden: false,
+    })
+  }
+
+  setNeedsVGAAdapter = () => {
+    this.setState({
+      needsAdapter: true,
+      needsHDMIAdapter: false,
+      needsVGAAdapter: true,
+      ishidden: false,
+    })
+  }
+
+  setNeedsBoth = () => {
+    this.setState({
+      needsAdapter: true,
+      needsHDMIAdapter: true,
+      needsVGAAdapter: true,
+      ishidden: false,
+    })
+  }
 
   //Checks to see if adapters are needed and what type; Parameters defined in connections
   adapterCheck = (roomHDMI, roomVGA, deviceHDMI, deviceVGA) => {
@@ -81,17 +116,6 @@ class App extends Component {
     const deviceVGA = Devicelist.find(x => x.name === this.state.deviceTarget)
       .hasVGA
     this.adapterCheck(roomHDMI, roomVGA, deviceHDMI, deviceVGA)
-  }
-  //function sets this.state.roomTarget and fires connections() called room-select onChange
-  roomLogic = e => {
-    this.setRoomTarget(e)
-    this.connections()
-  }
-
-  //  function sets this.state.deviceTarget and fires connections() called device-select onChange
-  deviceLogic = e => {
-    this.setDeviceTarget(e)
-    this.connections()
   }
 
   //ADAPTER DISPLAY
@@ -176,7 +200,13 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Tiles buildings={classroomList} />
+        <Tiles
+          buildings={classroomList}
+          setNeedsNoAdapter={this.setNeedsNoAdapter}
+          setNeedsBoth={this.setNeedsBoth}
+          setNeedsHDMIAdapter={this.setNeedsHDMIAdapter}
+          setNeedsVGAAdapter={this.setNeedsVGAAdapter}
+        />
       </div>
     )
   }

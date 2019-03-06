@@ -14,6 +14,15 @@ class Tiles extends Component {
     deviceData: {},
   }
 
+  componentDidMount() {
+    axios.get('https://adapter-api.herokuapp.com/api/buildings').then(res => {
+      this.setState({ buildings: res.data })
+    })
+    axios.get('https://adapter-api.herokuapp.com/api/devices').then(res => {
+      this.setState({ devices: res.data })
+    })
+  }
+
   setBuilding = building => {
     axios
       .get(`https://adapter-api.herokuapp.com/api/buildings/${building}/rooms`)
@@ -35,26 +44,43 @@ class Tiles extends Component {
       .catch(err => console.log(err))
   }
 
-  setDevice = device => {
-    // axios
-    // .get(`https://adapter-api.herokuapp.com/api/devices/${device._id}`)
-    // .then(res => {
-    //   this.setState({deviceID: device._id, deviceData: res.data})
-    // })
-    // .catch(err => console.log(err))
-
-    this.setState({ deviceID: device._id }, () =>
-      console.log(this.state.deviceID),
-    )
+  // Function tests data from roomData and deviceData to change App State so that App renders Positive/Negative banners
+  adapterCheck = () => {
+    if (
+      (this.state.roomData.hasHDMI === true &&
+        this.state.deviceData.hasHdmi === true) ||
+      (this.state.roomData.hasVGA === true &&
+        this.state.deviceData.hasVGA === true)
+    ) {
+      this.props.setNeedsNoAdapter()
+    } else if (
+      this.state.roomData.hasHDMI === true &&
+      this.state.deviceData.hasHDMI === false &&
+      (this.state.roomData.hasVGA === true &&
+        this.state.deviceData.hasVGA === false)
+    ) {
+      this.props.setNeedsBoth()
+    } else if (
+      this.state.roomData.hasHDMI === true &&
+      this.state.deviceData.hasHDMI === false
+    ) {
+      this.props.setNeedsHDMIAdapter()
+    } else if (
+      this.state.roomData.hasVGA === true &&
+      this.state.deviceData.hasVGA === false
+    ) {
+      this.props.setNeedsVGAAdapter()
+    }
   }
 
-  componentDidMount() {
-    axios.get('https://adapter-api.herokuapp.com/api/buildings').then(res => {
-      this.setState({ buildings: res.data })
-    })
-    axios.get('https://adapter-api.herokuapp.com/api/devices').then(res => {
-      this.setState({ devices: res.data })
-    })
+  setDevice = device => {
+    axios
+      .get(`https://adapter-api.herokuapp.com/api/devices/${device}`)
+      .then(res => {
+        this.setState({ deviceID: device, deviceData: res.data })
+      })
+      .catch(err => console.log(err))
+    this.adapterCheck()
   }
 
   render() {
@@ -63,11 +89,16 @@ class Tiles extends Component {
       <div className="tile-wrapper">
         {rooms.length === 0 &&
           buildings.map((building, index) => (
-            <Tile key={index} text={building} func={this.setBuilding} />
+            <Tile
+              key={index}
+              text={building}
+              id={building}
+              func={this.setBuilding}
+            />
           ))}
         {!room &&
           rooms.map((room, index) => (
-            <Tile key={index} text={room} func={this.setRoom} />
+            <Tile key={index} text={room} id={room} func={this.setRoom} />
           ))}
         {room &&
           devices.map((dev, index) => (
@@ -78,11 +109,7 @@ class Tiles extends Component {
               func={this.setDevice}
             />
           ))}
-        {/* {device && room
-              this.adaptercheck()
-              
-            
-         }  */}
+        }
       </div>
     )
   }
