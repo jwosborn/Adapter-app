@@ -38,6 +38,17 @@ class App extends Component {
     }
   }
 
+  checkHDMI = (roomHDMI, deviceHDMI) => {
+    if (roomHDMI === true && deviceHDMI === false) {
+      this.setNeedsHDMIAdapter()
+    }
+  }
+
+  checkVGA = (roomVGA, deviceVGA) => {
+    if (roomVGA === true && deviceVGA === false) {
+      this.setNeedsVGAAdapter()
+    }
+  }
   // setRoomTarget = e => {
   //   this.setState({ roomTarget: e.currentTarget.value })
   // }
