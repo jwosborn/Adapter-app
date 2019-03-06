@@ -48,7 +48,7 @@ class Tiles extends Component {
     axios
       .get(`https://adapter-api.herokuapp.com/api/devices/${device}`)
       .then(res => {
-        this.setState({ deviceID: device, deviceData: res.data })
+        this.setState({ deviceID: device, deviceData: res.data[0] })
       })
       .catch(err => console.log(err))
   }
@@ -79,6 +79,13 @@ class Tiles extends Component {
               func={this.setDevice}
             />
           ))}
+        {this.state.deviceID &&
+          this.props.adapterCheck(
+            this.state.roomData.hasHDMI,
+            this.state.deviceData.hasHDMI,
+            this.state.roomData.hasVGA,
+            this.state.deviceData.hasVGA,
+          )}
       </div>
     ) //return
   } //rendermethod

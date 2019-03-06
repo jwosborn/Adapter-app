@@ -38,13 +38,13 @@ class App extends Component {
     }
   }
 
-  setRoomTarget = e => {
-    this.setState({ roomTarget: e.currentTarget.value })
-  }
+  // setRoomTarget = e => {
+  //   this.setState({ roomTarget: e.currentTarget.value })
+  // }
 
-  setDeviceTarget = e => {
-    this.setState({ deviceTarget: e.currentTarget.value })
-  }
+  // setDeviceTarget = e => {
+  //   this.setState({ deviceTarget: e.currentTarget.value })
+  // }
   //Functions that change App state to render Positive/Negative(may rename) Banners. passed to Tiles
   setNeedsNoAdapter = () => {
     this.setState({
@@ -162,13 +162,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Tiles
-          buildings={classroomList}
-          setNeedsNoAdapter={this.setNeedsNoAdapter}
-          setNeedsBoth={this.setNeedsBoth}
-          setNeedsHDMIAdapter={this.setNeedsHDMIAdapter}
-          setNeedsVGAAdapter={this.setNeedsVGAAdapter}
-        />
+        <Tiles buildings={classroomList} adapterCheck={this.adapterCheck} />
       </div>
     )
   }
