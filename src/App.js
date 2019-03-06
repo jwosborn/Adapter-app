@@ -26,7 +26,7 @@ class App extends Component {
   setDeviceTarget = e => {
     this.setState({ deviceTarget: e.currentTarget.value })
   }
-  //Functions that change App state which Renders Positive/Negative(may rename) Banners. To be pased to Tiles
+  //Functions that change App state to render Positive/Negative(may rename) Banners. passed to Tiles
   setNeedsNoAdapter = () => {
     this.setState({
       needsAdapter: false,

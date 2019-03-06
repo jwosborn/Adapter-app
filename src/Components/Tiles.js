@@ -44,30 +44,31 @@ class Tiles extends Component {
       .catch(err => console.log(err))
   }
 
-  // Function tests data from roomData and deviceData to change App State so that App renders Positive/Negative banners
+  // Function tests data from roomData and deviceData
+  //changes App State so that App renders Positive/Negative banners
   adapterCheck = () => {
     if (
       (this.state.roomData.hasHDMI === true &&
-        this.state.deviceData.hasHdmi === true) ||
+        this.state.deviceData[0].hasHdmi === true) ||
       (this.state.roomData.hasVGA === true &&
-        this.state.deviceData.hasVGA === true)
+        this.state.deviceData[0].hasVGA === true)
     ) {
       this.props.setNeedsNoAdapter()
     } else if (
       this.state.roomData.hasHDMI === true &&
-      this.state.deviceData.hasHDMI === false &&
+      this.state.deviceData[0].hasHDMI === false &&
       (this.state.roomData.hasVGA === true &&
-        this.state.deviceData.hasVGA === false)
+        this.state.deviceData[0].hasVGA === false)
     ) {
       this.props.setNeedsBoth()
     } else if (
       this.state.roomData.hasHDMI === true &&
-      this.state.deviceData.hasHDMI === false
+      this.state.deviceData[0].hasHDMI === false
     ) {
       this.props.setNeedsHDMIAdapter()
     } else if (
       this.state.roomData.hasVGA === true &&
-      this.state.deviceData.hasVGA === false
+      this.state.deviceData[0].hasVGA === false
     ) {
       this.props.setNeedsVGAAdapter()
     }
@@ -80,7 +81,6 @@ class Tiles extends Component {
         this.setState({ deviceID: device, deviceData: res.data })
       })
       .catch(err => console.log(err))
-    this.adapterCheck()
   }
 
   render() {
@@ -111,7 +111,7 @@ class Tiles extends Component {
           ))}
         }
       </div>
-    )
-  }
-}
+    ) //return
+  } //rendermethod
+} //component
 export default Tiles
