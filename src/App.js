@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 // Component Imports
 // import Select from './Components/Select'
 import Header from './Components/Header'
-// import Positive from './Components/Positive'
-// import Negative from './Components/Negative'
+import Positive from './Components/Positive'
+import Negative from './Components/Negative'
 import Tiles from './Components/Tiles'
 import classroomList from './Data/Classroomlist'
 import { Devicelist } from './Data/Devicelist'
@@ -36,6 +36,10 @@ class App extends Component {
     } else if (roomVGA === true && deviceVGA === false) {
       this.setNeedsVGAAdapter()
     }
+  }
+  //function to display Positive component
+  handleDisplayBanner = () => {
+    this.setNeedsNoAdapter()
   }
 
   checkHDMI = (roomHDMI, deviceHDMI) => {
@@ -174,6 +178,11 @@ class App extends Component {
       <div className="App">
         <Header />
         <Tiles buildings={classroomList} adapterCheck={this.adapterCheck} />
+        {this.state.needsAdapter ? (
+          <Negative ishidden={this.state.ishidden} />
+        ) : (
+          <Positive ishidden={this.state.ishidden} />
+        )}
       </div>
     )
   }
