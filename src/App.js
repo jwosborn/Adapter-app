@@ -11,9 +11,9 @@ import './App.css'
 
 class App extends Component {
   state = {
-    needsAdapter: '',
-    needsHDMIAdapter: '',
-    needsVGAAdapter: '',
+    needsAdapter: false,
+    needsHDMIAdapter: false,
+    needsVGAAdapter: false,
     ishidden: true,
   }
 
@@ -60,6 +60,7 @@ class App extends Component {
   // setDeviceTarget = e => {
   //   this.setState({ deviceTarget: e.currentTarget.value })
   // }
+
   //Functions that change App state to render Positive/Negative(may rename) Banners. passed to Tiles
   setNeedsNoAdapter = () => {
     this.setState({

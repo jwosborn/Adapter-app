@@ -79,13 +79,13 @@ class Tiles extends Component {
               func={this.setDevice}
             />
           ))}
-        {this.state.deviceID &&
+        {/* {this.state.deviceID &&
           this.props.adapterCheck(
             this.state.roomData.hasHDMI,
             this.state.deviceData.hasHDMI,
             this.state.roomData.hasVGA,
             this.state.deviceData.hasVGA,
-          )}
+          )} */}
       </div>
     ) //return
   } //rendermethod
