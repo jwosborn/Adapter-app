@@ -6,7 +6,7 @@ import Positive from './Components/Positive'
 import Negative from './Components/Negative'
 import Tiles from './Components/Tiles'
 import classroomList from './Data/Classroomlist'
-import { Devicelist } from './Data/Devicelist'
+// import { Devicelist } from './Data/Devicelist'
 import './App.css'
 
 class App extends Component {
@@ -39,7 +39,7 @@ class App extends Component {
   }
   //function to display Positive component
   handleDisplayBanner = () => {
-    this.setNeedsNoAdapter()
+    this.revealBanner()
   }
 
   checkHDMI = (roomHDMI, deviceHDMI) => {
@@ -62,13 +62,8 @@ class App extends Component {
   // }
 
   //Functions that change App state to render Positive/Negative(may rename) Banners. passed to Tiles
-  setNeedsNoAdapter = () => {
-    this.setState({
-      needsAdapter: false,
-      needsHDMIAdapter: false,
-      needsVGAAdapter: false,
-      ishidden: false,
-    })
+  revealBanner = () => {
+    this.setState({ ishidden: false })
   }
   setNeedsHDMIAdapter = () => {
     this.setState({
@@ -98,7 +93,7 @@ class App extends Component {
   }
   //ADAPTER DISPLAY
 
-  //Function that displays appropriate adapter(s) dynamically currently returns undefined needs to be moved to Tiles
+  //Function that displays appropriate adapter(s) dynamically needs to be moved to Tiles
   getDeviceAdapter = (adapterHDMI, adapterVGA) => {
     if (
       this.state.needsHDMIAdapter === true &&
@@ -113,13 +108,7 @@ class App extends Component {
   }
 
   //  Dynamic Link Population
-  getAdapterLink = () => {
-    const adapterLinkHDMI = Devicelist.find(
-      x => x.name === this.state.deviceTarget,
-    ).linkHDMI
-    const adapterLinkVGA = Devicelist.find(
-      x => x.name === this.state.deviceTarget,
-    ).linkVGA
+  getAdapterLink = (adapterLinkHDMI, adapterLinkVGA) => {
     const displayLinkHDMI = (
       <h2>
         You can buy an HDMI adapter by clicking{' '}
