@@ -39,7 +39,7 @@ class App extends Component {
   }
   //function to display Positive component
   handleDisplayBanner = () => {
-    this.revealBanner()
+    this.setState({ ishidden: false })
   }
 
   checkHDMI = (roomHDMI, deviceHDMI) => {
@@ -62,9 +62,7 @@ class App extends Component {
   // }
 
   //Functions that change App state to render Positive/Negative(may rename) Banners. passed to Tiles
-  revealBanner = () => {
-    this.setState({ ishidden: false })
-  }
+
   setNeedsHDMIAdapter = () => {
     this.setState({
       needsAdapter: true,
@@ -104,55 +102,6 @@ class App extends Component {
       return adapterHDMI
     } else if (this.state.needsVGAAdapter === true) {
       return adapterVGA
-    }
-  }
-
-  //  Dynamic Link Population
-  getAdapterLink = (adapterLinkHDMI, adapterLinkVGA) => {
-    const displayLinkHDMI = (
-      <h2>
-        You can buy an HDMI adapter by clicking{' '}
-        <a rel="noopener noreferrer" target="_blank" href={adapterLinkHDMI}>
-          here
-        </a>
-      </h2>
-    )
-    const displayLinkVGA = (
-      <h2>
-        You can buy a VGA adapter by clicking{' '}
-        <a rel="noopener noreferrer" target="_blank" href={adapterLinkVGA}>
-          here
-        </a>
-      </h2>
-    )
-    const displayLinkBoth = (
-      <h2>
-        You can buy an HDMI adapter by clicking{' '}
-        <a rel="noopener noreferrer" target="_blank" href={adapterLinkHDMI}>
-          here
-        </a>
-        <br /> OR You can buy a VGA adapter by clicking{' '}
-        <a rel="noopener noreferrer" target="_blank" href={adapterLinkVGA}>
-          here
-        </a>
-      </h2>
-    )
-
-    if (
-      this.state.needsHDMIAdapter === true &&
-      this.state.needsVGAAdapter === false
-    ) {
-      return displayLinkHDMI
-    } else if (
-      this.state.needsHDMIAdapter === false &&
-      this.state.needsVGAAdapter === true
-    ) {
-      return displayLinkVGA
-    } else if (
-      this.state.needsHDMIAdapter === true &&
-      this.state.needsVGAAdapter === true
-    ) {
-      return displayLinkBoth
     }
   }
 
