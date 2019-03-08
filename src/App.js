@@ -53,13 +53,6 @@ class App extends Component {
       this.setNeedsVGAAdapter()
     }
   }
-  // setRoomTarget = e => {
-  //   this.setState({ roomTarget: e.currentTarget.value })
-  // }
-
-  // setDeviceTarget = e => {
-  //   this.setState({ deviceTarget: e.currentTarget.value })
-  // }
 
   //Functions that change App state to render Positive/Negative(may rename) Banners. passed to Tiles
 
@@ -89,6 +82,7 @@ class App extends Component {
       ishidden: false,
     })
   }
+
   //ADAPTER DISPLAY
 
   //Function that displays appropriate adapter(s) dynamically needs to be moved to Tiles

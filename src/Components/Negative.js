@@ -1,6 +1,7 @@
 import React from 'react'
+import Link from './Link'
 
-const Negative = ({ ishidden, getDeviceAdapter, getAdapterLink }) => {
+const Negative = ({ ishidden, getDeviceAdapter }) => {
   if (ishidden === false) {
     return (
       <div id="adapter">
@@ -15,7 +16,13 @@ const Negative = ({ ishidden, getDeviceAdapter, getAdapterLink }) => {
           Contact Classroom Technology at 502-897-4007 or email us by clicking{' '}
           <a href="mailto:classroomtechnology@sbts.edu">here</a>
         </h2>
-        {getAdapterLink()}
+        {/* <Link 
+          adapterName1={''}
+          adapterName2={''}
+          twoAdapters={bool}
+          adapterLink1={''}
+          adapterLink2={''}
+        /> */}
       </div>
     )
   }
