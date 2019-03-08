@@ -18,9 +18,6 @@ class Tiles extends Component {
     axios.get('https://adapter-api.herokuapp.com/api/buildings').then(res => {
       this.setState({ buildings: res.data })
     })
-    axios.get('https://adapter-api.herokuapp.com/api/devices').then(res => {
-      this.setState({ devices: res.data })
-    })
   }
 
   setBuilding = building => {
@@ -44,17 +41,8 @@ class Tiles extends Component {
       .catch(err => console.log(err))
   }
 
-  setDevice = device => {
-    axios
-      .get(`https://adapter-api.herokuapp.com/api/devices/${device}`)
-      .then(res => {
-        this.setState({ deviceID: device, deviceData: res.data[0] })
-      })
-      .catch(err => console.log(err))
-  }
-
   render() {
-    const { buildings, room, rooms, devices } = this.state
+    const { buildings, room, rooms } = this.state
     return (
       <div className="tile-wrapper">
         {rooms.length === 0 &&
@@ -71,21 +59,14 @@ class Tiles extends Component {
             <Tile key={index} text={room} id={room} func={this.setRoom} />
           ))}
         {room &&
-          devices.map((dev, index) => (
+          this.props.devices.map((dev, index) => (
             <Tile
               key={index}
               id={dev._id}
               text={dev.name}
-              func={this.setDevice}
+              func={this.props.setDevice}
             />
           ))}
-        {/* {this.state.deviceID &&
-          this.props.adapterCheck(
-            this.state.roomData.hasHDMI,
-            this.state.deviceData.hasHDMI,
-            this.state.roomData.hasVGA,
-            this.state.deviceData.hasVGA,
-          )} */}
       </div>
     ) //return
   } //rendermethod

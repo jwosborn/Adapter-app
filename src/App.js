@@ -8,6 +8,7 @@ import Tiles from './Components/Tiles'
 import classroomList from './Data/Classroomlist'
 // import { Devicelist } from './Data/Devicelist'
 import './App.css'
+import axios from 'axios'
 
 class App extends Component {
   state = {
@@ -15,33 +16,56 @@ class App extends Component {
     needsHDMIAdapter: false,
     needsVGAAdapter: false,
     ishidden: true,
+    devices: [],
+    device: '',
+    deviceData: {},
+  }
+
+  //place devices[] in state
+  componentDidMount = () => {
+    axios.get('https://adapter-api.herokuapp.com/api/devices').then(res => {
+      this.setState({ devices: res.data })
+    })
+  }
+
+  //sets selected device from Tiles into App state
+  setDevice = device => {
+    this.setState({ device: device })
+    axios
+      .get(`https://adapter-api.herokuapp.com/api/devices/${device}`)
+      .then(res => {
+        this.setState({ deviceData: res.data }, () => {
+          console.log(this.state.deviceData)
+        })
+      })
   }
 
   // Function tests data from roomData and deviceData
   //changes App State so that App renders Positive/Negative banners
-  adapterCheck = (roomHDMI, deviceHDMI, roomVGA, deviceVGA) => {
-    if (
-      (roomHDMI === true && deviceHDMI === true) ||
-      (roomVGA === true && deviceVGA === true)
-    ) {
-      this.setNeedsNoAdapter()
-    } else if (
-      roomHDMI === true &&
-      deviceHDMI === false &&
-      (roomVGA === true && deviceVGA === false)
-    ) {
-      this.setNeedsBoth()
-    } else if (roomHDMI === true && deviceHDMI === false) {
-      this.setNeedsHDMIAdapter()
-    } else if (roomVGA === true && deviceVGA === false) {
-      this.setNeedsVGAAdapter()
-    }
-  }
+  // adapterCheck = (roomHDMI, deviceHDMI, roomVGA, deviceVGA) => {
+  //   if (
+  //     (roomHDMI === true && deviceHDMI === true) ||
+  //     (roomVGA === true && deviceVGA === true)
+  //   ) {
+  //     this.setNeedsNoAdapter()
+  //   } else if (
+  //     roomHDMI === true &&
+  //     deviceHDMI === false &&
+  //     (roomVGA === true && deviceVGA === false)
+  //   ) {
+  //     this.setNeedsBoth()
+  //   } else if (roomHDMI === true && deviceHDMI === false) {
+  //     this.setNeedsHDMIAdapter()
+  //   } else if (roomVGA === true && deviceVGA === false) {
+  //     this.setNeedsVGAAdapter()
+  //   }
+  // }
   //function to display Positive component
   handleDisplayBanner = () => {
     this.setState({ ishidden: false })
   }
 
+  //Breaking apart adapterCheck()
   checkHDMI = (roomHDMI, deviceHDMI) => {
     if (roomHDMI === true && deviceHDMI === false) {
       this.setNeedsHDMIAdapter()
@@ -103,7 +127,12 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Tiles buildings={classroomList} adapterCheck={this.adapterCheck} />
+        <Tiles
+          buildings={classroomList}
+          adapterCheck={this.adapterCheck}
+          devices={this.state.devices}
+          setDevice={this.setDevice}
+        />
         {this.state.needsAdapter ? (
           <Negative ishidden={this.state.ishidden} />
         ) : (
