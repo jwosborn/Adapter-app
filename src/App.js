@@ -12,7 +12,7 @@ import axios from 'axios'
 
 class App extends Component {
   state = {
-    needsAdapter: false,
+    needsAdapter: {},
     needsHDMIAdapter: false,
     needsVGAAdapter: false,
     ishidden: true,
@@ -86,29 +86,24 @@ class App extends Component {
 
   setNeedsHDMIAdapter = () => {
     this.setState({
-      needsAdapter: true,
-      needsHDMIAdapter: true,
-      ishidden: false,
+      needsAdapter: { needsHDMI: true },
     })
   }
 
   setNeedsVGAAdapter = () => {
     this.setState({
-      needsAdapter: true,
-      needsVGAAdapter: true,
-      ishidden: false,
+      needsAdapter: { needsVGA: true },
     })
   }
 
   setNeedsBoth = () => {
     this.setState({
-      needsAdapter: true,
-      needsHDMIAdapter: true,
-      needsVGAAdapter: true,
-      ishidden: false,
+      needsAdapter: {
+        needsHDMI: true,
+        needsVGA: true,
+      },
     })
   }
-
   //ADAPTER DISPLAY
 
   //Function that displays appropriate adapter(s) dynamically needs to be moved to Tiles
@@ -138,6 +133,7 @@ class App extends Component {
         />
         {this.state.needsAdapter ? (
           <Negative
+            needsAdapter={this.state.needsAdapter}
             ishidden={this.state.ishidden}
             deviceData={this.state.deviceData}
             getDeviceAdapter={this.getDeviceAdapter}
