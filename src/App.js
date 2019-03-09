@@ -12,9 +12,7 @@ import axios from 'axios'
 
 class App extends Component {
   state = {
-    needsAdapter: {},
-    needsHDMIAdapter: false,
-    needsVGAAdapter: false,
+    adapterStatus: { needsAdapter: false },
     ishidden: true,
     devices: [],
     device: '',
@@ -58,6 +56,7 @@ class App extends Component {
   //     this.setNeedsVGAAdapter()
   //   }
   // }
+
   //function to display Positive component, i.e. no adapter necessary
   handleDisplayBanner = (roomHDMI, deviceHDMI, roomVGA, deviceVGA) => {
     if (
@@ -86,19 +85,20 @@ class App extends Component {
 
   setNeedsHDMIAdapter = () => {
     this.setState({
-      needsAdapter: { needsHDMI: true },
+      adapterStatus: { needsAdapter: true, needsHDMI: true },
     })
   }
 
   setNeedsVGAAdapter = () => {
     this.setState({
-      needsAdapter: { needsVGA: true },
+      adapterStatus: { needsAdapter: true, needsVGA: true },
     })
   }
 
   setNeedsBoth = () => {
     this.setState({
-      needsAdapter: {
+      adapterStatus: {
+        needsAdapter: true,
         needsHDMI: true,
         needsVGA: true,
       },
@@ -109,13 +109,13 @@ class App extends Component {
   //Function that displays appropriate adapter(s) dynamically needs to be moved to Tiles
   getDeviceAdapter = (adapterHDMI, adapterVGA) => {
     if (
-      this.state.needsHDMIAdapter === true &&
-      this.state.needsVGAAdapter === true
+      this.state.needsAdapter.needsHDMI === true &&
+      this.state.needsAdapter.needsVGA === true
     ) {
       return adapterHDMI + ' or a ' + adapterVGA
-    } else if (this.state.needsHDMIAdapter === true) {
+    } else if (this.state.needsAdapter.needsHDMI === true) {
       return adapterHDMI
-    } else if (this.state.needsVGAAdapter === true) {
+    } else if (this.state.needsAdapter.needsVGA === true) {
       return adapterVGA
     }
   }
@@ -131,7 +131,7 @@ class App extends Component {
           setDevice={this.setDevice}
           deviceData={this.state.deviceData}
         />
-        {this.state.needsAdapter ? (
+        {this.state.adapterStatus.needsAdapter ? (
           <Negative
             needsAdapter={this.state.needsAdapter}
             ishidden={this.state.ishidden}
