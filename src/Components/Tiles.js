@@ -9,9 +9,6 @@ class Tiles extends Component {
     rooms: [],
     room: '',
     roomData: {},
-    devices: [],
-    deviceID: '',
-    deviceData: {},
   }
 
   componentDidMount() {
