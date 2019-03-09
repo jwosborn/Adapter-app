@@ -34,9 +34,7 @@ class App extends Component {
     axios
       .get(`https://adapter-api.herokuapp.com/api/devices/${device}`)
       .then(res => {
-        this.setState({ deviceData: res.data }, () => {
-          console.log(this.state.deviceData)
-        })
+        this.setState({ deviceData: res.data })
       })
   }
 
@@ -84,7 +82,6 @@ class App extends Component {
     this.setState({
       needsAdapter: true,
       needsHDMIAdapter: true,
-      needsVGAAdapter: false,
       ishidden: false,
     })
   }
@@ -92,7 +89,6 @@ class App extends Component {
   setNeedsVGAAdapter = () => {
     this.setState({
       needsAdapter: true,
-      needsHDMIAdapter: false,
       needsVGAAdapter: true,
       ishidden: false,
     })
@@ -134,7 +130,10 @@ class App extends Component {
           setDevice={this.setDevice}
         />
         {this.state.needsAdapter ? (
-          <Negative ishidden={this.state.ishidden} />
+          <Negative
+            ishidden={this.state.ishidden}
+            deviceData={this.state.deviceData}
+          />
         ) : (
           <Positive ishidden={this.state.ishidden} />
         )}
