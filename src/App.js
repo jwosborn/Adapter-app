@@ -34,7 +34,7 @@ class App extends Component {
     axios
       .get(`https://adapter-api.herokuapp.com/api/devices/${device}`)
       .then(res => {
-        this.setState({ deviceData: res.data })
+        this.setState({ deviceData: res.data[0] })
       })
   }
 
@@ -58,9 +58,15 @@ class App extends Component {
   //     this.setNeedsVGAAdapter()
   //   }
   // }
-  //function to display Positive component
-  handleDisplayBanner = () => {
-    this.setState({ ishidden: false })
+  //function to display Positive component, i.e. no adapter necessary
+  handleDisplayBanner = (roomHDMI, deviceHDMI, roomVGA, deviceVGA) => {
+    if (
+      roomHDMI === true &&
+      deviceHDMI === true &&
+      (roomVGA === true && deviceVGA === true)
+    ) {
+      this.setState({ ishidden: false })
+    }
   }
 
   //Breaking apart adapterCheck()
@@ -128,11 +134,13 @@ class App extends Component {
           adapterCheck={this.adapterCheck}
           devices={this.state.devices}
           setDevice={this.setDevice}
+          deviceData={this.state.deviceData}
         />
         {this.state.needsAdapter ? (
           <Negative
             ishidden={this.state.ishidden}
             deviceData={this.state.deviceData}
+            getDeviceAdapter={this.getDeviceAdapter}
           />
         ) : (
           <Positive ishidden={this.state.ishidden} />

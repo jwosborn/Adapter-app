@@ -1,14 +1,14 @@
 import React from 'react'
 import Link from './Link'
 
-const Negative = ({ ishidden, getDeviceAdapter }) => {
+const Negative = ({ ishidden, getDeviceAdapter, deviceData }) => {
   if (ishidden === false) {
     return (
       <div id="adapter">
         <h1>
           You'll need a
           <br />
-          {getDeviceAdapter()}
+          {getDeviceAdapter(deviceData.adapterHDMI, deviceData.adapterVGA)}
           <br />
           Adapter
         </h1>
