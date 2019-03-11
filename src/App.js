@@ -4,19 +4,27 @@ import React, { Component } from 'react'
 import Header from './Components/Header'
 import Positive from './Components/Positive'
 import Negative from './Components/Negative'
-import Tiles from './Components/Tiles'
-import classroomList from './Data/Classroomlist'
+import Tile from './Components/Tile'
 // import { Devicelist } from './Data/Devicelist'
 import './App.css'
 import axios from 'axios'
 
 class App extends Component {
   state = {
-    adapterStatus: { needsAdapter: false },
-    ishidden: true,
+    buildings: [],
+    building: '',
+    rooms: [],
+    room: '',
+    roomData: {},
     devices: [],
     device: '',
     deviceData: {},
+    roomHDMI: '',
+    deviceHDMI: '',
+    roomVGA: '',
+    deviceVGA: '',
+    adapterStatus: { needsAdapter: false },
+    ishidden: true,
   }
 
   //place devices[] in state
@@ -24,38 +32,67 @@ class App extends Component {
     axios.get('https://adapter-api.herokuapp.com/api/devices').then(res => {
       this.setState({ devices: res.data })
     })
+    axios.get('https://adapter-api.herokuapp.com/api/buildings').then(res => {
+      this.setState({ buildings: res.data })
+    })
+  }
+  //sets selected building in state and calls rooms
+  setBuilding = building => {
+    axios
+      .get(`https://adapter-api.herokuapp.com/api/buildings/${building}/rooms`)
+      .then(res => {
+        this.setState({ building: building, rooms: res.data })
+      })
+      .catch(err => console.log(err))
   }
 
-  //sets selected device from Tiles into App state
+  //calls for room and sets room and roomData in  state
+  setRoom = room => {
+    const { building } = this.state
+    axios
+      .get(
+        `https://adapter-api.herokuapp.com/api/buildings/${building}/${room}`,
+      )
+      .then(res => {
+        this.setState({
+          room: room,
+          roomData: res.data[0],
+          roomHDMI: res.data[0].hasHDMI,
+          roomVGA: res.data[0].hasVGA,
+        })
+      })
+      .catch(err => console.log(err))
+  }
+
+  //sets selected device and deviceData into  state
   setDevice = device => {
     this.setState({ device: device })
     axios
       .get(`https://adapter-api.herokuapp.com/api/devices/${device}`)
       .then(res => {
-        this.setState({ deviceData: res.data[0] })
+        this.setState({
+          deviceData: res.data[0],
+          deviceHDMI: res.data[0].hasHDMI,
+          deviceVGA: res.data[0].hasVGA,
+        })
       })
   }
 
-  // Function tests data from roomData and deviceData
-  //changes App State so that App renders Positive/Negative banners
-  // adapterCheck = (roomHDMI, deviceHDMI, roomVGA, deviceVGA) => {
-  //   if (
-  //     (roomHDMI === true && deviceHDMI === true) ||
-  //     (roomVGA === true && deviceVGA === true)
-  //   ) {
-  //     this.setNeedsNoAdapter()
-  //   } else if (
-  //     roomHDMI === true &&
-  //     deviceHDMI === false &&
-  //     (roomVGA === true && deviceVGA === false)
-  //   ) {
-  //     this.setNeedsBoth()
-  //   } else if (roomHDMI === true && deviceHDMI === false) {
-  //     this.setNeedsHDMIAdapter()
-  //   } else if (roomVGA === true && deviceVGA === false) {
-  //     this.setNeedsVGAAdapter()
-  //   }
-  // }
+  //Function tests data from roomData and deviceData returns boolean
+  adapterCheck = (roomHDMI, deviceHDMI, roomVGA, deviceVGA) => {
+    //test booleans return true if adapter is needed
+    if (
+      (roomHDMI === true && deviceHDMI === true) ||
+      (roomVGA === true && deviceVGA === true)
+    ) {
+      return false
+    } else if (
+      (roomHDMI === true && deviceHDMI === false) ||
+      (roomVGA === true && deviceVGA === false)
+    ) {
+      return true
+    }
+  }
 
   //function to display Positive component, i.e. no adapter necessary
   handleDisplayBanner = (roomHDMI, deviceHDMI, roomVGA, deviceVGA) => {
@@ -127,14 +164,37 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Tiles
-          buildings={classroomList}
-          adapterCheck={this.adapterCheck}
-          devices={this.state.devices}
-          setDevice={this.setDevice}
-          deviceData={this.state.deviceData}
-        />
-        {this.state.adapterStatus.needsAdapter ? (
+        <div className="tile-wrapper">
+          {this.state.rooms.length === 0 &&
+            this.state.buildings.map((building, index) => (
+              <Tile
+                key={index}
+                text={building}
+                id={building}
+                func={this.setBuilding}
+              />
+            ))}
+          {!this.state.room &&
+            this.state.rooms.map((room, index) => (
+              <Tile key={index} text={room} id={room} func={this.setRoom} />
+            ))}
+          {this.state.room &&
+            this.state.devices.map((dev, index) => (
+              <Tile
+                key={index}
+                id={dev._id}
+                text={dev.name}
+                func={this.setDevice}
+              />
+            ))}
+        </div>
+        {this.state.device &&
+        this.adapterCheck(
+          this.state.roomHDMI,
+          this.state.deviceHDMI,
+          this.state.roomVGA,
+          this.state.deviceVGA,
+        ) ? (
           <Negative
             needsAdapter={this.state.adapterStatus.needsAdapter}
             ishidden={this.state.ishidden}
