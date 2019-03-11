@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from './Link'
 
-const Negative = ({ ishidden, getDeviceAdapter, deviceData }) => {
+const Negative = ({ getDeviceAdapter, deviceData }) => {
   return (
     <div id="adapter">
       <h1>
