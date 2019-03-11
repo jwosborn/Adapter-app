@@ -186,22 +186,23 @@ class App extends Component {
               />
             ))}
         </div>
-        {this.state.device &&
-        this.adapterCheck(
-          this.state.roomHDMI,
-          this.state.deviceHDMI,
-          this.state.roomVGA,
-          this.state.deviceVGA,
-        ) ? (
-          <Negative
-            needsAdapter={this.state.adapterStatus.needsAdapter}
-            ishidden={this.state.ishidden}
-            deviceData={this.state.deviceData}
-            getDeviceAdapter={this.getDeviceAdapter}
-          />
-        ) : (
-          <Positive ishidden={this.state.ishidden} />
-        )}
+        {this.state.device ? (
+          this.adapterCheck(
+            this.state.roomHDMI,
+            this.state.deviceHDMI,
+            this.state.roomVGA,
+            this.state.deviceVGA,
+          ) ? (
+            <Negative
+              needsAdapter={this.state.adapterStatus.needsAdapter}
+              ishidden={this.state.ishidden}
+              deviceData={this.state.deviceData}
+              getDeviceAdapter={this.getDeviceAdapter}
+            />
+          ) : (
+            <Positive ishidden={this.state.ishidden} />
+          )
+        ) : null}
       </div>
     )
   }
