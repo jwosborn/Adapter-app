@@ -17,14 +17,12 @@ class App extends Component {
     room: '',
     roomData: {},
     devices: [],
-    device: '',
     deviceData: {},
     roomHDMI: '',
     deviceHDMI: '',
     roomVGA: '',
     deviceVGA: '',
     adapterStatus: { needsAdapter: false },
-    ishidden: true,
   }
 
   //place devices[] in state
