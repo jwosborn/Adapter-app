@@ -86,12 +86,14 @@ class App extends Component {
   setNeedsHDMIAdapter = () => {
     this.setState({
       adapterStatus: { needsAdapter: true, needsHDMI: true },
+      ishidden: false,
     })
   }
 
   setNeedsVGAAdapter = () => {
     this.setState({
       adapterStatus: { needsAdapter: true, needsVGA: true },
+      ishidden: false,
     })
   }
 
@@ -102,6 +104,7 @@ class App extends Component {
         needsHDMI: true,
         needsVGA: true,
       },
+      ishidden: false,
     })
   }
   //ADAPTER DISPLAY
@@ -109,13 +112,13 @@ class App extends Component {
   //Function that displays appropriate adapter(s) dynamically needs to be moved to Tiles
   getDeviceAdapter = (adapterHDMI, adapterVGA) => {
     if (
-      this.state.needsAdapter.needsHDMI === true &&
-      this.state.needsAdapter.needsVGA === true
+      this.state.adapterStatus.needsHDMI === true &&
+      this.state.adapterStatus.needsVGA === true
     ) {
       return adapterHDMI + ' or a ' + adapterVGA
-    } else if (this.state.needsAdapter.needsHDMI === true) {
+    } else if (this.state.adapterStatus.needsHDMI === true) {
       return adapterHDMI
-    } else if (this.state.needsAdapter.needsVGA === true) {
+    } else if (this.state.adapterStatus.needsVGA === true) {
       return adapterVGA
     }
   }
@@ -133,7 +136,7 @@ class App extends Component {
         />
         {this.state.adapterStatus.needsAdapter ? (
           <Negative
-            needsAdapter={this.state.needsAdapter}
+            needsAdapter={this.state.adapterStatus.needsAdapter}
             ishidden={this.state.ishidden}
             deviceData={this.state.deviceData}
             getDeviceAdapter={this.getDeviceAdapter}

@@ -11,6 +11,11 @@ class Tiles extends Component {
     roomData: {},
   }
 
+  deviceHDMI = this.props.deviceData.hasHDMI
+  deviceVGA = this.props.deviceData.hasVGA
+  roomHDMI = this.state.roomData.hasHDMI
+  roomVGA = this.state.roomData.hasVGA
+
   componentDidMount() {
     axios.get('https://adapter-api.herokuapp.com/api/buildings').then(res => {
       this.setState({ buildings: res.data })
