@@ -22,9 +22,13 @@ class App extends Component {
     deviceHDMI: '',
     roomVGA: '',
     deviceVGA: '',
+    adapterHDMI: '',
+    adapterVGA: '',
+    linkHDMI: '',
+    linkVGA: '',
   }
 
-  //place devices[] in state
+  //place buildings[] and devices[] in state
   componentDidMount = () => {
     axios.get('https://adapter-api.herokuapp.com/api/devices').then(res => {
       this.setState({ devices: res.data })
@@ -33,7 +37,8 @@ class App extends Component {
       this.setState({ buildings: res.data })
     })
   }
-  //sets selected building in state and calls rooms
+
+  //sets selected building in state and calls rooms upon user selection
   setBuilding = building => {
     axios
       .get(`https://adapter-api.herokuapp.com/api/buildings/${building}/rooms`)
@@ -43,7 +48,7 @@ class App extends Component {
       .catch(err => console.log(err))
   }
 
-  //calls for room and sets room and roomData in  state
+  //calls for room and sets room and roomData in state upon user selection
   setRoom = room => {
     const { building } = this.state
     axios
@@ -61,7 +66,7 @@ class App extends Component {
       .catch(err => console.log(err))
   }
 
-  //sets selected device and deviceData into  state
+  //sets selected device and deviceData into  state upon user selection
   setDevice = device => {
     this.setState({ device: device })
     axios
@@ -71,11 +76,15 @@ class App extends Component {
           deviceData: res.data[0],
           deviceHDMI: res.data[0].hasHDMI,
           deviceVGA: res.data[0].hasVGA,
+          adapterHDMI: res.data[0].adapterHDMI,
+          adapterVGA: res.data[0].adapterVGA,
+          linkHDMI: res.data[0].linkHDMI,
+          linkVGA: res.data[0].linkVGA,
         })
       })
   }
 
-  //Function tests data from roomData and deviceData returns boolean
+  //Function tests data from roomData and deviceData returns boolean called upon device selection
   adapterCheck = (roomHDMI, deviceHDMI, roomVGA, deviceVGA) => {
     //test booleans return true if adapter is needed
     if (
@@ -93,7 +102,7 @@ class App extends Component {
 
   //ADAPTER DISPLAY
 
-  //helper function for adapterCheck() that gets specific adapter needs
+  //helper function for adapterCheck() that gets specific adapter needs and displays adapter names
   whichAdapter = (roomHDMI, deviceHDMI, roomVGA, deviceVGA) => {
     //test both (prevents infinite loop)
     if (
@@ -101,17 +110,30 @@ class App extends Component {
       deviceHDMI === false &&
       (roomVGA === true && deviceVGA === false)
     ) {
-      return `${this.state.deviceData.adapterHDMI} or a ${
-        this.state.deviceData.adapterVGA
-      }`
+      return `${this.state.adapterHDMI} or a ${this.state.adapterVGA}`
     }
     //test HDMI
     else if (roomHDMI === true && deviceHDMI === false) {
-      return this.state.deviceData.adapterHDMI
+      return this.state.adapterHDMI
     }
     //test VGA
     else if (roomVGA === true && deviceVGA === false) {
-      return this.state.deviceData.adapterVGA
+      return this.state.adapterVGA
+    }
+  }
+
+  //function to pass link(s) to Link
+  whichLink = (roomHDMI, deviceHDMI, roomVGA, deviceVGA) => {
+    if (
+      roomHDMI === true &&
+      deviceHDMI === false &&
+      (roomVGA === true && deviceVGA === false)
+    ) {
+      return [this.state.linkHDMI, this.state.linkVGA]
+    } else if (roomHDMI === true && deviceHDMI === false) {
+      return this.state.linkHDMI
+    } else if (roomVGA === true && deviceVGA === false) {
+      return this.state.linkVGA
     }
   }
 
@@ -155,6 +177,7 @@ class App extends Component {
               deviceData={this.state.deviceData}
               getDeviceAdapter={this.getDeviceAdapter}
               whichAdapter={this.whichAdapter}
+              whichLink={this.whichLink}
             />
           ) : (
             <Positive />

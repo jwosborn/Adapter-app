@@ -1,31 +1,36 @@
 import React from 'react'
 
 //  Dynamic Link Population
-const Link = props => {
+const Link = ({ whichAdapter, whichLink, deviceData, roomData }) => {
   return (
     <div>
       <h2>
-        You can buy an {this.props.adapterName1} adapter by clicking{' '}
+        You can buy a
+        {whichAdapter(
+          roomData.hasHDMI,
+          deviceData.hasHDMI,
+          roomData.hasVGA,
+          deviceData.hasVGA,
+        )}
+        adapter by clicking{' '}
         <a
-          rel="noopener noreferrer"
-          target="_blank"
-          href={this.props.adapterLink1}
+          noreferrer
+          noopener
+          href={whichLink(
+            roomData.hasHDMI,
+            deviceData.hasHDMI,
+            roomData.hasVGA,
+            deviceData.hasVGA,
+          )}
         >
           here
         </a>
-      </h2>
-      {this.props.twoAdapters ? (
-        <h2>
-          You can also buy an {this.props.adapterName2} adapter by clicking{' '}
-          <a
-            rel="noopener noreferrer"
-            target="_blank"
-            href={this.props.adapterLink2}
-          >
-            here
+        {whichLink.length >= 2 ? (
+          <a noreferrer noopener href={whichLink[1]}>
+            or here
           </a>
-        </h2>
-      ) : null}
+        ) : null}
+      </h2>
     </div>
   ) //return
 } //component

@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from './Link'
 
-const Negative = ({ whichAdapter, roomData, deviceData }) => {
+const Negative = ({ whichLink, whichAdapter, roomData, deviceData }) => {
   return (
     <div id="adapter">
       <h1>
@@ -21,11 +21,10 @@ const Negative = ({ whichAdapter, roomData, deviceData }) => {
         <a href="mailto:classroomtechnology@sbts.edu">here</a>
       </h2>
       <Link
-        adapterName1={''}
-        adapterName2={''}
-        twoAdapters={bool}
-        adapterLink1={''}
-        adapterLink2={''}
+        whichAdapter={whichAdapter}
+        deviceData={deviceData}
+        roomData={roomData}
+        whichLink={whichLink}
       />
     </div>
   )
