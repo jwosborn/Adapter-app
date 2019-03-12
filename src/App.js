@@ -92,17 +92,6 @@ class App extends Component {
     }
   }
 
-  //function to display Positive component, i.e. no adapter necessary
-  handleDisplayBanner = (roomHDMI, deviceHDMI, roomVGA, deviceVGA) => {
-    if (
-      roomHDMI === true &&
-      deviceHDMI === true &&
-      (roomVGA === true && deviceVGA === true)
-    ) {
-      this.setState({ ishidden: false })
-    }
-  }
-
   //Breaking apart adapterCheck()
   checkHDMI = (roomHDMI, deviceHDMI) => {
     if (roomHDMI === true && deviceHDMI === false) {
@@ -121,14 +110,12 @@ class App extends Component {
   setNeedsHDMIAdapter = () => {
     this.setState({
       adapterStatus: { needsAdapter: true, needsHDMI: true },
-      ishidden: false,
     })
   }
 
   setNeedsVGAAdapter = () => {
     this.setState({
       adapterStatus: { needsAdapter: true, needsVGA: true },
-      ishidden: false,
     })
   }
 
@@ -139,7 +126,6 @@ class App extends Component {
         needsHDMI: true,
         needsVGA: true,
       },
-      ishidden: false,
     })
   }
   //ADAPTER DISPLAY
@@ -194,7 +180,7 @@ class App extends Component {
             this.state.deviceVGA,
           ) ? (
             <Negative
-              needsAdapter={this.state.adapterStatus.needsAdapter}
+              adapterStatus={this.state.adapterStatus}
               deviceData={this.state.deviceData}
               getDeviceAdapter={this.getDeviceAdapter}
             />
