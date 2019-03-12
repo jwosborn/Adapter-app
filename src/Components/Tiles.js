@@ -16,32 +16,7 @@ class Tiles extends Component {
   roomHDMI = this.state.roomData.hasHDMI
   roomVGA = this.state.roomData.hasVGA
 
-  componentDidMount() {
-    axios.get('https://adapter-api.herokuapp.com/api/buildings').then(res => {
-      this.setState({ buildings: res.data })
-    })
-  }
-
-  setBuilding = building => {
-    axios
-      .get(`https://adapter-api.herokuapp.com/api/buildings/${building}/rooms`)
-      .then(res => {
-        this.setState({ building: building, rooms: res.data })
-      })
-      .catch(err => console.log(err))
-  }
-
-  setRoom = room => {
-    const { building } = this.state
-    axios
-      .get(
-        `https://adapter-api.herokuapp.com/api/buildings/${building}/${room}`,
-      )
-      .then(res => {
-        this.setState({ room: room, roomData: res.data[0] })
-      })
-      .catch(err => console.log(err))
-  }
+  componentDidMount() {}
 
   render() {
     const { buildings, room, rooms } = this.state

@@ -195,12 +195,11 @@ class App extends Component {
           ) ? (
             <Negative
               needsAdapter={this.state.adapterStatus.needsAdapter}
-              ishidden={this.state.ishidden}
               deviceData={this.state.deviceData}
               getDeviceAdapter={this.getDeviceAdapter}
             />
           ) : (
-            <Positive ishidden={this.state.ishidden} />
+            <Positive />
           )
         ) : null}
       </div>
