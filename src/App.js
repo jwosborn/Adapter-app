@@ -22,7 +22,6 @@ class App extends Component {
     deviceHDMI: '',
     roomVGA: '',
     deviceVGA: '',
-    adapterStatus: { needsAdapter: false },
   }
 
   //place devices[] in state
@@ -92,55 +91,27 @@ class App extends Component {
     }
   }
 
-  //Breaking apart adapterCheck()
-  checkHDMI = (roomHDMI, deviceHDMI) => {
-    if (roomHDMI === true && deviceHDMI === false) {
-      this.setNeedsHDMIAdapter()
-    }
-  }
-
-  checkVGA = (roomVGA, deviceVGA) => {
-    if (roomVGA === true && deviceVGA === false) {
-      this.setNeedsVGAAdapter()
-    }
-  }
-
-  //Functions that change App state to render Positive/Negative(may rename) Banners. passed to Tiles
-
-  setNeedsHDMIAdapter = () => {
-    this.setState({
-      adapterStatus: { needsAdapter: true, needsHDMI: true },
-    })
-  }
-
-  setNeedsVGAAdapter = () => {
-    this.setState({
-      adapterStatus: { needsAdapter: true, needsVGA: true },
-    })
-  }
-
-  setNeedsBoth = () => {
-    this.setState({
-      adapterStatus: {
-        needsAdapter: true,
-        needsHDMI: true,
-        needsVGA: true,
-      },
-    })
-  }
   //ADAPTER DISPLAY
 
-  //Function that displays appropriate adapter(s) dynamically needs to be moved to Tiles
-  getDeviceAdapter = (adapterHDMI, adapterVGA) => {
+  //helper function for adapterCheck() that gets specific adapter needs
+  whichAdapter = (roomHDMI, deviceHDMI, roomVGA, deviceVGA) => {
+    //test both (prevents infinite loop)
     if (
-      this.state.adapterStatus.needsHDMI === true &&
-      this.state.adapterStatus.needsVGA === true
+      roomHDMI === true &&
+      deviceHDMI === false &&
+      (roomVGA === true && deviceVGA === false)
     ) {
-      return adapterHDMI + ' or a ' + adapterVGA
-    } else if (this.state.adapterStatus.needsHDMI === true) {
-      return adapterHDMI
-    } else if (this.state.adapterStatus.needsVGA === true) {
-      return adapterVGA
+      return `${this.state.deviceData.adapterHDMI} or a ${
+        this.state.deviceData.adapterVGA
+      }`
+    }
+    //test HDMI
+    else if (roomHDMI === true && deviceHDMI === false) {
+      return this.state.deviceData.adapterHDMI
+    }
+    //test VGA
+    else if (roomVGA === true && deviceVGA === false) {
+      return this.state.deviceData.adapterVGA
     }
   }
 
@@ -180,9 +151,10 @@ class App extends Component {
             this.state.deviceVGA,
           ) ? (
             <Negative
-              adapterStatus={this.state.adapterStatus}
+              roomData={this.state.roomData}
               deviceData={this.state.deviceData}
               getDeviceAdapter={this.getDeviceAdapter}
+              whichAdapter={this.whichAdapter}
             />
           ) : (
             <Positive />
