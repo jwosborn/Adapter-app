@@ -1,36 +1,24 @@
 import React from 'react'
 
 //  Dynamic Link Population
-const Link = ({ whichAdapter, whichLink, deviceData, roomData }) => {
+const Link = ({ whichAdapter, whichLink }) => {
   return (
     <div>
       <h2>
-        You can buy a
-        {whichAdapter(
-          roomData.hasHDMI,
-          deviceData.hasHDMI,
-          roomData.hasVGA,
-          deviceData.hasVGA,
-        )}
+        You can buy a {whichAdapter}
         adapter by clicking{' '}
-        <a
-          noreferrer
-          noopener
-          href={whichLink(
-            roomData.hasHDMI,
-            deviceData.hasHDMI,
-            roomData.hasVGA,
-            deviceData.hasVGA,
-          )}
-        >
+        <a noreferrer noopener href={whichLink}>
           here
-        </a>
-        {whichLink.length >= 2 ? (
-          <a noreferrer noopener href={whichLink[1]}>
-            or here
-          </a>
-        ) : null}
+        </a>{' '}
       </h2>
+      {whichLink.length === 2 ? (
+        <h2>
+          or{' '}
+          <a noreferrer noopener href={whichLink[1]}>
+            here
+          </a>
+        </h2>
+      ) : null}
     </div>
   ) //return
 } //component

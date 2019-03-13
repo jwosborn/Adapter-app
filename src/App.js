@@ -173,11 +173,18 @@ class App extends Component {
             this.state.deviceVGA,
           ) ? (
             <Negative
-              roomData={this.state.roomData}
-              deviceData={this.state.deviceData}
-              getDeviceAdapter={this.getDeviceAdapter}
-              whichAdapter={this.whichAdapter}
-              whichLink={this.whichLink}
+              whichAdapter={this.whichAdapter(
+                this.state.roomHDMI,
+                this.state.deviceHDMI,
+                this.state.roomVGA,
+                this.state.deviceVGA,
+              )}
+              whichLink={this.whichLink(
+                this.state.roomHDMI,
+                this.state.deviceHDMI,
+                this.state.roomVGA,
+                this.state.deviceVGA,
+              )}
             />
           ) : (
             <Positive />
