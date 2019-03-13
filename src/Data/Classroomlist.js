@@ -1,4 +1,4 @@
-export const Nortonlist = [
+const classroomList = [
   {
     roomNumber: 'Norton 011',
     hasHDMI: false,
@@ -165,3 +165,5 @@ export const Nortonlist = [
     hasVGA: true,
   },
 ]
+
+export default classroomList

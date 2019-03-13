@@ -1,98 +1,139 @@
 import React, { Component } from 'react'
 // Component Imports
-import Select from './Components/Select'
+// import Select from './Components/Select'
 import Header from './Components/Header'
 import Positive from './Components/Positive'
 import Negative from './Components/Negative'
-import {Nortonlist} from './Data/Classroomlist'
-import {Devicelist} from './Data/Devicelist'
+import Tile from './Components/Tile'
+// import { Devicelist } from './Data/Devicelist'
 import './App.css'
+import axios from 'axios'
 
 class App extends Component {
-
   state = {
-    needsAdapter: '',
-    needsHDMIAdapter: '',
-    needsVGAAdapter: '',
-    ishidden: true,
-    roomTarget: '',
-    deviceTarget: ''
+    buildings: [],
+    building: '',
+    rooms: [],
+    room: '',
+    roomData: {},
+    devices: [],
+    deviceData: {},
+    roomHDMI: '',
+    deviceHDMI: '',
+    roomVGA: '',
+    deviceVGA: '',
+    adapterHDMI: '',
+    adapterVGA: '',
+    linkHDMI: '',
+    linkVGA: '',
   }
-  
-  getRoomTarget = (i) => {
-    this.setState({roomTarget: i.currentTarget.value})
+
+  //place buildings[] and devices[] in state
+  componentDidMount = () => {
+    axios.get('https://adapter-api.herokuapp.com/api/devices').then(res => {
+      this.setState({ devices: res.data })
+    })
+    axios.get('https://adapter-api.herokuapp.com/api/buildings').then(res => {
+      this.setState({ buildings: res.data })
+    })
   }
 
-  getDeviceTarget = (i) => {
-    this.setState({deviceTarget: i.currentTarget.value})
-  }
-
-
-//Function that displays appropriate adapter(s) dynamically currently returns undefined
-  getDeviceAdapter = () => {
-    let deviceAdapterHDMI = Devicelist.find(x => x.name === this.state.deviceTarget).adapterHDMI
-    let deviceAdapterVGA = Devicelist.find(x => x.name === this.state.deviceTarget).adapterVGA
-
-      if (this.state.needsHDMIAdapter === true && this.state.needsVGAAdapter === true){
-        return (
-          deviceAdapterHDMI + ' or a ' + deviceAdapterVGA 
-        )
-      } else if (this.state.needsHDMIAdapter === true) {
-        return deviceAdapterHDMI
-      } else if (this.state.needsVGAAdapter === true) {
-        return deviceAdapterVGA
-      }
-    }
-
-//  Dynamic Link Population 
-  getAdapterLink = () => {
-    const adapterLinkHDMI = Devicelist.find(x => x.name === this.state.deviceTarget).linkHDMI
-    const adapterLinkVGA = Devicelist.find(x => x.name === this.state.deviceTarget).linkVGA
-    const displayLinkHDMI =  <h2>You can buy an HDMI adapter by clicking <a rel="noopener noreferrer" target="_blank" href={adapterLinkHDMI} >here</a></h2>
-    const displayLinkVGA =  <h2>You can buy a VGA adapter by clicking <a rel="noopener noreferrer" target="_blank" href={adapterLinkVGA} >here</a></h2>
-    const displayLinkBoth = <h2>You can buy an HDMI adapter by clicking <a rel="noopener noreferrer" target="_blank" href={adapterLinkHDMI} >here</a><br/> OR You can buy a VGA adapter by clicking <a rel="noopener noreferrer" target="_blank" href={adapterLinkVGA} >here</a></h2>
-
-        if (this.state.needsHDMIAdapter === true && this.state.needsVGAAdapter === false) {
-          return displayLinkHDMI
-        } else if (this.state.needsHDMIAdapter === false && this.state.needsVGAAdapter === true) {
-          return displayLinkVGA
-        } else if (this.state.needsHDMIAdapter === true && this.state.needsVGAAdapter === true) {
-          return (
-            displayLinkBoth
-          )
-        }
-    }
-
-
-//Checks to see if adapters are needed and what type
-  adapterCheck = (roomHDMI, roomVGA, deviceHDMI, deviceVGA) => {
-    if((roomHDMI === true && deviceHDMI === true) || (roomVGA === true && deviceVGA === true)) {
-      this.setState({
-        needsAdapter: false,
-        needsHDMIAdapter: false,
-        needsVGAAdapter: false,
-        ishidden: false})
-    } else if ((roomHDMI === true && deviceHDMI === false) && (roomVGA === true && deviceVGA === false)) {
-      this.setState({
-        needsAdapter: true,
-        needsHDMIAdapter: true,
-        needsVGAAdapter: true, 
-        ishidden: false
+  //sets selected building in state and calls rooms upon user selection
+  setBuilding = building => {
+    axios
+      .get(`https://adapter-api.herokuapp.com/api/buildings/${building}/rooms`)
+      .then(res => {
+        this.setState({ building: building, rooms: res.data })
       })
+      .catch(err => console.log(err))
+  }
+
+  //calls for room and sets room and roomData in state upon user selection
+  setRoom = room => {
+    const { building } = this.state
+    axios
+      .get(
+        `https://adapter-api.herokuapp.com/api/buildings/${building}/${room}`,
+      )
+      .then(res => {
+        this.setState({
+          room: room,
+          roomData: res.data[0],
+          roomHDMI: res.data[0].hasHDMI,
+          roomVGA: res.data[0].hasVGA,
+        })
+      })
+      .catch(err => console.log(err))
+  }
+
+  //sets selected device and deviceData into  state upon user selection
+  setDevice = device => {
+    this.setState({ device: device })
+    axios
+      .get(`https://adapter-api.herokuapp.com/api/devices/${device}`)
+      .then(res => {
+        this.setState({
+          deviceData: res.data[0],
+          deviceHDMI: res.data[0].hasHDMI,
+          deviceVGA: res.data[0].hasVGA,
+          adapterHDMI: res.data[0].adapterHDMI,
+          adapterVGA: res.data[0].adapterVGA,
+          linkHDMI: res.data[0].linkHDMI,
+          linkVGA: res.data[0].linkVGA,
+        })
+      })
+  }
+
+  //Function tests data from roomData and deviceData returns boolean called upon device selection
+  adapterCheck = (roomHDMI, deviceHDMI, roomVGA, deviceVGA) => {
+    //test booleans return true if adapter is needed
+    if (
+      (roomHDMI === true && deviceHDMI === true) ||
+      (roomVGA === true && deviceVGA === true)
+    ) {
+      return false
+    } else if (
+      (roomHDMI === true && deviceHDMI === false) ||
+      (roomVGA === true && deviceVGA === false)
+    ) {
+      return true
+    }
+  }
+
+  //ADAPTER DISPLAY
+
+  //helper function for adapterCheck() that gets specific adapter needs and displays adapter names
+  whichAdapter = (roomHDMI, deviceHDMI, roomVGA, deviceVGA) => {
+    //test both (prevents infinite loop)
+    if (
+      roomHDMI === true &&
+      deviceHDMI === false &&
+      (roomVGA === true && deviceVGA === false)
+    ) {
+      return `${this.state.adapterHDMI} or a ${this.state.adapterVGA}`
+    }
+    //test HDMI
+    else if (roomHDMI === true && deviceHDMI === false) {
+      return this.state.adapterHDMI
+    }
+    //test VGA
+    else if (roomVGA === true && deviceVGA === false) {
+      return this.state.adapterVGA
+    }
+  }
+
+  //function to pass link(s) to Link
+  whichLink = (roomHDMI, deviceHDMI, roomVGA, deviceVGA) => {
+    if (
+      roomHDMI === true &&
+      deviceHDMI === false &&
+      (roomVGA === true && deviceVGA === false)
+    ) {
+      return [this.state.linkHDMI, this.state.linkVGA]
     } else if (roomHDMI === true && deviceHDMI === false) {
-      this.setState({
-        needsAdapter: true,
-        needsHDMIAdapter: true,
-        needsVGAAdapter: false, 
-        ishidden: false
-      })
-    } else if (roomVGA === true && deviceVGA === false)  {
-      this.setState({
-        needsAdapter: true, 
-        needsHDMIAdapter: false, 
-        needsVGAAdapter: true,
-        ishidden: false
-      })
+      return this.state.linkHDMI
+    } else if (roomVGA === true && deviceVGA === false) {
+      return this.state.linkVGA
     }
   }
 
@@ -100,28 +141,55 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Select 
-        opts={Nortonlist}
-        dopts={Devicelist}
-        adapterCheck={this.adapterCheck}
-        roomTarget={this.state.roomTarget}
-        deviceTarget={this.state.deviceTarget}
-        getRoomTarget={this.getRoomTarget}
-        getDeviceTarget={this.getDeviceTarget}
-        />
-        {
-          this.state.needsAdapter 
-              ? <Negative 
-                  ishidden={this.state.ishidden}
-                  Devicelist={Devicelist}
-                  deviceTarget={this.state.deviceTarget}
-                  getDeviceAdapter={this.getDeviceAdapter}
-                  needsHDMIAdapter={this.state.needsHDMIAdapter}
-                  needsVGAAdapter={this.state.needsVGAAdapter}
-                  getAdapterLink={this.getAdapterLink}
-                /> 
-              : <Positive ishidden={this.state.ishidden}/>
-        }
+        <div className="tile-wrapper">
+          {this.state.rooms.length === 0 &&
+            this.state.buildings.map((building, index) => (
+              <Tile
+                key={index}
+                text={building}
+                id={building}
+                func={this.setBuilding}
+              />
+            ))}
+          {!this.state.room &&
+            this.state.rooms.map((room, index) => (
+              <Tile key={index} text={room} id={room} func={this.setRoom} />
+            ))}
+          {this.state.room &&
+            this.state.devices.map((dev, index) => (
+              <Tile
+                key={index}
+                id={dev._id}
+                text={dev.name}
+                func={this.setDevice}
+              />
+            ))}
+        </div>
+        {this.state.device ? (
+          this.adapterCheck(
+            this.state.roomHDMI,
+            this.state.deviceHDMI,
+            this.state.roomVGA,
+            this.state.deviceVGA,
+          ) ? (
+            <Negative
+              whichAdapter={this.whichAdapter(
+                this.state.roomHDMI,
+                this.state.deviceHDMI,
+                this.state.roomVGA,
+                this.state.deviceVGA,
+              )}
+              whichLink={this.whichLink(
+                this.state.roomHDMI,
+                this.state.deviceHDMI,
+                this.state.roomVGA,
+                this.state.deviceVGA,
+              )}
+            />
+          ) : (
+            <Positive />
+          )
+        ) : null}
       </div>
     )
   }
