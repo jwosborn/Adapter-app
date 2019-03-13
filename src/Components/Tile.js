@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 const upperFirst = text => {
   return typeof text === 'string'
@@ -7,17 +7,17 @@ const upperFirst = text => {
     : text
 }
 
-// const tilebounce = keyframes`{
-//   0% {
-//     transform: translateY(15%);
-//   }
-//   50%{
-//     transform: translateY(-10%);
-//   }
-//   100%{
-//     transform: translateY(0);
-//   }
-// }`
+const tilebounce = keyframes`{
+  0% {
+    transform: translateY(15%);
+  }
+  50%{
+    transform: translateY(-10%);
+  }
+  100%{
+    transform: translateY(0);
+  }
+}`
 const Box = styled.div`
   cursor: pointer;
   position: relative;
@@ -31,7 +31,7 @@ const Box = styled.div`
   box-shadow: -4px 4px 20px 1px black;
   text-decoration: none;
   color: inherit;
-  ${'' /* animation: ${tilebounce} 3s;  */}
+  animation: ${tilebounce} 0.3s;
   :active {
     box-shadow: -4px 4px 10px 1px black;
   }
