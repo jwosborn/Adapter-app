@@ -1,11 +1,36 @@
-
+.tile-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 15vh;
+}
+.tile {
+  cursor: pointer;
+  position: relative;
+  flex-grow: 1;
+  margin: 2vw 2vh;
+  width: 275px;
+  max-width: 275px;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: -4px 4px 20px 1px black;
+  text-decoration: none;
+  color: inherit;
+  animation: tilebounce .3s; 
+}
+.tile:active {
+  box-shadow: -4px 4px 10px 1px black;
+}
+.text {
+  font-family: monospace;
+  font-size: 2em;
+}
 
 .App {
   height: 100vh;
-  width: 95vw;
-  margin-left: auto;
-  margin-right: auto; 
-  background-color: #7ebbe4;
+  width: 100vw;
   text-align: center;
   font-family: 'Nunito', sans-serif;
 }
@@ -30,6 +55,7 @@
   height: 125px; 
   width: 125px; 
   opacity: .75; 
+  border-radius: 0px 0px 10px 10px; 
 }
 
 
@@ -64,7 +90,7 @@ margin-top: 1.5em;
 
 #adapter {
   background-color: #5a0707;
-  width: 75vw; 
+  width: 85vw; 
   margin: auto; 
 }
 
@@ -92,5 +118,17 @@ margin-top: 1.5em;
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes tilebounce {
+  0% {
+    transform: translateY(15%);
+  }
+  50%{
+    transform: translateY(-10%);
+  }
+  100%{
+    transform: translateY(0);
   }
 }

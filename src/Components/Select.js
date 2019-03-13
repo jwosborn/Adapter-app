@@ -1,27 +1,6 @@
 import React, { Component } from 'react'
 
 class Select extends Component {
-  //function returns boolean values of hasHDMI and hasVGA based on device selection
-  connections = () => {
-    if (this.props.roomTarget === '' || this.props.deviceTarget === '') {
-      alert('Please select Classroom and Device.')
-    } else {
-      const roomHDMI = this.props.opts.find(
-        x => x.roomNumber === this.props.roomTarget,
-      ).hasHDMI
-      const roomVGA = this.props.opts.find(
-        x => x.roomNumber === this.props.roomTarget,
-      ).hasVGA
-      const deviceHDMI = this.props.dopts.find(
-        x => x.name === this.props.deviceTarget,
-      ).hasHDMI
-      const deviceVGA = this.props.dopts.find(
-        x => x.name === this.props.deviceTarget,
-      ).hasVGA
-      this.props.adapterCheck(roomHDMI, roomVGA, deviceHDMI, deviceVGA)
-    }
-  }
-
   render() {
     return (
       <div className="Choice-parent">
@@ -33,12 +12,12 @@ class Select extends Component {
           <select
             className="Room-list"
             id="Room-list"
-            onChange={e => this.props.getRoomTarget(e)}
+            onChange={e => this.props.roomLogic(e)}
           >
             <option disabled selected>
               Choose Your Classroom
             </option>
-            {this.props.opts.map(op => (
+            {this.props.classroomList.map(op => (
               <option key={op.roomNumber} value={op.roomNumber}>
                 {op.roomNumber}
               </option>
@@ -57,7 +36,7 @@ class Select extends Component {
             <option disabled selected>
               Choose Your Device
             </option>
-            {this.props.dopts.map(op => (
+            {this.props.deviceList.map(op => (
               <option key={op.name} value={op.name}>
                 {op.name}
               </option>
