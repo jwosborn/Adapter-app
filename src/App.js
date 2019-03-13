@@ -6,6 +6,9 @@ import Negative from './Components/Negative'
 import Tile from './Components/Tile'
 import './App.css'
 import axios from 'axios'
+import styled from 'styled-components'
+
+const Wrapper = styled.div``
 
 class App extends Component {
   state = {

@@ -4,6 +4,8 @@
   flex-direction: row;
   justify-content: space-around;
   margin-top: 15vh;
+  background: linear-gradient(
+      to bottom right, deepskyblue, white)
 }
 /* .tile {
   cursor: pointer;
@@ -20,9 +22,9 @@
   color: inherit;
   animation: tilebounce .3s; 
 } */
-.tile:active {
+/* .tile:active {
   box-shadow: -4px 4px 10px 1px black;
-}
+} */
 .text {
   font-family: monospace;
   font-size: 2em;
@@ -40,6 +42,7 @@
 .Header-Parent {
   display: flex; 
   justify-content: space-evenly;
+  background: navy
 }
 
 .app-title {
@@ -51,7 +54,7 @@
   position: fixed;
   top: 0;
   left: 2.5vw;
-  background-color: #7ebbe4;
+  background-color: deepskyblue;
   height: 125px; 
   width: 125px; 
   opacity: .75; 

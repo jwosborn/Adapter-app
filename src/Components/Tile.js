@@ -26,6 +26,7 @@ const Box = styled.div`
   width: 275px;
   max-width: 275px;
   height: 150px;
+  background: linear-gradient(to bottom right, deepskyblue, white);
   overflow: hidden;
   border-radius: 8px;
   box-shadow: -4px 4px 20px 1px black;
