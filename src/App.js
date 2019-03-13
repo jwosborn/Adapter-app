@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 // Component Imports
-// import Select from './Components/Select'
 import Header from './Components/Header'
 import Positive from './Components/Positive'
 import Negative from './Components/Negative'
 import Tile from './Components/Tile'
-// import { Devicelist } from './Data/Devicelist'
 import './App.css'
 import axios from 'axios'
 
