@@ -5,7 +5,7 @@
   justify-content: space-around;
   margin-top: 15vh;
   background: linear-gradient(
-      to bottom right, deepskyblue, white)
+      to bottom right, lightgray,  darkgray)
 }
 /* .tile {
   cursor: pointer;
@@ -25,16 +25,17 @@
 /* .tile:active {
   box-shadow: -4px 4px 10px 1px black;
 } */
-.text {
+/* .text {
   font-family: monospace;
   font-size: 2em;
-}
+} */
 
 .App {
   height: 100vh;
   width: 100vw;
   text-align: center;
   font-family: 'Nunito', sans-serif;
+  background: linear-gradient(lightgray, darkgray)
 }
 
 
@@ -42,7 +43,7 @@
 .Header-Parent {
   display: flex; 
   justify-content: space-evenly;
-  background: navy
+  background: linear-gradient(lightgray, darkgray)
 }
 
 .app-title {

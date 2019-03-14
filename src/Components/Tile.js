@@ -23,10 +23,16 @@ const Box = styled.div`
   position: relative;
   flex-grow: 1;
   margin: 2vw 2vh;
-  width: 275px;
+  width: 125px;
   max-width: 275px;
-  height: 150px;
-  background: linear-gradient(to bottom right, deepskyblue, white);
+  height: 75px;
+  background: linear-gradient(
+    to bottom right,
+    navy,
+    dodgerblue,
+    lightskyblue,
+    white
+  );
   overflow: hidden;
   border-radius: 8px;
   box-shadow: -4px 4px 20px 1px black;
@@ -37,9 +43,15 @@ const Box = styled.div`
     box-shadow: -4px 4px 10px 1px black;
   }
 `
+
+const Option = styled.h5`
+  font-family: monospace;
+  font-size: 2em;
+`
+
 const Tile = ({ text, func, id }) => (
   <Box onClick={() => func(id)}>
-    <h5 className="text">{upperFirst(text)}</h5>
+    <Option>{upperFirst(text)}</Option>
   </Box>
 )
 
