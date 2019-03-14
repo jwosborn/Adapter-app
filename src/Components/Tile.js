@@ -25,7 +25,7 @@ const Box = styled.div`
   margin: 2vw 2vh;
   width: 125px;
   max-width: 275px;
-  height: 75px;
+  height: 125px;
   background: linear-gradient(
     to bottom right,
     navy,
