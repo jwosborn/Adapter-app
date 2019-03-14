@@ -8,7 +8,13 @@ import './App.css'
 import axios from 'axios'
 import styled from 'styled-components'
 
-const Wrapper = styled.div``
+const Wrapper = styled.div`
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
+  background: linear-gradient(lightgray, darkgray);
+`
 
 class App extends Component {
   state = {
@@ -42,7 +48,7 @@ class App extends Component {
   //sets selected building in state and calls rooms upon user selection
   setBuilding = building => {
     axios
-      .get(`https://adapter-api.herokuapp.com/api/buildings/${building}/rooms`)
+      .get(`https://adapter-api.herokuapp.com/api/buildings/${building}`)
       .then(res => {
         this.setState({ building: building, rooms: res.data })
       })
@@ -140,7 +146,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <Wrapper>
         <Header />
         <div className="tile-wrapper">
           {this.state.rooms.length === 0 &&
@@ -154,13 +160,18 @@ class App extends Component {
             ))}
           {!this.state.room &&
             this.state.rooms.map((room, index) => (
-              <Tile key={index} text={room} id={room} func={this.setRoom} />
+              <Tile
+                key={index}
+                text={room.roomNumber}
+                id={room.roomNumber}
+                func={this.setRoom}
+              />
             ))}
           {this.state.room &&
             this.state.devices.map((dev, index) => (
               <Tile
                 key={index}
-                id={dev._id}
+                id={dev.id}
                 text={dev.name}
                 func={this.setDevice}
               />
@@ -191,7 +202,7 @@ class App extends Component {
             <Positive />
           )
         ) : null}
-      </div>
+      </Wrapper>
     )
   }
 }

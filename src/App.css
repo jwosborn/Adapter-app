@@ -30,21 +30,21 @@
   font-size: 2em;
 } */
 
-.App {
-  height: 100vh;
+/* .App {
+  /* height: 100vh;
   width: 100vw;
   text-align: center;
   font-family: 'Nunito', sans-serif;
-  background: linear-gradient(lightgray, darkgray)
-}
+  background: linear-gradient(lightgray, darkgray) */
+
 
 
 /* Header Styles */
-.Header-Parent {
+/* .Header-Parent {
   display: flex; 
   justify-content: space-evenly;
   background: linear-gradient(lightgray, darkgray)
-}
+} */
 
 .app-title {
   font-size: 76px; 
