@@ -6,14 +6,14 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: row
   justify-content: space-between;
-  background: #3a3a3a;
+  background: #aeaeae;
   padding-top: 5vh;
 `
 const Title = styled.span`
   margin-bottom: 5vh;
   font-family: monospace;
   font-size: 5em;
-  color: #27d4b6;
+  color: #3a3a3a;
   text-shadow: 2px 2px 2px gray;
   padding-right: 15vw;
 

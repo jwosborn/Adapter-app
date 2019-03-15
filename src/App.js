@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   width: 100vw;
   text-align: center;
   font-family: 'Nunito', sans-serif;
-  background: #3a3a3a;
+  background: #aeaeae;
 `
 
 const TileWrapper = styled.div`
@@ -22,7 +22,7 @@ const TileWrapper = styled.div`
   flex-direction: row;
   justify-content: space-around;
   margin-top: 5vh;
-  background: #3a3a3a;
+  background: #aeaeae;
 `
 
 class App extends Component {
@@ -75,8 +75,8 @@ class App extends Component {
         this.setState({
           room: room,
           roomData: res.data[0],
-          roomHDMI: !!res.data[0].hasHDMI,
-          roomVGA: !!res.data[0].hasVGA,
+          roomHDMI: res.data[0].hasHDMI,
+          roomVGA: res.data[0].hasVGA,
         })
       })
       .catch(err => console.log(err))
