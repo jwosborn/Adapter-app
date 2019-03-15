@@ -5,12 +5,15 @@ import styled from 'styled-components'
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
-  background: dimgray;
+  background: #3a3a3a;
+  padding-top: 5vh;
 `
 const Title = styled.span`
+  margin-bottom: 5vh;
+  font-family: monospace;
   font-size: 5em;
-  color: navy;
-  text-shadow: 2px 2px 2px lightskyblue;
+  color: #00d2ff;
+  text-shadow: 2px 2px 2px dodgerblue;
 `
 
 class Header extends Component {
