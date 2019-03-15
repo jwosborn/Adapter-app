@@ -16,14 +16,21 @@ const Title = styled.span`
   color: #27d4b6;
   text-shadow: 2px 2px 2px gray;
   padding-right: 15vw;
+
+  @media (max-width: 750px) {
+    padding-left: 2vw;
+  }
 `
 const Logo = styled.img`
   position: relative;
   left: 2.5vw;
-  height: 125px;
-  width: 125px;
+  height: 100px;
+  width: 100px;
   opacity: 0.75;
-  border-radius: 0px 0px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
+  @media (max-width: 750px) {
+    display: none;
+  }
 `
 
 class Header extends Component {

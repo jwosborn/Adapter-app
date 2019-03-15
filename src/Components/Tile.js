@@ -30,8 +30,6 @@ const Box = styled.div`
   overflow: hidden;
   border-radius: 8px;
   box-shadow: -4px 4px 20px 1px black;
-  text-decoration: none;
-
   animation: ${tilebounce} 0.3s;
   :active {
     box-shadow: -4px 4px 10px 1px black;
@@ -43,8 +41,7 @@ const Option = styled.h5`
   color: #261605;
   font-size: 1.75em;
   margin-top: 30px;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
+  white-space: no-wrap;
 `
 
 const Tile = ({ text, func, id }) => (

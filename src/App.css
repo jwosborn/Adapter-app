@@ -1,4 +1,4 @@
-.tile-wrapper {
+/* .tile-wrapper {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -6,7 +6,7 @@
   margin-top: 15vh;
   background: linear-gradient(
       to bottom right, lightgray,  darkgray)
-}
+} */
 /* .tile {
   cursor: pointer;
   position: relative;
@@ -51,7 +51,7 @@
 } */
 
 /* Logo Styles */
-.logo-img {
+/* .logo-img {
   position: fixed;
   top: 0;
   left: 2.5vw;
@@ -59,7 +59,7 @@
   width: 125px; 
   opacity: .75; 
   border-radius: 0px 0px 10px 10px; 
-}
+} */
 
 
 /* Choice Styles */
@@ -79,13 +79,13 @@ margin-top: 1.5em;
  */
 
 /*Solution Styles */
-#no-adapter {
+/* #no-adapter {
   background-color: #023f0a;
   width: 75vw; 
   margin: auto; 
   margin-top: 15px; 
   padding: 25px 0 25px;
-}
+} */
 
 #no-adapter h1 {
   color: white; 
