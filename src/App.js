@@ -75,8 +75,8 @@ class App extends Component {
         this.setState({
           room: room,
           roomData: res.data[0],
-          roomHDMI: res.data[0].hasHDMI,
-          roomVGA: res.data[0].hasVGA,
+          roomHDMI: !!res.data[0].hasHDMI,
+          roomVGA: !!res.data[0].hasVGA,
         })
       })
       .catch(err => console.log(err))
@@ -90,8 +90,8 @@ class App extends Component {
       .then(res => {
         this.setState({
           deviceData: res.data[0],
-          deviceHDMI: res.data[0].hasHDMI,
-          deviceVGA: res.data[0].hasVGA,
+          deviceHDMI: !!res.data[0].hasHDMI,
+          deviceVGA: !!res.data[0].hasVGA,
           adapterHDMI: res.data[0].adapterHDMI,
           adapterVGA: res.data[0].adapterVGA,
           linkHDMI: res.data[0].linkHDMI,

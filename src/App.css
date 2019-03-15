@@ -46,16 +46,15 @@
   background: linear-gradient(lightgray, darkgray)
 } */
 
-.app-title {
+/* .app-title {
   font-size: 76px; 
-}
+} */
 
 /* Logo Styles */
 .logo-img {
   position: fixed;
   top: 0;
   left: 2.5vw;
-  background-color: deepskyblue;
   height: 125px; 
   width: 125px; 
   opacity: .75; 
@@ -64,7 +63,7 @@
 
 
 /* Choice Styles */
-.Choice-parent{
+/* .Choice-parent{
   padding-top: 3em;  
   display: flex;
   justify-content: space-evenly;
@@ -77,7 +76,7 @@ margin-top: 1.5em;
 .label-text {
   font-size: 26px; 
 }
-
+ */
 
 /*Solution Styles */
 #no-adapter {
@@ -92,11 +91,11 @@ margin-top: 1.5em;
   color: white; 
 }
 
-#adapter {
+/* #adapter {
   background-color: #5a0707;
   width: 85vw; 
   margin: auto; 
-}
+} */
 
 #adapter h1, h2 {
   color: white;

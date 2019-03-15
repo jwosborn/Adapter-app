@@ -1,22 +1,35 @@
 import React from 'react'
 import Link from './Link'
+import styled from 'styled-components'
+
+const Wrapper = styled.div`
+  background-color: #a73838;
+  width: 85vw;
+  margin: auto;
+`
+const Title = styled.h1`
+  color: white;
+`
+const Contact = styled.h2`
+  color: white;
+`
 
 const Negative = ({ whichLink, whichAdapter }) => {
   return (
-    <div id="adapter">
-      <h1>
+    <Wrapper>
+      <Title>
         You'll need a
         <br />
         {whichAdapter}
         <br />
         Adapter
-      </h1>
-      <h2>
+      </Title>
+      <Contact>
         Contact Classroom Technology at 502-897-4007 or email us by clicking{' '}
         <a href="mailto:classroomtechnology@sbts.edu">here</a>
-      </h2>
+      </Contact>
       <Link whichAdapter={whichAdapter} whichLink={whichLink} />
-    </div>
+    </Wrapper>
   )
 }
 
