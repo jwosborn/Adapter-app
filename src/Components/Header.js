@@ -5,7 +5,12 @@ import styled from 'styled-components'
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
-  background: linear-gradient(lightgray, darkgray);
+  background: dimgray;
+`
+const Title = styled.span`
+  font-size: 5em;
+  color: navy;
+  text-shadow: 2px 2px 2px lightskyblue;
 `
 
 class Header extends Component {
@@ -13,7 +18,7 @@ class Header extends Component {
     return (
       <Wrapper>
         <img className="logo-img" src={logo} alt="SBTS Logo" />
-        <span className="app-title">Do I Need An Adapter?</span>
+        <Title>Do I Need An Adapter?</Title>
       </Wrapper>
     )
   }

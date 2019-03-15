@@ -13,7 +13,16 @@ const Wrapper = styled.div`
   width: 100vw;
   text-align: center;
   font-family: 'Nunito', sans-serif;
-  background: linear-gradient(lightgray, darkgray);
+  background: dimgray;
+`
+
+const TileWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 15vh;
+  background: dimgray;
 `
 
 class App extends Component {
@@ -148,7 +157,7 @@ class App extends Component {
     return (
       <Wrapper>
         <Header />
-        <div className="tile-wrapper">
+        <TileWrapper>
           {this.state.rooms.length === 0 &&
             this.state.buildings.map((building, index) => (
               <Tile
@@ -176,7 +185,7 @@ class App extends Component {
                 func={this.setDevice}
               />
             ))}
-        </div>
+        </TileWrapper>
         {this.state.device ? (
           this.adapterCheck(
             this.state.roomHDMI,
