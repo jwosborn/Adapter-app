@@ -4,7 +4,7 @@ import Header from './Components/Header'
 import Positive from './Components/Positive'
 import Negative from './Components/Negative'
 import Tile from './Components/Tile'
-import './App.css'
+// import './App.css'
 import axios from 'axios'
 import styled from 'styled-components'
 
