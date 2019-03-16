@@ -43,7 +43,10 @@ class App extends Component {
     linkHDMI: '',
     linkVGA: '',
   }
-
+  //converts to boolean value bc SQL only stores strings/numbers
+  convToBool = string => {
+    string === 'true' ? true : false
+  }
   //place buildings[] and devices[] in state
   componentDidMount = () => {
     axios.get('https://adapter-api.herokuapp.com/api/devices').then(res => {
@@ -188,23 +191,23 @@ class App extends Component {
         </TileWrapper>
         {this.state.device ? (
           this.adapterCheck(
-            this.state.roomHDMI,
-            this.state.deviceHDMI,
-            this.state.roomVGA,
-            this.state.deviceVGA,
+            this.convToBool(this.state.roomHDMI),
+            this.convToBool(this.state.deviceHDMI),
+            this.convToBool(this.state.roomVGA),
+            this.convToBool(this.state.deviceVGA),
           ) ? (
             <Negative
               whichAdapter={this.whichAdapter(
-                this.state.roomHDMI,
-                this.state.deviceHDMI,
-                this.state.roomVGA,
-                this.state.deviceVGA,
+                this.convToBool(this.state.roomHDMI),
+                this.convToBool(this.state.deviceHDMI),
+                this.convToBool(this.state.roomVGA),
+                this.convToBool(this.state.deviceVGA),
               )}
               whichLink={this.whichLink(
-                this.state.roomHDMI,
-                this.state.deviceHDMI,
-                this.state.roomVGA,
-                this.state.deviceVGA,
+                this.convToBool(this.state.roomHDMI),
+                this.convToBool(this.state.deviceHDMI),
+                this.convToBool(this.state.roomVGA),
+                this.convToBool(this.state.deviceVGA),
               )}
             />
           ) : (
