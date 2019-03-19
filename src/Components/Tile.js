@@ -21,11 +21,12 @@ const tilebounce = keyframes`{
 const Box = styled.div`
   cursor: pointer;
   position: relative;
-  flex-grow: 1;
-  margin: 2vw 2vh 2vw 0;
-  width: 125px;
-  max-width: 275px;
-  height: 75px;
+  flex-grow: 3
+  flex-basis: 33%; 
+  margin: 2vh 2vw 2vh 2vw;
+  ${'' /* width: 125px; */}
+  max-width: 375px;
+  height: 150px;
   background: linear-gradient(to bottom right, #a37d21, #c99c2e, #a37d21);
   overflow: hidden;
   border-radius: 8px;
