@@ -6,10 +6,7 @@ const Link = ({ whichAdapter, whichLink }) => {
     <div>
       <h2>
         You can buy a {whichAdapter}
-        adapter by clicking{' '}
-        <a noreferrer noopener href={whichLink}>
-          here
-        </a>{' '}
+        adapter by clicking <a href={whichLink}>here</a>{' '}
       </h2>
       {whichLink.length === 2 ? (
         <h2>
