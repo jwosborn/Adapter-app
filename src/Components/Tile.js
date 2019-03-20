@@ -24,11 +24,11 @@ const Box = styled.div`
   position: relative;
   // flex-grow: 3
   // flex-basis: 33%;
-  margin: 2vh 0.25vw 2vh 0.25vw;
+  margin: 2vh 1vw 2vh 1vw;
   width: 225px;
   max-width: 275px;
   height: 150px;
-  background: #e8e5da;
+  background: #c8c7d5;
   overflow: hidden;
   border-radius: 8px;
   box-shadow: -4px 4px 10px 1px black;
@@ -38,6 +38,13 @@ const Box = styled.div`
   }
   :active {
     box-shadow: -4px 4px 10px 1px black;
+  }
+  @media (max-width: 750px) {
+    display: block;
+    wrap: wrap;
+    width: 225px;
+    height: 100px;
+    margin: 3vh 2.5vw;
   }
 `
 

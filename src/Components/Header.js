@@ -14,7 +14,7 @@ const Title = styled.span`
   margin-bottom: 5vh;
   font-family: 'Nunito';
   font-size: 5em;
-  color: black;
+  color: #585480;
   text-shadow: 2px 2px 2px gray;
 
   @media (max-width: 750px) {

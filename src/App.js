@@ -19,12 +19,13 @@ const TileWrapper = styled.div`
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
-  ${'' /* flex-wrap: wrap;  
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around; */}
   margin-top: 5vh;
   background: #f8f9f7;
+  @media (max-width: 750px) {
+    display: inline-block;
+    overflow-x: hidden;
+    overflow-y: hidden: 
+  }
 `
 
 class App extends Component {
