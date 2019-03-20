@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   width: 100vw;
   text-align: center;
   font-family: 'Nunito', sans-serif;
-  background: #aeaeae;
+  background: #f8f9f7;
 `
 
 const TileWrapper = styled.div`
@@ -21,7 +21,7 @@ const TileWrapper = styled.div`
   flex-direction: row;
   justify-content: space-around;
   margin-top: 5vh;
-  background: #aeaeae;
+  background: #f8f9f7;
 `
 
 class App extends Component {

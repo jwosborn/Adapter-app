@@ -6,21 +6,19 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: row
   justify-content: space-between;
-  background: #aeaeae;
+  background: #f8f9f7;
   padding-top: 5vh;
 `
 const Title = styled.span`
-  margin: auto; 
+  margin: auto;
   margin-bottom: 5vh;
   font-family: 'Nunito';
   font-size: 5em;
-  color: #3a3a3a;
+  color: black;
   text-shadow: 2px 2px 2px gray;
-  padding-right: 15vw; 
 
   @media (max-width: 750px) {
-    padding-right: 0
-    margin: auto; 
+    margin: auto;
   }
 `
 const Logo = styled.img`
