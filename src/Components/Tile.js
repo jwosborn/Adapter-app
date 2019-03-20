@@ -44,7 +44,7 @@ const Box = styled.div`
     wrap: wrap;
     width: 225px;
     height: 100px;
-    margin: 3vh 2.5vw;
+    margin: 4.5vh 2.5vw;
   }
 `
 
