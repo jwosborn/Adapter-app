@@ -19,7 +19,7 @@ const Title = styled.span`
   padding-right: 15vw; 
 
   @media (max-width: 750px) {
-    padding-right:0
+    padding-right: 0
     margin: auto; 
   }
 `
