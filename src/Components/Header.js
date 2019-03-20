@@ -10,15 +10,17 @@ const Wrapper = styled.div`
   padding-top: 5vh;
 `
 const Title = styled.span`
+  margin: auto; 
   margin-bottom: 5vh;
-  font-family: monospace;
+  font-family: 'Nunito';
   font-size: 5em;
   color: #3a3a3a;
   text-shadow: 2px 2px 2px gray;
-  padding-right: 15vw;
+  padding-right: 15vw; 
 
   @media (max-width: 750px) {
-    padding-left: 2vw;
+    padding-right:0
+    margin: auto; 
   }
 `
 const Logo = styled.img`

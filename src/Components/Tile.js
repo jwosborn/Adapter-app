@@ -38,11 +38,13 @@ const Box = styled.div`
 `
 
 const Option = styled.h5`
-  font-family: monospace;
+  font-family: 'Nunito';
   color: #261605;
   font-size: 1.75em;
   margin-top: 30px;
   white-space: no-wrap;
+
+  ::hover ;
 `
 
 const Tile = ({ text, func, id }) => (

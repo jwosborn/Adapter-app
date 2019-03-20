@@ -163,6 +163,11 @@ class App extends Component {
       <Wrapper>
         <Header />
         <TileWrapper>
+          <Tile text={'Test'} />
+          <Tile text={'Test'} />
+          <Tile text={'Test'} />
+          <Tile text={'Test'} />
+          <Tile text={'Test'} />
           {this.state.rooms.length === 0 &&
             this.state.buildings.map((building, index) => (
               <Tile
