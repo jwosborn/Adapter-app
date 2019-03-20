@@ -16,10 +16,13 @@ const Wrapper = styled.div`
 `
 
 const TileWrapper = styled.div`
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  ${'' /* flex-wrap: wrap;  
   display: flex;
-  flex-wrap: wrap;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-around; */}
   margin-top: 5vh;
   background: #f8f9f7;
 `
@@ -163,6 +166,13 @@ class App extends Component {
       <Wrapper>
         <Header />
         <TileWrapper>
+          <Tile text={'Test'} />
+          <Tile text={'Test'} />
+          <Tile text={'Test'} />
+          <Tile text={'Test'} />
+          <Tile text={'Test'} />
+          <Tile text={'Test'} />
+          <Tile text={'Test'} />
           <Tile text={'Test'} />
           <Tile text={'Test'} />
           <Tile text={'Test'} />

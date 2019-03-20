@@ -19,12 +19,13 @@ const tilebounce = keyframes`{
   }
 }`
 const Box = styled.div`
+  display: inline-block;
   cursor: pointer;
   position: relative;
-  flex-grow: 3
-  flex-basis: 33%; 
-  margin: 2vh 2vw 2vh 2vw;
-  ${'' /* width: 125px; */}
+  // flex-grow: 3
+  // flex-basis: 33%;
+  margin: 2vh 0.25vw 2vh 0.25vw;
+  width: 225px;
   max-width: 275px;
   height: 150px;
   background: #e8e5da;
@@ -33,8 +34,8 @@ const Box = styled.div`
   box-shadow: -4px 4px 10px 1px black;
   animation: ${tilebounce} 0.3s;
   :hover {
-    font-size: 1.35em; 
-    };
+    font-size: 1.35em;
+  }
   :active {
     box-shadow: -4px 4px 10px 1px black;
   }
