@@ -12,6 +12,11 @@ import App from './App'
  * Becuase these tiles are rendered asyncronously, you have to use a special
  * helper function called wait(), which is a part of react-testing-library.
  ! This function allows async to complete before running a test. 
+ *
+ * You'll also notice fireEvent() pulled off of react-testing-library. 
+ * This funciton will fire any DOM event, and then you can test for the changes. 
+ ! In this case, you will fire a click event on a Tile, and you'll check for 
+ ! the changed DOM (api call)
  */
 
 describe('App Integration Test', () => {
