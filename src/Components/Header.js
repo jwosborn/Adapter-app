@@ -34,10 +34,10 @@ const Logo = styled.img`
 `
 
 const Header = () => (
-  <div className="Header-Parent">
-    <img className="logo-img" src={logo} alt="SBTS Logo" />
-    <span className="app-title">Do I Need An Adapter?</span>
-  </div>
+  <Wrapper>
+    <Logo src={logo} alt="SBTS Logo" />
+    <Title className="app-title">Do I Need An Adapter?</Title>
+  </Wrapper>
 )
 
 export default Header
