@@ -195,6 +195,16 @@ class App extends Component {
               />
             ))}
         </TileWrapper>
+        <Tile text="Test" />
+        <Tile text="Test" />
+        <Tile text="Test" />
+        <Tile text="Test" />
+        <Tile text="Test" />
+        <Tile text="Test" />
+        <Tile text="Test" />
+        <Tile text="Test" />
+        <Tile text="Test" />
+        <Tile text="Test" />
         {this.state.device ? (
           this.adapterCheck(
             this.convToBool(this.state.roomHDMI),
