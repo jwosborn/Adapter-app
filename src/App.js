@@ -167,6 +167,16 @@ class App extends Component {
       <Wrapper>
         <Header />
         <TileWrapper>
+          <Tile text="Test" />
+          <Tile text="Test" />
+          <Tile text="Test" />
+          <Tile text="Test" />
+          <Tile text="Test" />
+          <Tile text="Test" />
+          <Tile text="Test" />
+          <Tile text="Test" />
+          <Tile text="Test" />
+          <Tile text="Test" />
           {this.state.rooms.length === 0 &&
             this.state.buildings.map((building, index) => (
               <Tile
@@ -195,16 +205,6 @@ class App extends Component {
               />
             ))}
         </TileWrapper>
-        <Tile text="Test" />
-        <Tile text="Test" />
-        <Tile text="Test" />
-        <Tile text="Test" />
-        <Tile text="Test" />
-        <Tile text="Test" />
-        <Tile text="Test" />
-        <Tile text="Test" />
-        <Tile text="Test" />
-        <Tile text="Test" />
         {this.state.device ? (
           this.adapterCheck(
             this.convToBool(this.state.roomHDMI),
