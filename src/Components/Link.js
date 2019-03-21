@@ -10,10 +10,7 @@ const Link = ({ whichAdapter, whichLink }) => {
       </h2>
       {whichLink.length === 2 ? (
         <h2>
-          or{' '}
-          <a noreferrer noopener href={whichLink[1]}>
-            here
-          </a>
+          or <a href={whichLink[1]}>here</a>
         </h2>
       ) : null}
     </div>

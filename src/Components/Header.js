@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import logo from '../Assets/SBTSlogo.jpg'
 import styled from 'styled-components'
 
@@ -35,15 +35,11 @@ const Logo = styled.img`
   }
 `
 
-class Header extends Component {
-  render() {
-    return (
-      <Wrapper>
-        <Logo src={logo} alt="SBTS Logo" />
-        <Title>Do I Need An Adapter?</Title>
-      </Wrapper>
-    )
-  }
-}
+const Header = () => (
+  <div className="Header-Parent">
+    <img className="logo-img" src={logo} alt="SBTS Logo" />
+    <span className="app-title">Do I Need An Adapter?</span>
+  </div>
+)
 
 export default Header
