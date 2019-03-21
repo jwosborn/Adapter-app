@@ -25,9 +25,9 @@ const Box = styled.div`
   // flex-grow: 3
   // flex-basis: 33%;
   margin: 2vh 1vw 2vh 1vw;
-  width: 225px;
+  width: 150px;
   max-width: 275px;
-  height: 150px;
+  height: 110px;
   background: #c8c7d5;
   overflow: hidden;
   border-radius: 8px;
