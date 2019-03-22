@@ -3,7 +3,7 @@ import { Amazon } from 'grommet-icons'
 import styled from 'styled-components'
 
 const Anchor = styled.a`
-  color: #6e4ba3;
+  color: #75c8ed;
   margin: 0 7px;
 `
 
