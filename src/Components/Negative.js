@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from './Link'
 import styled from 'styled-components'
+import { MailOption } from 'grommet-icons'
 
 const Wrapper = styled.div`
   background-color: #c8c7d5;
@@ -16,6 +17,7 @@ const Contact = styled.h2`
 `
 const Anchor = styled.a`
   color: #4ea4d5;
+  margin-right: 7px;
 `
 
 const Negative = ({ whichLink, whichAdapter }) => {
@@ -31,6 +33,7 @@ const Negative = ({ whichLink, whichAdapter }) => {
       <Contact>
         Contact Classroom Technology at 502-897-4007 or email us by clicking{' '}
         <Anchor href="mailto:classroomtechnology@sbts.edu">here</Anchor>
+        <MailOption size="small" />
       </Contact>
       <Link whichAdapter={whichAdapter} whichLink={whichLink} />
     </Wrapper>
