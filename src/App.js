@@ -218,7 +218,6 @@ class App extends Component {
             <Positive />
           )
         ) : null}
-        <Negative whichLink="ADAPTER LINK" whichAdapter="ADAPTER NAME" />
       </Wrapper>
     )
   }
