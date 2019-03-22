@@ -30,7 +30,7 @@ const Box = styled.div`
   height: 150px;
   background: #c8c7d5;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 2px;
   box-shadow: -4px 4px 10px 1px black;
   animation: ${tilebounce} 0.3s;
   :hover {
@@ -42,9 +42,10 @@ const Box = styled.div`
   @media (max-width: 750px) {
     display: block;
     wrap: wrap;
-    width: 225px;
-    height: 100px;
-    margin: 4.5vh 2.5vw;
+    width: 97vw;
+    max-width: 97vw;
+    height: 75px;
+    margin: 2.5vh 0.5vw;
   }
 `
 

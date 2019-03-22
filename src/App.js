@@ -16,9 +16,7 @@ const Wrapper = styled.div`
 `
 
 const TileWrapper = styled.div`
-  overflow-x: scroll;
-  overflow-y: hidden;
-  white-space: nowrap;
+  display: block; 
   margin-top: 5vh;
   background: #f8f9f7;
   @media (max-width: 750px) {
