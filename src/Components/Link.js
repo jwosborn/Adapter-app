@@ -3,12 +3,13 @@ import { Amazon } from 'grommet-icons'
 import styled from 'styled-components'
 
 const Anchor = styled.a`
-  color: #75c8ed;
-  margin: 0 7px;
+  color: #4ea4d5;
+  margin: 0 5px;
 `
 
 const Message = styled.h2`
   margin-right: 15px;
+  color: #6e4ba3;
 `
 
 //  Dynamic Link Population

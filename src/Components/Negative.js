@@ -9,9 +9,13 @@ const Wrapper = styled.div`
 `
 const Title = styled.h1`
   color: #6e4ba3;
+  text-shadow: 2px 2px 2px gray;
 `
 const Contact = styled.h2`
   color: #6e4ba3;
+`
+const Anchor = styled.a`
+  color: #4ea4d5;
 `
 
 const Negative = ({ whichLink, whichAdapter }) => {
@@ -26,7 +30,7 @@ const Negative = ({ whichLink, whichAdapter }) => {
       </Title>
       <Contact>
         Contact Classroom Technology at 502-897-4007 or email us by clicking{' '}
-        <a href="mailto:classroomtechnology@sbts.edu">here</a>
+        <Anchor href="mailto:classroomtechnology@sbts.edu">here</Anchor>
       </Contact>
       <Link whichAdapter={whichAdapter} whichLink={whichLink} />
     </Wrapper>
