@@ -31,7 +31,8 @@ const Negative = ({ whichLink, whichAdapter }) => {
         Adapter
       </Title>
       <Contact>
-        Contact Classroom Technology at 502-897-4007 or email us by clicking{' '}
+        Contact Classroom Technology at <u>502-897-4007</u> or email us by
+        clicking{' '}
         <Anchor href="mailto:classroomtechnology@sbts.edu">here</Anchor>
         <MailOption size="small" />
       </Contact>
