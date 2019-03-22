@@ -1,10 +1,11 @@
 /* eslint-disable */
 import React from 'react'
 import { render } from 'react-testing-library'
-import Tile from './Tile'
+import Header from '../Header'
 
 describe('Header Component Test', () => {
   test('It renders', () => {
-    expect(true).toBeTruthy()
+    const { getByText } = render(<Header />)
+    expect(getByText(/^Do I Need An Adapter?/)).toBeTruthy()
   })
 })

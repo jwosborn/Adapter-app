@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react'
 import { render } from 'react-testing-library'
-import Negative from './Negative'
+import Negative from '../Negative'
 
 describe('Negative Component Test', () => {
   test('It renders', () => {

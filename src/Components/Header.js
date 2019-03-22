@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import logo from '../Assets/SBTSlogo.jpg'
 import styled from 'styled-components'
 
@@ -6,23 +6,21 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: row
   justify-content: space-between;
-  background: #aeaeae;
+  background: #f8f9f7;
   padding-top: 5vh;
 `
 const Title = styled.span`
-  margin: auto; 
+  margin: auto;
   margin-bottom: 5vh;
   font-family: 'Nunito';
   font-size: 5em;
-  color: #3a3a3a;
+  color: #6e4ba3;
   text-shadow: 2px 2px 2px gray;
-  padding-right: 15vw; 
-
   @media (max-width: 750px) {
-    padding-right: 0
-    margin: auto; 
+    margin: auto;
   }
 `
+
 const Logo = styled.img`
   position: relative;
   left: 2.5vw;
@@ -35,11 +33,15 @@ const Logo = styled.img`
   }
 `
 
-const Header = () => (
-  <div className="Header-Parent">
-    <img className="logo-img" src={logo} alt="SBTS Logo" />
-    <span className="app-title">Do I Need An Adapter?</span>
-  </div>
-)
+class Header extends Component {
+  render() {
+    return (
+      <Wrapper>
+        <Logo src={logo} alt="SBTS Logo" />
+        <Title>Do I Need An Adapter?</Title>
+      </Wrapper>
+    )
+  }
+}
 
 export default Header

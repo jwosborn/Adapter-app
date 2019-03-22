@@ -12,16 +12,18 @@ const Wrapper = styled.div`
   width: 100vw;
   text-align: center;
   font-family: 'Nunito', sans-serif;
-  background: #aeaeae;
+  background: #f8f9f7;
 `
 
 const TileWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-around;
+  display: block; 
   margin-top: 5vh;
-  background: #aeaeae;
+  background: #f8f9f7;
+  @media (max-width: 750px) {
+    display: inline-block;
+    overflow-x: hidden;
+    overflow-y: hidden: 
+  }
 `
 
 class App extends Component {

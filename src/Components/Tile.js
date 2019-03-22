@@ -19,21 +19,33 @@ const tilebounce = keyframes`{
   }
 }`
 const Box = styled.div`
+  display: inline-block;
   cursor: pointer;
   position: relative;
-  flex-grow: 3
-  flex-basis: 33%; 
-  margin: 2vh 2vw 2vh 2vw;
-  ${'' /* width: 125px; */}
-  max-width: 375px;
+  // flex-grow: 3
+  // flex-basis: 33%;
+  margin: 2vh 1vw 2vh 1vw;
+  width: 225px;
+  max-width: 275px;
   height: 150px;
-  background: linear-gradient(to bottom right, #a37d21, #c99c2e, #a37d21);
+  background: #c8c7d5;
   overflow: hidden;
-  border-radius: 8px;
-  box-shadow: -4px 4px 20px 1px black;
+  border-radius: 2px;
+  box-shadow: -4px 4px 10px 1px black;
   animation: ${tilebounce} 0.3s;
+  :hover {
+    font-size: 1.35em;
+  }
   :active {
     box-shadow: -4px 4px 10px 1px black;
+  }
+  @media (max-width: 750px) {
+    display: block;
+    wrap: wrap;
+    width: 97vw;
+    max-width: 97vw;
+    height: 75px;
+    margin: 2.5vh 0.5vw;
   }
 `
 
@@ -43,8 +55,6 @@ const Option = styled.h5`
   font-size: 1.75em;
   margin-top: 30px;
   white-space: no-wrap;
-
-  ::hover ;
 `
 
 const Tile = ({ text, func, id }) => (
