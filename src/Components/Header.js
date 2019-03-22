@@ -14,12 +14,13 @@ const Title = styled.span`
   margin-bottom: 5vh;
   font-family: 'Nunito';
   font-size: 5em;
-  color: #505067;
+  color: #6e4ba3;
   text-shadow: 2px 2px 2px gray;
   @media (max-width: 750px) {
     margin: auto;
   }
 `
+
 const Logo = styled.img`
   position: relative;
   left: 2.5vw;

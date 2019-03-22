@@ -4426,6 +4426,18 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.15.tgz#ffb703e1066e8a0eeaa4c8b80ba9253eeefbfb00"
   integrity sha512-6uHUhOPEBgQ24HM+r6b/QwWfZq+yiFcipKFrOFiBEnWdy5sdzYoi+pJeQaPI5qOLRFqWmAXUPQNsielzdLoecA==
 
+grommet-icons@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/grommet-icons/-/grommet-icons-4.2.0.tgz#7bcf7d4b37f694516ade084e2536c72b224c6a76"
+  integrity sha512-HMPLQa2pgnCZFImUXwfq+79VizL6oyP2/AAfAzQDw57x/6qgWouoqoRrrt+2zodTjTxtKXxliBY1w/o5uC+DpA==
+  dependencies:
+    grommet-styles "^0.2.0"
+
+grommet-styles@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/grommet-styles/-/grommet-styles-0.2.0.tgz#b2eac2b7e2747cb523434d21728ce5234f8ce4f4"
+  integrity sha512-0OMSYuGeyifYKpg4Gv2HzL8rUdd0ddnJ5LbCBKgDuloC71XIwr9g/Fxa6rs737MbPV7OZ4pEm4wvrjH4epzf1A==
+
 growly@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/growly/-/growly-1.3.0.tgz#f10748cbe76af964b7c96c93c6bcc28af120c081"
