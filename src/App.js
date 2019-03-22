@@ -4,7 +4,6 @@ import Header from './Components/Header'
 import Positive from './Components/Positive'
 import Negative from './Components/Negative'
 import Tile from './Components/Tile'
-import Link from './Components/Link'
 import axios from 'axios'
 import styled from 'styled-components'
 

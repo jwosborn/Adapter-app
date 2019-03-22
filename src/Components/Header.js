@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import logo from '../Assets/SBTSlogo.jpg'
 import styled from 'styled-components'
-import { Connectivity } from 'grommet-icons'
 
 const Wrapper = styled.div`
   display: flex;
