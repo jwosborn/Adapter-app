@@ -1,11 +1,13 @@
-.tile-wrapper {
+/* .tile-wrapper {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
   margin-top: 15vh;
-}
-.tile {
+  background: linear-gradient(
+      to bottom right, lightgray,  darkgray)
+} */
+/* .tile {
   cursor: pointer;
   position: relative;
   flex-grow: 1;
@@ -19,48 +21,49 @@
   text-decoration: none;
   color: inherit;
   animation: tilebounce .3s; 
-}
-.tile:active {
+} */
+/* .tile:active {
   box-shadow: -4px 4px 10px 1px black;
-}
-.text {
+} */
+/* .text {
   font-family: monospace;
   font-size: 2em;
-}
+} */
 
-.App {
-  height: 100vh;
+/* .App {
+  /* height: 100vh;
   width: 100vw;
   text-align: center;
   font-family: 'Nunito', sans-serif;
-}
+  background: linear-gradient(lightgray, darkgray) */
+
 
 
 /* Header Styles */
-.Header-Parent {
+/* .Header-Parent {
   display: flex; 
   justify-content: space-evenly;
-}
+  background: linear-gradient(lightgray, darkgray)
+} */
 
-.app-title {
+/* .app-title {
   font-size: 76px; 
-}
+} */
 
 /* Logo Styles */
-.logo-img {
+/* .logo-img {
   position: fixed;
   top: 0;
   left: 2.5vw;
-  background-color: #7ebbe4;
   height: 125px; 
   width: 125px; 
   opacity: .75; 
   border-radius: 0px 0px 10px 10px; 
-}
+} */
 
 
 /* Choice Styles */
-.Choice-parent{
+/* .Choice-parent{
   padding-top: 3em;  
   display: flex;
   justify-content: space-evenly;
@@ -73,30 +76,27 @@ margin-top: 1.5em;
 .label-text {
   font-size: 26px; 
 }
-
+ */
 
 /*Solution Styles */
-#no-adapter {
+/* #no-adapter {
   background-color: #023f0a;
   width: 75vw; 
   margin: auto; 
   margin-top: 15px; 
   padding: 25px 0 25px;
-}
+} */
 
-#no-adapter h1 {
-  color: white; 
-}
 
-#adapter {
+/* #adapter {
   background-color: #5a0707;
   width: 85vw; 
   margin: auto; 
-}
+} */
 
-#adapter h1, h2 {
+/* #adapter h1, h2 {
   color: white;
-}
+} */
 
 #adapter a {
   color: #282bff
@@ -108,9 +108,7 @@ margin-top: 1.5em;
 
 /* button style */
 
-.submit {
-  margin-left: 15px; 
-}
+
 
 @keyframes App-logo-spin {
   from {

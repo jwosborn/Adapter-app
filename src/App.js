@@ -4,8 +4,27 @@ import Header from './Components/Header'
 import Positive from './Components/Positive'
 import Negative from './Components/Negative'
 import Tile from './Components/Tile'
-import './App.css'
 import axios from 'axios'
+import styled from 'styled-components'
+
+const Wrapper = styled.div`
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
+  background: #f8f9f7;
+`
+
+const TileWrapper = styled.div`
+  display: block; 
+  margin-top: 5vh;
+  background: #f8f9f7;
+  @media (max-width: 750px) {
+    display: inline-block;
+    overflow-x: hidden;
+    overflow-y: hidden: 
+  }
+`
 
 class App extends Component {
   state = {
@@ -25,7 +44,13 @@ class App extends Component {
     linkHDMI: '',
     linkVGA: '',
   }
-
+  //converts to boolean value bc SQL only stores strings/numbers
+  convToBool = string => {
+    if (string === 'true') {
+      return true
+    }
+    return false
+  }
   //place buildings[] and devices[] in state
   componentDidMount = () => {
     axios.get('https://adapter-api.herokuapp.com/api/devices').then(res => {
@@ -39,7 +64,7 @@ class App extends Component {
   //sets selected building in state and calls rooms upon user selection
   setBuilding = building => {
     axios
-      .get(`https://adapter-api.herokuapp.com/api/buildings/${building}/rooms`)
+      .get(`https://adapter-api.herokuapp.com/api/buildings/${building}`)
       .then(res => {
         this.setState({ building: building, rooms: res.data })
       })
@@ -137,9 +162,19 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <Wrapper>
         <Header />
-        <div className="tile-wrapper">
+        <TileWrapper>
+          <Tile text="Test" />
+          <Tile text="Test" />
+          <Tile text="Test" />
+          <Tile text="Test" />
+          <Tile text="Test" />
+          <Tile text="Test" />
+          <Tile text="Test" />
+          <Tile text="Test" />
+          <Tile text="Test" />
+          <Tile text="Test" />
           {this.state.rooms.length === 0 &&
             this.state.buildings.map((building, index) => (
               <Tile
@@ -151,44 +186,49 @@ class App extends Component {
             ))}
           {!this.state.room &&
             this.state.rooms.map((room, index) => (
-              <Tile key={index} text={room} id={room} func={this.setRoom} />
+              <Tile
+                key={index}
+                text={room.roomNumber}
+                id={room.roomNumber}
+                func={this.setRoom}
+              />
             ))}
           {this.state.room &&
             this.state.devices.map((dev, index) => (
               <Tile
                 key={index}
-                id={dev._id}
+                id={dev.id}
                 text={dev.name}
                 func={this.setDevice}
               />
             ))}
-        </div>
+        </TileWrapper>
         {this.state.device ? (
           this.adapterCheck(
-            this.state.roomHDMI,
-            this.state.deviceHDMI,
-            this.state.roomVGA,
-            this.state.deviceVGA,
+            this.convToBool(this.state.roomHDMI),
+            this.convToBool(this.state.deviceHDMI),
+            this.convToBool(this.state.roomVGA),
+            this.convToBool(this.state.deviceVGA),
           ) ? (
             <Negative
               whichAdapter={this.whichAdapter(
-                this.state.roomHDMI,
-                this.state.deviceHDMI,
-                this.state.roomVGA,
-                this.state.deviceVGA,
+                this.convToBool(this.state.roomHDMI),
+                this.convToBool(this.state.deviceHDMI),
+                this.convToBool(this.state.roomVGA),
+                this.convToBool(this.state.deviceVGA),
               )}
               whichLink={this.whichLink(
-                this.state.roomHDMI,
-                this.state.deviceHDMI,
-                this.state.roomVGA,
-                this.state.deviceVGA,
+                this.convToBool(this.state.roomHDMI),
+                this.convToBool(this.state.deviceHDMI),
+                this.convToBool(this.state.roomVGA),
+                this.convToBool(this.state.deviceVGA),
               )}
             />
           ) : (
             <Positive />
           )
         ) : null}
-      </div>
+      </Wrapper>
     )
   }
 }
