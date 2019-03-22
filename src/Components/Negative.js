@@ -3,15 +3,15 @@ import Link from './Link'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-  background-color: #505067;
+  background-color: #c8c7d5;
   width: 85vw;
   margin: auto;
 `
 const Title = styled.h1`
-  color: white;
+  color: #6e4ba3;
 `
 const Contact = styled.h2`
-  color: white;
+  color: #6e4ba3;
 `
 
 const Negative = ({ whichLink, whichAdapter }) => {
