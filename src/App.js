@@ -12,13 +12,13 @@ const Wrapper = styled.div`
   width: 100vw;
   text-align: center;
   font-family: 'Nunito', sans-serif;
-  background: #f8f9f7;
+  background: #fff;
 `
 
 const TileWrapper = styled.div`
   display: block; 
   margin-top: 5vh;
-  background: #f8f9f7;
+  background: #FFF;
   @media (max-width: 750px) {
     display: inline-block;
     overflow-x: hidden;
@@ -92,7 +92,7 @@ class App extends Component {
 
   //sets selected device and deviceData into  state upon user selection
   setDevice = device => {
-    this.setState({ device: device })
+    this.setState({ device: device }, console.log(device))
     axios
       .get(`https://adapter-api.herokuapp.com/api/devices/${device}`)
       .then(res => {

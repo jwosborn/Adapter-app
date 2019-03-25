@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import logo from '../Assets/SBTSlogo.jpg'
 import styled from 'styled-components'
+import { Connectivity } from 'grommet-icons'
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row
   justify-content: space-between;
-  background: #f8f9f7;
+  background: #2f4050;
   padding-top: 5vh;
 `
 const Title = styled.span`
@@ -14,7 +15,7 @@ const Title = styled.span`
   margin-bottom: 5vh;
   font-family: 'Nunito';
   font-size: 5em;
-  color: #6e4ba3;
+  color: #fff;
   text-shadow: 2px 2px 2px gray;
   @media (max-width: 750px) {
     margin: auto;
@@ -38,7 +39,10 @@ class Header extends Component {
     return (
       <Wrapper>
         <Logo src={logo} alt="SBTS Logo" />
-        <Title>Do I Need An Adapter?</Title>
+        <Title>
+          <strong>Adapter Check</strong>
+          <Connectivity size="large" color="#fff" />
+        </Title>
       </Wrapper>
     )
   }
