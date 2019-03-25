@@ -25,6 +25,13 @@ const TileWrapper = styled.div`
     overflow-y: hidden: 
   }
 `
+const Refresh = styled.button`
+  height: 25px;
+  width: 75px;
+  margin: auto;
+  color: white;
+  background: #7873ae;
+`
 
 class App extends Component {
   state = {
@@ -33,6 +40,7 @@ class App extends Component {
     rooms: [],
     room: '',
     roomData: {},
+    device: null,
     devices: [],
     deviceData: {},
     roomHDMI: '',
@@ -53,10 +61,10 @@ class App extends Component {
   }
   //place buildings[] and devices[] in state
   componentDidMount = () => {
-    axios.get('https://adapter-api.herokuapp.com/api/devices').then(res => {
+    axios.get('http://localhost:4000/api/devices').then(res => {
       this.setState({ devices: res.data })
     })
-    axios.get('https://adapter-api.herokuapp.com/api/buildings').then(res => {
+    axios.get('http://localhost:4000/api/buildings').then(res => {
       this.setState({ buildings: res.data })
     })
   }
@@ -64,7 +72,7 @@ class App extends Component {
   //sets selected building in state and calls rooms upon user selection
   setBuilding = building => {
     axios
-      .get(`https://adapter-api.herokuapp.com/api/buildings/${building}`)
+      .get(`http://localhost:4000/api/buildings/${building}`)
       .then(res => {
         this.setState({ building: building, rooms: res.data })
       })
@@ -75,9 +83,7 @@ class App extends Component {
   setRoom = room => {
     const { building } = this.state
     axios
-      .get(
-        `https://adapter-api.herokuapp.com/api/buildings/${building}/${room}`,
-      )
+      .get(`http://localhost:4000/api/buildings/${building}/${room}`)
       .then(res => {
         this.setState({
           room: room,
@@ -91,20 +97,18 @@ class App extends Component {
 
   //sets selected device and deviceData into  state upon user selection
   setDevice = device => {
-    this.setState({ device: device })
-    axios
-      .get(`https://adapter-api.herokuapp.com/api/devices/${device}`)
-      .then(res => {
-        this.setState({
-          deviceData: res.data[0],
-          deviceHDMI: res.data[0].hasHDMI,
-          deviceVGA: res.data[0].hasVGA,
-          adapterHDMI: res.data[0].adapterHDMI,
-          adapterVGA: res.data[0].adapterVGA,
-          linkHDMI: res.data[0].linkHDMI,
-          linkVGA: res.data[0].linkVGA,
-        })
+    this.setState({ device: device }, console.log(device))
+    axios.get(`http://localhost:4000/api/devices/${device}`).then(res => {
+      this.setState({
+        deviceData: res.data[0],
+        deviceHDMI: res.data[0].hasHDMI,
+        deviceVGA: res.data[0].hasVGA,
+        adapterHDMI: res.data[0].adapterHDMI,
+        adapterVGA: res.data[0].adapterVGA,
+        linkHDMI: res.data[0].linkHDMI,
+        linkVGA: res.data[0].linkVGA,
       })
+    })
   }
 
   //Function tests data from roomData and deviceData returns boolean called upon device selection
@@ -121,6 +125,10 @@ class App extends Component {
     ) {
       return true
     }
+  }
+
+  handlePageRefresh = () => {
+    window.location.reload()
   }
 
   //ADAPTER DISPLAY
@@ -184,10 +192,11 @@ class App extends Component {
               />
             ))}
           {this.state.room &&
+            !this.state.device &&
             this.state.devices.map((dev, index) => (
               <Tile
                 key={index}
-                id={dev.id}
+                id={dev._id}
                 text={dev.name}
                 func={this.setDevice}
               />
@@ -215,7 +224,10 @@ class App extends Component {
               )}
             />
           ) : (
-            <Positive />
+            <div>
+              <Positive />
+              <Refresh onClick={this.handlePageRefresh}>Refresh</Refresh>
+            </div>
           )
         ) : null}
       </Wrapper>
