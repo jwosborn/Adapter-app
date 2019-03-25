@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import logo from '../Assets/SBTSlogo.jpg'
 import styled from 'styled-components'
+import { Connectivity } from 'grommet-icons'
 
 const Wrapper = styled.div`
   display: flex;
@@ -38,7 +39,10 @@ class Header extends Component {
     return (
       <Wrapper>
         <Logo src={logo} alt="SBTS Logo" />
-        <Title>Adapter Check</Title>
+        <Title>
+          Adapter Check
+          <Connectivity size="large" color="#6e4ba3" />
+        </Title>
       </Wrapper>
     )
   }
