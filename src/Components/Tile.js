@@ -28,7 +28,7 @@ const Box = styled.div`
   width: 225px;
   max-width: 275px;
   height: 150px;
-  background: #c8c7d5;
+  background: #1ab394;
   overflow: hidden;
   border-radius: 2px;
   box-shadow: -4px 4px 10px 1px black;
@@ -51,7 +51,7 @@ const Box = styled.div`
 
 const Option = styled.h5`
   font-family: 'Nunito';
-  color: #261605;
+  color: white;
   font-size: 1.75em;
   margin-top: 30px;
   white-space: no-wrap;

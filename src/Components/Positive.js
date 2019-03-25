@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-  background-color: #7873ae;
+  background-color: #1ab394;
   width: 85vw;
   margin: auto;
   margin-top: 15px;

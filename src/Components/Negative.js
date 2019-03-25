@@ -4,19 +4,19 @@ import styled from 'styled-components'
 import { MailOption } from 'grommet-icons'
 
 const Wrapper = styled.div`
-  background-color: #c8c7d5;
+  background-color: #1ab394;
   width: 85vw;
   margin: auto;
 `
 const Title = styled.h1`
-  color: #6e4ba3;
+  color: #fff;
   text-shadow: 2px 2px 2px gray;
 `
 const Contact = styled.h2`
-  color: #6e4ba3;
+  color: #fff;
 `
 const Anchor = styled.a`
-  color: #4ea4d5;
+  color: #337ab7;
   margin-right: 7px;
 `
 
@@ -34,7 +34,7 @@ const Negative = ({ whichLink, whichAdapter }) => {
         Contact Classroom Technology at <u>502-897-4007</u> or email us by
         clicking{' '}
         <Anchor href="mailto:classroomtechnology@sbts.edu">here</Anchor>
-        <MailOption size="small" />
+        <MailOption size="small" color="#337ab7" />
       </Contact>
       <Link whichAdapter={whichAdapter} whichLink={whichLink} />
     </Wrapper>

@@ -3,13 +3,13 @@ import { Amazon } from 'grommet-icons'
 import styled from 'styled-components'
 
 const Anchor = styled.a`
-  color: #4ea4d5;
+  color: #337ab7;
   margin: 0 5px;
 `
 
 const Message = styled.h2`
   margin-right: 15px;
-  color: #6e4ba3;
+  color: #fff;
 `
 
 //  Dynamic Link Population
@@ -20,16 +20,16 @@ const Link = ({ whichAdapter, whichLink }) => {
         You can buy a {whichAdapter}
         adapter by clicking
         <Anchor href={whichLink}>here</Anchor>{' '}
-        <Amazon size="small" color="#6e4ba3" />
+        <Amazon size="small" color="#337ab7" />
       </Message>
       {whichLink.length === 2 ? (
-        <h2>
+        <Message>
           or{' '}
           <Anchor noreferrer noopener href={whichLink[1]}>
             here
           </Anchor>
-          <Amazon size="small" color="#6e4ba3" />
-        </h2>
+          <Amazon size="small" color="#337ab7" />
+        </Message>
       ) : null}
     </div>
   ) //return

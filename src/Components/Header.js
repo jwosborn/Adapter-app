@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: row
   justify-content: space-between;
-  background: #f8f9f7;
+  background: #2f4050;
   padding-top: 5vh;
 `
 const Title = styled.span`
@@ -15,7 +15,7 @@ const Title = styled.span`
   margin-bottom: 5vh;
   font-family: 'Nunito';
   font-size: 5em;
-  color: #6e4ba3;
+  color: #fff;
   text-shadow: 2px 2px 2px gray;
   @media (max-width: 750px) {
     margin: auto;
@@ -40,8 +40,8 @@ class Header extends Component {
       <Wrapper>
         <Logo src={logo} alt="SBTS Logo" />
         <Title>
-          Adapter Check
-          <Connectivity size="large" color="#6e4ba3" />
+          <strong>Adapter Check</strong>
+          <Connectivity size="large" color="#fff" />
         </Title>
       </Wrapper>
     )
