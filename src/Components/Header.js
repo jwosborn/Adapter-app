@@ -38,7 +38,7 @@ class Header extends Component {
     return (
       <Wrapper>
         <Logo src={logo} alt="SBTS Logo" />
-        <Title>Do I Need An Adapter?</Title>
+        <Title>Adapter Check</Title>
       </Wrapper>
     )
   }
