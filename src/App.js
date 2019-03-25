@@ -25,13 +25,6 @@ const TileWrapper = styled.div`
     overflow-y: hidden: 
   }
 `
-const Refresh = styled.button`
-  height: 25px;
-  width: 75px;
-  margin: auto;
-  color: white;
-  background: #7873ae;
-`
 
 class App extends Component {
   state = {
@@ -127,10 +120,6 @@ class App extends Component {
     }
   }
 
-  handlePageRefresh = () => {
-    window.location.reload()
-  }
-
   //ADAPTER DISPLAY
 
   //helper function for adapterCheck() that gets specific adapter needs and displays adapter names
@@ -224,10 +213,7 @@ class App extends Component {
               )}
             />
           ) : (
-            <div>
-              <Positive />
-              <Refresh onClick={this.handlePageRefresh}>Refresh</Refresh>
-            </div>
+            <Positive />
           )
         ) : null}
       </Wrapper>
