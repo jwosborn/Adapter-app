@@ -184,6 +184,7 @@ class App extends Component {
               />
             ))}
           {this.state.room &&
+            !this.state.device &&
             this.state.devices.map((dev, index) => (
               <Tile
                 key={index}
