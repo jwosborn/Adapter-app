@@ -33,6 +33,7 @@ class App extends Component {
     rooms: [],
     room: '',
     roomData: {},
+    device: null,
     devices: [],
     deviceData: {},
     roomHDMI: '',
