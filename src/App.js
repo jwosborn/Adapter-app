@@ -6,6 +6,7 @@ import Negative from './Components/Negative'
 import Tile from './Components/Tile'
 import axios from 'axios'
 import styled from 'styled-components'
+import { getBuildings, getDevices } from './Utils/Requests'
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -54,11 +55,11 @@ class App extends Component {
   }
   //place buildings[] and devices[] in state
   componentDidMount = () => {
-    axios.get('https://adapter-api.herokuapp.com/api/devices').then(res => {
-      this.setState({ devices: res.data })
-    })
-    axios.get('https://adapter-api.herokuapp.com/api/buildings').then(res => {
+    getBuildings().then(res => {
       this.setState({ buildings: res.data })
+    })
+    getDevices().then(res => {
+      this.setState({ devices: res.data })
     })
   }
 
