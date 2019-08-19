@@ -4,12 +4,12 @@ import Header from './Components/Header'
 import Positive from './Components/Positive'
 import Negative from './Components/Negative'
 import Tile from './Components/Tile'
-import axios from 'axios'
 import styled from 'styled-components'
 import {
   getBuildings,
-  getDevices,
   getBuilding,
+  getDevices,
+  getDevice,
   getRoom,
 } from './Utils/Requests'
 
@@ -95,19 +95,17 @@ class App extends Component {
   //sets selected device and deviceData into  state upon user selection
   setDevice = device => {
     this.setState({ device: device }, console.log(device))
-    axios
-      .get(`https://adapter-api.herokuapp.com/api/devices/${device}`)
-      .then(res => {
-        this.setState({
-          deviceData: res.data[0],
-          deviceHDMI: res.data[0].hasHDMI,
-          deviceVGA: res.data[0].hasVGA,
-          adapterHDMI: res.data[0].adapterHDMI,
-          adapterVGA: res.data[0].adapterVGA,
-          linkHDMI: res.data[0].linkHDMI,
-          linkVGA: res.data[0].linkVGA,
-        })
+    getDevice(device).then(res => {
+      this.setState({
+        deviceData: res.data[0],
+        deviceHDMI: res.data[0].hasHDMI,
+        deviceVGA: res.data[0].hasVGA,
+        adapterHDMI: res.data[0].adapterHDMI,
+        adapterVGA: res.data[0].adapterVGA,
+        linkHDMI: res.data[0].linkHDMI,
+        linkVGA: res.data[0].linkVGA,
       })
+    })
   }
 
   //Function tests data from roomData and deviceData returns boolean called upon device selection
