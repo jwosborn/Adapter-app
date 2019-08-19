@@ -18,6 +18,7 @@ const tilebounce = keyframes`{
     transform: translateY(0);
   }
 }`
+
 const Box = styled.div`
   display: inline-block;
   cursor: pointer;
@@ -33,8 +34,9 @@ const Box = styled.div`
   border-radius: 2px;
   box-shadow: -4px 4px 10px 1px black;
   animation: ${tilebounce} 0.3s;
+  }
   :hover {
-    font-size: 1.35em;
+    background: #2f4050;
   }
   :active {
     box-shadow: -4px 4px 10px 1px black;
@@ -52,7 +54,7 @@ const Box = styled.div`
 const Option = styled.h5`
   font-family: 'Nunito';
   color: white;
-  font-size: 1.75em;
+  font-size: 1.7em;
   margin-top: 30px;
   white-space: no-wrap;
 `
