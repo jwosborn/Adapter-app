@@ -6,7 +6,12 @@ import Negative from './Components/Negative'
 import Tile from './Components/Tile'
 import axios from 'axios'
 import styled from 'styled-components'
-import { getBuildings, getDevices } from './Utils/Requests'
+import {
+  getBuildings,
+  getDevices,
+  getBuilding,
+  getRoom,
+} from './Utils/Requests'
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -65,8 +70,7 @@ class App extends Component {
 
   //sets selected building in state and calls rooms upon user selection
   setBuilding = building => {
-    axios
-      .get(`https://adapter-api.herokuapp.com/api/buildings/${building}`)
+    getBuilding(building)
       .then(res => {
         this.setState({ building: building, rooms: res.data })
       })
@@ -76,10 +80,7 @@ class App extends Component {
   //calls for room and sets room and roomData in state upon user selection
   setRoom = room => {
     const { building } = this.state
-    axios
-      .get(
-        `https://adapter-api.herokuapp.com/api/buildings/${building}/${room}`,
-      )
+    getRoom(room, building)
       .then(res => {
         this.setState({
           room: room,
