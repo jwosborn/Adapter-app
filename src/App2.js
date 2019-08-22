@@ -1,44 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+import AppContextProvider from './Provider'
 import Header from './Components/Header'
 import Positive from './Components/Positive'
 import Negative from './Components/Negative'
 import Tile from './Components/Tile'
+import Tiles from './Components/Tiles'
 import styled from 'styled-components'
-import {
-  getBuildings,
-  getBuilding,
-  getDevices,
-  getDevice,
-  getRoom,
-} from './Utils/Requests'
 
 function App2() {
-  const [buildings, setBuildings] = useState([])
-  const [building, setBuilding] = useState('')
-  const [rooms, setRooms] = useState([])
-  const [room, setRoom] = useState('')
-  const [roomData, setRoomData] = useState({})
-  const [device, setDevice] = useState(null)
-  const [devices, setDevices] = useState([])
-  const [deviceData, setDeviceData] = useState({})
-  const [roomHDMI, setRoomHDMI] = useState('')
-  const [deviceHDMI, setDeviceHDMI] = useState('')
-  const [roomVGA, setRoomVGA] = useState('')
-  const [deviceVGA, setDeviceVGA] = useState('')
-  const [adapterHDMI, setAdapterHDMI] = useState('')
-  const [adapterVGA, setAdapterVGA] = useState('')
-  const [linkHDMI, setLinkHDMI] = useState('')
-  const [linkVGA, setLinkVGA] = useState('')
-
-  useEffect(() => {
-    getBuildings().then(res => {
-      setBuildings(res.data)
-    })
-    getDevices().then(res => {
-      setDevices(res.data)
-    })
-  }, [])
-
   const Wrapper = styled.div`
     height: 100vh;
     width: 100vw;
@@ -60,17 +29,20 @@ function App2() {
   return (
     <Wrapper>
       <Header />
-      <TileWrapper>
-        {rooms.length === 0 &&
-          buildings.map((building, index) => (
-            <Tile
-              key={index}
-              text={building}
-              id={building}
-              func={setBuilding}
-            />
-          ))}
-      </TileWrapper>
+      <AppContextProvider>
+        <TileWrapper>
+          <Tiles />
+          {/* {!room &&
+            rooms.map((room, index) => (
+              <Tile
+                key={index}
+                text={room.roomNumber}
+                id={room.roomNumber}
+                func={setRoom}
+              />
+            ))} */}
+        </TileWrapper>
+      </AppContextProvider>
     </Wrapper>
   )
 }
