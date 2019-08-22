@@ -3,25 +3,22 @@ import { AppContext } from '../Provider'
 import Tile from './Tile'
 
 function Tiles() {
-  const context = useContext(AppContext)
+  const { rooms, buildings, setBuilding, room, setRoom } = useContext(
+    AppContext,
+  )
   return (
     <div>
-      {context.rooms.length === 0 &&
-        context.buildings.map((building, index) => (
-          <Tile
-            key={index}
-            text={building}
-            id={building}
-            func={context.setBuilding}
-          />
+      {rooms.length === 0 &&
+        buildings.map((building, index) => (
+          <Tile key={index} text={building} id={building} func={setBuilding} />
         ))}
-      {context.room === '' &&
-        context.rooms.map((room, index) => (
+      {room === '' &&
+        rooms.map((room, index) => (
           <Tile
             key={index}
             text={room.roomNumber}
             id={room.roomNumber}
-            func={context.setRoom}
+            func={setRoom}
           />
         ))}
     </div>
