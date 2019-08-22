@@ -1,9 +1,8 @@
 import React from 'react'
 import AppContextProvider from './Provider'
 import Header from './Components/Header'
-import Positive from './Components/Positive'
-import Negative from './Components/Negative'
-import Tile from './Components/Tile'
+// import Positive from './Components/Positive'
+// import Negative from './Components/Negative'
 import Tiles from './Components/Tiles'
 import styled from 'styled-components'
 

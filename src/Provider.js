@@ -3,8 +3,8 @@ import {
   getBuildings,
   getBuilding,
   getDevices,
-  getDevice,
-  getRoom,
+  // getDevice,
+  // getRoom,
 } from './Utils/Requests'
 export const AppContext = React.createContext({})
 
@@ -36,10 +36,10 @@ export const AppContextProvider = ({ children }) => {
   }, [])
 
   useEffect(() => {
-    getBuilding(building).then(res => {
-      console.log(res.data)
+    getBuilding().then(res => {
+      setRooms(res.data)
     })
-  }, building === '')
+  }, [building])
 
   const context = {
     buildings,
