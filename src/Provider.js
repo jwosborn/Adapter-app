@@ -36,7 +36,7 @@ export const AppContextProvider = ({ children }) => {
   }, [])
 
   useEffect(() => {
-    getBuilding().then(res => {
+    getBuilding(building).then(res => {
       setRooms(res.data)
     })
   }, [building])
