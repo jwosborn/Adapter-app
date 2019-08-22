@@ -8,14 +8,27 @@ function Tiles() {
       {context => {
         return (
           <div>
-            {context.buildings.map((building, index) => (
-              <Tile
-                key={index}
-                text={building}
-                id={building}
-                func={context.setBuilding}
-              />
-            ))}
+            {context.rooms.length === 0 &&
+              context.buildings.map((building, index) => (
+                <Tile
+                  key={index}
+                  text={building}
+                  id={building}
+                  func={context.setBuilding}
+                />
+              ))}
+            {context.room === '' &&
+              context.rooms.map(
+                (room,
+                index => (
+                  <Tile
+                    key={index}
+                    text={room}
+                    id={room}
+                    func={context.setRoom}
+                  />
+                )),
+              )}
           </div>
         )
       }}
