@@ -35,6 +35,12 @@ export const AppContextProvider = ({ children }) => {
     })
   }, [])
 
+  useEffect(() => {
+    getBuilding(building).then(res => {
+      console.log(res.data)
+    })
+  }, building === '')
+
   const context = {
     buildings,
     setBuildings,

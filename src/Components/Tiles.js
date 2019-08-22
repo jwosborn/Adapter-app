@@ -18,17 +18,14 @@ function Tiles() {
                 />
               ))}
             {context.room === '' &&
-              context.rooms.map(
-                (room,
-                index => (
-                  <Tile
-                    key={index}
-                    text={room}
-                    id={room}
-                    func={context.setRoom}
-                  />
-                )),
-              )}
+              context.rooms.map((room, index) => (
+                <Tile
+                  key={index}
+                  text={room.roomNumber}
+                  id={room.roomNumber}
+                  func={context.setRoom}
+                />
+              ))}
           </div>
         )
       }}
