@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import {
-  getBuildings,
-  getBuilding,
-  getDevices,
-  // getDevice,
-  // getRoom,
-} from './Utils/Requests'
-export const AppContext = React.createContext({})
+import { getBuildings, getDevices } from './Utils/Requests'
+export const AppContext = React.createContext()
 
 export const AppContextProvider = ({ children }) => {
   const [buildings, setBuildings] = useState([])
@@ -35,11 +29,11 @@ export const AppContextProvider = ({ children }) => {
     })
   }, [])
 
-  useEffect(() => {
-    getBuilding(building).then(res => {
-      setRooms(res.data)
-    })
-  }, [building])
+  // useEffect(() => {
+  //   getBuilding(building).then(res => {
+  //     setRooms(res.data)
+  //   })
+  // }, [building])
 
   const context = {
     buildings,
