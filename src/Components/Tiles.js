@@ -1,19 +1,19 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../Provider'
 import Tile from './Tile'
-import { getBuilding, getDevice, getRoom } from '../Utils/Requests'
 
 function Tiles() {
   const {
     rooms,
     buildings,
     room,
-    roomData,
     getRooms,
     device,
     devices,
     setDevice,
     getRoomData,
+    deviceData,
+    getDeviceData,
   } = useContext(AppContext)
   return (
     <div>
@@ -33,9 +33,8 @@ function Tiles() {
       {room &&
         !device &&
         devices.map((dev, index) => (
-          <Tile key={index} id={dev.id} text={dev.name} func={setDevice} />
+          <Tile key={index} id={dev.id} text={dev.name} func={getDeviceData} />
         ))}
-      {console.log(room)}
     </div>
   )
 }

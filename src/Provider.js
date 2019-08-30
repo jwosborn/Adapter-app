@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import {
   getBuildings,
   getDevices,
+  getDevice,
   getBuilding,
   getRoom,
 } from './Utils/Requests'
@@ -36,6 +37,7 @@ export const AppContextProvider = ({ children }) => {
 
   function getRooms(id) {
     getBuilding(id).then(res => {
+      setBuilding(id)
       setRooms(res.data)
     })
   }
@@ -48,6 +50,13 @@ export const AppContextProvider = ({ children }) => {
       .catch(err => {
         console.log(err)
       })
+  }
+
+  function getDeviceData(id) {
+    getDevice(id).then(res => {
+      setDevice(res.data.id)
+      console.log(res.data)
+    })
   }
 
   const context = {
@@ -85,6 +94,7 @@ export const AppContextProvider = ({ children }) => {
     setLinkVGA,
     getRooms,
     getRoomData,
+    getDeviceData,
   }
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>
 }
