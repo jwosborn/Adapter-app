@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { getBuildings, getDevices } from './Utils/Requests'
+import {
+  getBuildings,
+  getDevices,
+  getBuilding,
+  getRoom,
+} from './Utils/Requests'
 export const AppContext = React.createContext()
 
 export const AppContextProvider = ({ children }) => {
@@ -29,11 +34,21 @@ export const AppContextProvider = ({ children }) => {
     })
   }, [])
 
-  // useEffect(() => {
-  //   getBuilding(building).then(res => {
-  //     setRooms(res.data)
-  //   })
-  // }, [building])
+  function getRooms(id) {
+    getBuilding(id).then(res => {
+      setRooms(res.data)
+    })
+  }
+
+  function getRoomData(id) {
+    getRoom(id, building)
+      .then(res => {
+        setRoom(res.data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
 
   const context = {
     buildings,
@@ -68,6 +83,8 @@ export const AppContextProvider = ({ children }) => {
     setLinkHDMI,
     linkVGA,
     setLinkVGA,
+    getRooms,
+    getRoomData,
   }
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>
 }
