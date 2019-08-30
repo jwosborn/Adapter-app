@@ -15,7 +15,7 @@ export const AppContextProvider = ({ children }) => {
   const [rooms, setRooms] = useState([])
   const [room, setRoom] = useState('')
   const [roomData, setRoomData] = useState({})
-  const [device, setDevice] = useState(null)
+  const [device, setDevice] = useState('')
   const [deviceData, setDeviceData] = useState({})
   const [roomHDMI, setRoomHDMI] = useState('')
   const [deviceHDMI, setDeviceHDMI] = useState('')
@@ -45,7 +45,8 @@ export const AppContextProvider = ({ children }) => {
   function getRoomData(id) {
     getRoom(id, building)
       .then(res => {
-        setRoom(res.data)
+        setRoom(res.data[0].roomNumber)
+        setRoomData(res.data[0])
       })
       .catch(err => {
         console.log(err)
@@ -55,10 +56,24 @@ export const AppContextProvider = ({ children }) => {
   function getDeviceData(id) {
     getDevice(id).then(res => {
       setDevice(res.data.id)
-      console.log(res.data)
+      setDeviceData(res.data[0])
     })
   }
 
+  function adapterCheck(roomHDMI, deviceHDMI, roomVGA, deviceVGA) {
+    //test booleans return true if adapter is needed
+    if (
+      (roomHDMI === true && deviceHDMI === true) ||
+      (roomVGA === true && deviceVGA === true)
+    ) {
+      return false
+    } else if (
+      (roomHDMI === true && deviceHDMI === false) ||
+      (roomVGA === true && deviceVGA === false)
+    ) {
+      return true
+    }
+  }
   const context = {
     buildings,
     setBuildings,
@@ -95,6 +110,7 @@ export const AppContextProvider = ({ children }) => {
     getRooms,
     getRoomData,
     getDeviceData,
+    adapterCheck,
   }
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>
 }

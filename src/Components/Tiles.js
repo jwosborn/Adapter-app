@@ -10,10 +10,11 @@ function Tiles() {
     getRooms,
     device,
     devices,
-    setDevice,
     getRoomData,
-    deviceData,
+    roomData,
     getDeviceData,
+    deviceData,
+    adapterCheck,
   } = useContext(AppContext)
   return (
     <div>
@@ -30,11 +31,26 @@ function Tiles() {
             func={getRoomData}
           />
         ))}
+      {console.log(room)}
       {room &&
         !device &&
         devices.map((dev, index) => (
           <Tile key={index} id={dev.id} text={dev.name} func={getDeviceData} />
         ))}
+
+      {adapterCheck(
+        roomData.hasHDMI,
+        deviceData.hasHDMI,
+        roomData.hasVGA,
+        deviceData.hasVGA,
+      )
+        ? console.log(true)
+        : console.log(
+            roomData.hasHDMI,
+            deviceData.hasHDMI,
+            roomData.hasVGA,
+            deviceData.hasVGA,
+          )}
     </div>
   )
 }
